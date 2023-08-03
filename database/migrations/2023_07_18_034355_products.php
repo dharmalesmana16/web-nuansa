@@ -19,12 +19,13 @@ return new class extends Migration
             $table->float('harga')->nullable();
             $table->integer('jumlah')->nullable();
             $table->string('slug', 100)->nullable(false);
-            $table->string('katalog', 100)->nullable();
             $table->binary('photo');
-            $table->unsignedInteger('category_product_id');
+            $table->unsignedInteger('category_id');
+            $table->unsignedInteger('catalog_id');
             $table->timestampsTz($precision = 0);
             $table->softDeletesTz($column = 'deleted_at', $precision = 0);
-            $table->foreign('category_product_id')->references('id')->on('category_products')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('catalog_id')->references('id')->on('catalog')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('category_products')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

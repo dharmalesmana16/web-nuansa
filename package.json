@@ -41,6 +41,8 @@
         "jquery": "^3.7.0",
         "primereact": "^9.6.0",
         "react-data-table-component": "^7.5.3",
+        "react-image-file-resizer": "^0.4.8",
+        "react-js-pagination": "^3.0.3",
         "react-router-dom": "^6.4.5"
     }
 }

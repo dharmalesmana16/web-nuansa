@@ -1,11 +1,9 @@
 import DashboardLayout from '@/Layouts/DashboardLayout'
 import React from 'react'
 
-export default function DashboardHome({ auth }) {
-    // console.log(auth);
-    console.log(auth);
+export default function DashboardHome(auth) {
     return (
-        <DashboardLayout user={auth.user}>
+        <DashboardLayout>
             <div className="row">
 
             </div>

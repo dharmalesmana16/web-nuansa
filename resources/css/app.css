@@ -1,3 +1,9 @@
-@tailwind base;
+/* /* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
+/* @import url("https://fonts.googleapis.com/css?family=Montserrat"); */
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Raleway&display=swap");
+body,
+html {
+    font-family: "Lato", sans-serif;
+}

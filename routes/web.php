@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\CategoryProductController;
+use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\DataController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductCCTVController;
 use App\Http\Controllers\ProductIOTController;
@@ -26,33 +30,80 @@ use Inertia\Inertia;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/product', [ProductsController::class, 'index']);
 Route::get('/project', [ProjectsController::class, 'index']);
+Route::get('/project/{slug}', [ProjectsController::class, 'show']);
 Route::get('/signin', [AuthController::class, 'signin'])->name("signin");
 Route::post('/signin', [AuthController::class, 'check'])->name("signin");
 Route::get('/signup', [AuthController::class, 'signup'])->name("signup");
 Route::post('/signup', [AuthController::class, 'new']);
-Route::get('/dashboard/products', [ProductsController::class, 'dashboard']);
-Route::get('/dashboard/products/new', [ProductsController::class, 'new']);
-Route::post('/dashboard/products/store', [ProductsController::class, 'store']);
+Route::post('/signout', [AuthController::class, 'signout'])->middleware('auth');
+Route::get('/clients', [ClientsController::class, 'index']);
 
-// Route::get('/dashboard', [ProductVideotronController::class, 'index']);
+Route::post('/data/getcatalog', [DataController::class, 'getDataCatalog']);
+Route::controller(ProductsController::class)->prefix('dashboard/products')->middleware('auth')->group(function () {
+    Route::get('', 'dashboard');
+    Route::get('new', 'new');
+    Route::get('edit/{slug}', 'edit');
+    // Route::put('update/{slug}', 'update');
+    Route::post('update/{slug}', 'update');
+    Route::post('store', 'store');
+    Route::delete('{slug}', 'destroy');
+
+});
+
+Route::controller(CatalogController::class)->prefix('dashboard/catalog')->middleware('auth')->group(function () {
+    Route::get('', 'dashboard');
+    Route::get('new', 'new');
+    Route::get('edit/{slug}', 'edit');
+    // Route::put('update/{slug}', 'update');
+    Route::post('update/{slug}', 'update');
+    Route::post('store', 'store');
+    Route::delete('{slug}', 'destroy');
+
+});
+
+Route::controller(ClientsController::class)->prefix('dashboard/clients')->middleware('auth')->group(function () {
+    Route::get('', 'dashboard');
+    Route::get('new', 'new');
+    Route::get('edit/{slug}', 'edit');
+    // Route::put('update/{slug}', 'update');
+    Route::post('update/{slug}', 'update');
+    Route::post('store', 'store');
+    Route::delete('{slug}', 'destroy');
+});
+
+Route::controller(CategoryProductController::class)->prefix('dashboard/products/category')->middleware('auth')->group(function () {
+    Route::get('', 'dashboard');
+    Route::get('new', 'new');
+    Route::post('store', 'store');
+    Route::get('edit/{slug}', 'edit');
+    Route::post('update/{id}', 'update');
+    Route::delete('{slug}', 'destroy');
+});
+
+Route::get('/product/{id}', [ProductsController::class, 'show']);
+Route::get('/product/show/{id}', [ProductsController::class, 'detail']);
+
 Route::controller(ProductCCTVController::class)->prefix('product/cctv')->group(function () {
     Route::get('', 'index');
     Route::get('{slug}', 'show');
 });
+
 Route::controller(ProductVideotronController::class)->prefix('product/videotron')->group(function () {
     Route::get('', 'index');
     Route::get('{slug}', 'show');
 });
+
 Route::controller(ProductPABXController::class)->prefix('product/pabx')->group(function () {
     Route::get('', 'index');
     Route::get('{slug}', 'show');
 });
+
 Route::controller(ProductIOTController::class)->prefix('product/iot')->group(function () {
     Route::get('', 'index');
     Route::get('{slug}', 'show');
 });
 
-Route::controller(ProductCCTVController::class)->prefix('dashboard/product/cctv')->group(function () {
+Route::controller(ProjectsController::class)->prefix('dashboard/projects')->middleware('auth')->group(function () {
     Route::get('', 'dashboard');
     Route::get('show/{meta}', 'show');
     Route::get('new', 'new');
@@ -62,7 +113,7 @@ Route::controller(ProductCCTVController::class)->prefix('dashboard/product/cctv'
     Route::post('store', 'store');
     Route::delete('{meta}', 'destroy');
 });
-Route::controller(ProductPABXController::class)->prefix('dashboard/product/pabx')->group(function () {
+Route::controller(ServicesController::class)->prefix('dashboard/services')->middleware('auth')->group(function () {
     Route::get('', 'dashboard');
     Route::get('show/{meta}', 'show');
     Route::get('new', 'new');
@@ -72,37 +123,7 @@ Route::controller(ProductPABXController::class)->prefix('dashboard/product/pabx'
     Route::post('store', 'store');
     Route::delete('{meta}', 'destroy');
 });
-Route::controller(ProductIOTController::class)->prefix('dashboard/product/iot')->group(function () {
-    Route::get('', 'dashboard');
-    Route::get('show/{meta}', 'show');
-    Route::get('new', 'new');
-    Route::get('edit/{slug}', 'edit');
-    Route::put('update/{slug}', 'update');
-    Route::patch('update/{slug}', 'update');
-    Route::post('store', 'store');
-    Route::delete('{meta}', 'destroy');
-});
-Route::controller(ProjectsController::class)->prefix('dashboard/projects')->group(function () {
-    Route::get('', 'dashboard');
-    Route::get('show/{meta}', 'show');
-    Route::get('new', 'new');
-    Route::get('edit/{slug}', 'edit');
-    Route::put('update/{slug}', 'update');
-    Route::patch('update/{slug}', 'update');
-    Route::post('store', 'store');
-    Route::delete('{meta}', 'destroy');
-});
-Route::controller(ServicesController::class)->prefix('dashboard/services')->group(function () {
-    Route::get('', 'dashboard');
-    Route::get('show/{meta}', 'show');
-    Route::get('new', 'new');
-    Route::get('edit/{slug}', 'edit');
-    Route::put('update/{slug}', 'update');
-    Route::patch('update/{slug}', 'update');
-    Route::post('store', 'store');
-    Route::delete('{meta}', 'destroy');
-});
-Route::controller(ProductVideotronController::class)->prefix('dashboard/product/videotron')->group(function () {
+Route::controller(ProductVideotronController::class)->prefix('dashboard/product/videotron')->middleware('auth')->group(function () {
     Route::get('', 'dashboard');
     Route::get('show/{meta}', 'show');
     Route::get('new', 'new');

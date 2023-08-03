@@ -9,8 +9,8 @@ class categoryProduct extends Model
 {
     use HasFactory;
     protected $table = "category_products";
-    protected $fillable = array("*");
-
+    protected $fillable = array("nama", "slug");
+    public $timestamps = true;
     public function getData($id = false)
     {
         if ($id === false) {

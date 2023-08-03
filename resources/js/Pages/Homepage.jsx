@@ -21,7 +21,21 @@ export default function Homepage(props) {
                 <BoxHome />
                 <ProductComponentHome />
                 <Jumbotron />
-                <ThreeCard data={props.dataprojects} />
+                <div className="mb-5">
+
+                    <ThreeCard data={props.dataprojects} />
+                </div>
+                {/* <div className="container mt-5 mb-5">
+                    <div className="row">
+                        <div className="col-6">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione ad dolore voluptatem beatae eos maxime, mollitia quo illum dicta quibusdam, quis quaerat officia architecto atque fugiat possimus sit? Omnis, nulla.</p>
+                        </div>
+                        <div className="col-6">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione ad dolore voluptatem beatae eos maxime, mollitia quo illum dicta quibusdam, quis quaerat officia architecto atque fugiat possimus sit? Omnis, nulla.</p>
+
+                        </div>
+                    </div>
+                </div> */}
             </div >
         </Layout>
     )

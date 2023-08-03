@@ -1,13 +1,12 @@
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import React from 'react'
-import TextInput from '@/Components/TextInput'
 import InputLabel from '@/Components/InputLabel';
 import { useState } from 'react';
-import BtnLink from '@/Components/BtnLink';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import gambarDummy from '../../../../assets/image/dummy200.png';
 import Swal from 'sweetalert2';
+import FileResizer from 'react-image-file-resizer';
 
 export default function Create(props) {
     const [nama, setNama] = useState("");
@@ -15,8 +14,33 @@ export default function Create(props) {
     const [gambar, setGambar] = useState(null);
     const [previewImg, setPreview] = useState(null);
     function preview(e) {
-        setPreview(URL.createObjectURL(e.target.files[0]));
-        setGambar(e.target.files[0]);
+        var fileInput = false;
+        let dataImage = e.target.files[0]
+        if (dataImage) {
+            fileInput = true;
+        }
+        if (fileInput) {
+            try {
+                FileResizer.imageFileResizer(
+                    dataImage,
+                    250,
+                    250,
+                    "JPEG",
+                    100,
+                    0,
+                    (uri) => {
+                        setPreview(URL.createObjectURL(uri));
+                        setGambar(uri);
+                    },
+                    "file",
+                    250,
+                    250
+                );
+
+            } catch (err) {
+                console.log(err);
+            }
+        }
     }
 
     const handleCreate = async (e) => {
@@ -52,14 +76,18 @@ export default function Create(props) {
     return (
         <DashboardLayout >
             <div className='container'>
-                <div className="card">
+                <div className="card bg-white">
                     <div className="card-body">
 
                         <form className="row g-3" encType="multipart/form-data" onSubmit={handleCreate} >
                             <div className="col-md-6 text-center">
 
-                                <img src={previewImg ? previewImg : gambarDummy}
-                                    className="img-thumbnail border-1 rounded" alt="..." />
+                                <img src={previewImg}
+                                    className="" alt="..." style={{
+                                        objectFit: 'fill', width: "250px",
+                                        height: "250px",
+                                        border: "1px solid black",
+                                    }} />
                             </div>
 
                             <div className="col-md-6">

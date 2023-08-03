@@ -1,16 +1,16 @@
 import React from 'react'
 import BtnLink from './BtnLink'
-import Logo from '../../assets/image/logonuansa.png';
 import gambarIoT from '../../assets/image/iotProduct.jpg';
 import gambarCCTV from '../../assets/image/cctvProduct.jpg';
 import gambarVideotron from '../../assets/image/digitalLed2.jpg';
 import gambarOFE from '../../assets/image/Office Equipment.jpg';
 export default function ProductComponentHome() {
+    let deskripsi = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti, in";
     const dataProduct = [
         { "nama": "Security Surveillance", "deskripsi": "Ini untuk mengawas", "gambar": gambarCCTV },
         { "nama": "Videotron", "deskripsi": "Ini untuk mengawas", "gambar": gambarVideotron },
-        { "nama": "Internet of Things", "deskripsi": "Ini untuk mengawas", "gambar": gambarIoT },
-        { "nama": "Office Equipment", "deskripsi": "Ini untuk mengawas", "gambar": gambarOFE }
+        { "nama": "Internet of Things", "deskripsi": deskripsi, "gambar": gambarIoT },
+        { "nama": "Office Equipment", "deskripsi": deskripsi, "gambar": gambarOFE }
     ]
     return (
         <div className='container'>
@@ -18,13 +18,16 @@ export default function ProductComponentHome() {
                 {dataProduct ? dataProduct.map((data, i) => {
                     return (
                         <div className="col">
-                            <div className="card h-100 border-0">
-                                <img src={data.gambar} className="card-img-top rounded-3 h-100" alt="..." />
-                                <div className="card-body pt-3">
+                            <div className="card bg-white shadow border-0 h-100">
+                                <img src={data.gambar} className="img-fluid w-100 " style={{
+                                    objectFit: 'fill',
+                                    height: "250px",
+                                }} alt="..." />
+                                <div className="card-body  text-center">
                                     <h3 className=" fw-bolder">{data.nama}</h3>
                                     <p className="card-text">{data.deskripsi}</p>
                                 </div>
-                                <div className="card-footer bg-light border-0">
+                                <div className="card-footer bg-white border-0 align-self-center">
                                     <BtnLink Name="See Detail" />
                                 </div>
                             </div>

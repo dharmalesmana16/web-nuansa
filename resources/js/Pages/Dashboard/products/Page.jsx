@@ -1,7 +1,9 @@
 import DashboardLayout from '@/Layouts/DashboardLayout'
+import { Link } from '@inertiajs/react';
 import React, { useState, useEffect } from 'react'
 import DataTable from 'react-data-table-component';
 // import { DataTable } from 'primereact/datatable';
+import Swal from 'sweetalert2';
 export default function Page(props) {
     // const [products, setProducts] = useState([]);
     // console.log(props.datavideotron);
@@ -23,7 +25,7 @@ export default function Page(props) {
             closeOnCancel: false
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete("/dashboard/products" + slug).then((response) => {
+                axios.delete("/dashboard/products/" + slug).then((response) => {
                     Swal.fire({
                         icon: "success",
                         title: "Success",
@@ -37,9 +39,8 @@ export default function Page(props) {
     let no = 0
     const columns = [
         {
-            name: 'id',
+            name: 'No',
             selector: row => no += 1,
-
         },
         {
             name: 'Nama Produk',
@@ -47,8 +48,14 @@ export default function Page(props) {
 
         },
         {
+            name: 'Kode Produk',
+            selector: row => row.kode,
+
+        },
+        {
             name: 'Deskripsi',
-            selector: row => <div dangerouslySetInnerHTML={{ __html: row.deskripsi }}></div>,
+            selector: row => <div dangerouslySetInnerHTML={{ __html: row.deskripsi }}></div>
+            ,
             //
         },
         {
@@ -62,15 +69,21 @@ export default function Page(props) {
 
         },
         {
+            name: 'Kategori',
+            selector: row => row.namaKategori,
+
+        },
+        {
             name: 'Gambar',
-            selector: row => <img src={`/uploads/${row.photo}`} className="w-50" />,
+            selector: row => <img src={`/storage/${row.photo}`} className="w-50" />,
 
         },
         {
             name: 'Action',
             selector: row => <div className='d-flex '>
-                <a href={`/dashboard/product/edit/${row.slug}`} className='btn btn-sm btn-primary p-2'>Edit</a>
+                <Link href={`/dashboard/products/edit/${row.slug}`} className='btn btn-sm btn-primary p-2'>Edit</Link>
                 <button className='btn btn-sm btn-danger' onClick={handleDelete} id={row.slug} type='button'>Delete</button>
+
             </div>,
 
         },

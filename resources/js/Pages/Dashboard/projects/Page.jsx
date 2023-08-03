@@ -3,6 +3,7 @@ import React from 'react'
 import DataTable from 'react-data-table-component'
 import Swal from 'sweetalert2';
 export default function Page(props) {
+    console.log(props.auth.user);
     function handleDelete(e) {
         e.preventDefault();
         const slug = e.currentTarget.id;
@@ -55,7 +56,7 @@ export default function Page(props) {
 
         {
             name: 'Gambar',
-            selector: row => <img src={`/uploads/${row.photo}`} className="w-50" />,
+            selector: row => <img src={`/storage/${row.photo}`} className="w-50" />,
 
         },
         {

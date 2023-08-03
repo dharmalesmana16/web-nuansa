@@ -16,7 +16,7 @@ class ProductVideotronController extends Controller
     {
         $data = [
             "title" => "Product Videotron",
-            "data" => $this->products->getData(2),
+            "data" => $this->products->getDataByCat(2),
         ];
         return Inertia::render("Product/videotron/Index", $data);
     }

@@ -1,8 +1,9 @@
+import Pagination from '@/Components/Pagination';
 import Layout from '@/Layouts/Layout'
 import React from 'react'
 
 export default function Index(props) {
-    // console.log(props.dataprojects);
+
     function decodeHtml(html) {
         var txt = document.createElement("textarea");
         txt.innerHTML = html;
@@ -35,43 +36,32 @@ export default function Index(props) {
 
                             <div className="row">
                                 {/* Start Code */}
-                                {props.dataproject ? props.dataproject.map((data, i) => {
-                                    if (isToday(data.created_at)) {
-                                        return (
-                                            <div className="card mb-4">
+                                {props.dataproject.data.length != 0 ? props.dataproject.data.map((data, i) => {
 
-                                                <a href="#!"><img className="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+
+                                    return (
+
+                                        <div className="col-lg-6">
+                                            <div className="card mb-4" key={i}>
+                                                <a href="#!">
+                                                    <img className="card-img-top" src={`/storage/${data.photo}`} height={350} alt="..." /></a>
                                                 <div className="card-body">
-                                                    <div className="small text-muted">January 1, 2023</div>
-                                                    <h2 className="card-title">Featured Post Title</h2>
-                                                    <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                                                    <a className="btn btn-primary" href="#!">Read more →</a>
+                                                    <div className="small text-muted">{data.created_at}</div>
+                                                    <h2 className="card-title h4">{data.nama}</h2>
+                                                    <div dangerouslySetInnerHTML={{ __html: data.description }}></div>
+                                                    <a className="btn btn-primary" href={`/project/${data.slug}`}>Read more →</a>
                                                 </div>
                                             </div>
-                                        )
-                                    } else {
+                                        </div>
+                                    )
 
-
-                                        return (
-
-                                            <div className="col-lg-6">
-                                                <div className="card mb-4">
-                                                    <a href="#!">
-                                                        <img className="card-img-top" src={`/uploads/${data.photo}`} height={350} alt="..." /></a>
-                                                    <div className="card-body">
-                                                        <div className="small text-muted">{data.created_at}</div>
-                                                        <h2 className="card-title h4">{data.nama}</h2>
-                                                        <div dangerouslySetInnerHTML={{ __html: data.description }}></div>
-                                                        <a className="btn btn-primary" href="#!">Read more →</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        )
-                                    }
-                                }) : "Berita Belum Tersedia"}
+                                }) : (<p className='text-center'>Berita Belum Tersedia</p>)}
                                 {/* End Code */}
                             </div>
+                            <div className="d-flex justify-content-center">
 
+                                <Pagination links={props.dataproject.links} />
+                            </div>
                         </div>
                         <div className="col-lg-4">
                             <div className="card mb-4">

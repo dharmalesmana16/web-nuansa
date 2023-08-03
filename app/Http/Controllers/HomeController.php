@@ -20,8 +20,8 @@ class HomeController extends Controller
         $data = [
             "title" => "Homepage",
             "Deskripsi" => "Ini Homes",
-            "DataService" => $this->ServiceModel->getDataInHome(),
-            "dataprojects" => $this->dataProject->getDataInHome(),
+            "DataService" => $this->ServiceModel->getData(),
+            "dataprojects" => $this->dataProject->getData(),
         ];
         return Inertia::render('Homepage', $data);
     }

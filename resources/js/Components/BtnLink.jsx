@@ -1,10 +1,9 @@
+import { Link } from '@inertiajs/react'
 import React from 'react'
 
-export default function BtnLink({ linkTo, disabled, Name, ...props }) {
+export default function BtnLink({ linkTo, disabled, Name, className = '', ...props }) {
     return (
-        <div>
-            <a className="btn btn-outline-primary" type="submit"  {...props}>{Name}</a>
+        <Link className={"btn btn-outline-primary " + className} type="submit"  {...props}> {Name}</Link >
 
-        </div>
     )
 }

@@ -1,9 +1,7 @@
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import React from 'react'
-import TextInput from '@/Components/TextInput'
 import InputLabel from '@/Components/InputLabel';
 import { useState } from 'react';
-import BtnLink from '@/Components/BtnLink';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import gambarDummy from '../../../../assets/image/dummy200.png';
@@ -60,7 +58,8 @@ export default function Update(props) {
                         <form className="row g-3" encType="multipart/form-data" onSubmit={handleUpdate} >
                             <div className="col-md-6 text-center">
 
-                                <img src={previewImg ? previewImg : gambarDummy}
+                                {/* <img src={previewImg ? previewImg : gambarDummy} */}
+                                <img src={`uploads/${props.data.photo}`}
                                     className="img-thumbnail border-1 rounded" alt="..." />
                             </div>
 
@@ -71,8 +70,7 @@ export default function Update(props) {
                                     className="w-full px-4 py-2"
                                     label="photo"
                                     name="photo"
-                                    onChange={preview
-                                    }
+                                    onChange={preview}
                                 />
                             </div>
                             <div className="col-md-6">
@@ -96,7 +94,7 @@ export default function Update(props) {
                             </div>
                             <hr />
                             <div className="text-end">
-                                <button type="submit" className=" btn btn-primary px-3 font-weight-bolder btnSubmit">Create Product
+                                <button type="submit" className=" btn btn-primary px-3 font-weight-bolder btnSubmit">Update Data
                                 </button>
                             </div>
                         </form>

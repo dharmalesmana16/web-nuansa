@@ -38,8 +38,10 @@ class AuthController extends Controller
         } else {
             // validation not successful, send back to form
             return response()->json([
-                "msg" => "error",
-            ]);}
+                "login" => "0",
+                "msg" => "Username atau password anda salah !",
+            ]);
+        }
     }
     public function signup()
     {
@@ -80,5 +82,11 @@ class AuthController extends Controller
         }
 
         // return Inertia::render("Auth/register", $data);
+    }
+    public function signout()
+    {
+        auth()->logout();
+
+        return redirect('/signin');
     }
 }

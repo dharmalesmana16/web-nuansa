@@ -11,7 +11,7 @@ class products extends Model
     protected $table = "products";
     public $timestamps = true;
     protected $fillable = ["nama", "kode", 'deskripsi', 'jumlah',
-        'category_product_id', 'katalog', 'harga', 'photo', 'slug'];
+        'category_id', 'catalog_id', 'harga', 'photo', 'slug'];
     public function getData($cat_product = null, $slug = null)
     {
         if ($cat_product == null && $slug == null) {
@@ -19,10 +19,24 @@ class products extends Model
         } else if ($cat_product != null && $slug == null) {
             return $this::select("*")->where('category_product_id', $cat_product)->get();
 
-        } else {
+        } else if ($cat_product == null && $slug != null) {
             return $this::where('slug', $slug)->first();
 
         }
 
+    }
+    public function getDataBySlug($slug = false)
+    {
+        if ($slug === false) {
+            return $this::all();
+
+        } else {
+            return $this::where('slug', $slug)->first();
+        }
+    }
+
+    public function getDataByCat($cat = false)
+    {
+        return $this::where('category_product_id', $cat)->get();
     }
 }

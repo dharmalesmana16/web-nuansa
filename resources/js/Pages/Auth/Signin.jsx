@@ -19,18 +19,12 @@ export default function Signin() {
                     setTimeout(function () {
                         window.location.replace('/dashboard');
                     }, 2000);
-                } else if (response.data.login == "2") {
+                } else if (response.data.login == "0") {
                     $(".loginAlert").hide().html(response.data.msg).fadeIn('slow');
                     $('.loginAlert').attr('class', 'alert alert-danger loginAlert');
                     setTimeout(function () {
                         $('.loginAlert').fadeOut();
-                    }, 5000);
-                } else if (response.data.login == "3") {
-                    $(".loginAlert").hide().html(response.data.msg).fadeIn('slow');
-                    $('.loginAlert').attr('class', 'alert alert-danger loginAlert');
-                    setTimeout(function () {
-                        $('.loginAlert').fadeOut();
-                    }, 5000);
+                    }, 4000);
                 }
                 console.log(response);
             }).catch((response) => {
@@ -48,7 +42,7 @@ export default function Signin() {
             </div>
 
             <form method="POST" id="formLogin" className="formLogin" onSubmit={handleSubmit}>
-                <p className="text-center">Please login to your account</p>
+                <p className="text-center"></p>
                 <div className="text-center">
 
                     <div className="alert alert-danger loginAlert" style={{ display: 'none' }}>
@@ -58,13 +52,13 @@ export default function Signin() {
 
                 <div className="form-outline mb-4">
                     <input type="text" id="username" name="username" className="form-control"
-                        placeholder="Masukkan Username" onChange={(e) => setUsername(e.target.value)} />
+                        placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
                     <label className="form-label" htmlFor="username">Username</label>
                 </div>
 
                 <div className="form-outline mb-4">
                     <input type="password" id="password" name="password" className="form-control" onChange={(e) => setPassword(e.target.value)} />
-                    {/* <label className="form-label" for="password">Password</label> */}
+                    <label className="form-label" for="password">Password</label>
                 </div>
 
                 <div className="text-center pt-1 mb-5 pb-1">
@@ -76,7 +70,7 @@ export default function Signin() {
             </form>
             <div className="d-flex align-items-center justify-content-center pb-4">
                 <p className="mb-0 me-2">Belum Mempunyai Akun ?</p>
-
+                <a href={route('signup')} className='btn btn-warning btn-sm fw-bolder text-dark text-2xl'>Register</a>
             </div>
 
         </AuthLayout>

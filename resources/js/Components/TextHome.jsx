@@ -5,8 +5,8 @@ export default function TextHome(props) {
 
     return (
         <div>
-            <section className="py-3 border-bottom my-1 container" id="features">
-                <div className="container px-5 my-5">
+            <section className="py-1 border-bottom container" id="features">
+                <div className="container my-2">
                     <div className="row gx-5">
                         {props.data ? props.data.map((res, i) => {
                             return (

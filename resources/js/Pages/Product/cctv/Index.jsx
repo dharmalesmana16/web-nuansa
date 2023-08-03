@@ -1,26 +1,71 @@
 import BtnLink from '@/Components/BtnLink'
+import ConvertHTML from '@/Components/ConvertHTML'
 import Pagination from '@/Components/Pagination'
 import ThreeCard from '@/Components/ThreeCard'
 import Layout from '@/Layouts/Layout'
 import React from 'react'
+import FileResizer from 'react-image-file-resizer'
 export default function Index(props) {
+    let data;
+    const rupiah = (number) => {
+        return new Intl.NumberFormat("id-ID", {
+            style: "currency",
+            currency: "IDR"
+        }).format(number);
+    }
+    const resizeImage = (imageFile) => {
+        try {
+            Resizer.imageFileResizer(
+                imageFile,
+                150,
+                150,
+                "JPEG",
+                100,
+                0,
+                callback,
+            );
+        } catch (err) {
+            console.log(err);
+        }
+    }
     return (
         < Layout >
 
             <div className="container">
+                <div className="card mb-3">
+                    <div className="card-body d-flex ">
 
+                        <form action="">
+                            <div className="d-flex">
+
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <div className="row gx-4 gx-lg-5">
                     {/* Start Code */}
-                    {props.datacctv ? props.datacctv.map((res, i) => {
+                    {props.datacctv ? props.datacctv.data.map((res, i) => {
+                        // let deskripsi = res.deskripsi;
+                        // if (deskripsi.length > 50) {
+                        //     deskripsi = res.deskripsi.substr(0, 50);
+                        // } else {
+                        //     deskripsi = res.deskripsi;
+                        // }
                         return (
-                            <div className="col-md-4 mb-5 " key={i}>
-                                <div className="card h-100 border-0">
-                                    <img src={`/uploads/${res.photo}`} className="img-thumbnail" alt="..." />
-                                    <div className="card-body pt-3">
-                                        <h3 className=" fw-bolder">{res.nama}</h3>
-                                        <div dangerouslySetInnerHTML={{ __html: res.deskripsi }}></div>
+                            <div className="col-md-3 mb-5 " key={i}>
+                                <div className="card bg-white shadow border-0 h-100">
+
+                                    <img src={`/storage/${res.photo}`} className="img-fluid w-100 " style={{
+                                        objectFit: 'fill',
+                                        height: "250px",
+                                    }} alt="..." />
+                                    <div className="card-body text-center">
+                                        <p className=" fs-5">{res.nama}</p>
+                                        <p className="card-text fw-bolder fs-5">{rupiah(res.harga)}</p>
+
                                     </div>
-                                    <div className="card-footer bg-light border-0">
+                                    <div className="card-footer bg-white border-0 align-self-center">
                                         <BtnLink href={`/product/cctv/${res.slug}`} Name="See Detail" />
 
                                     </div>
@@ -29,7 +74,8 @@ export default function Index(props) {
                         )
                     }) : ""
                     }
-                    {/* <Pagination datas={props.datacctv} /> */}
+
+                    <Pagination links={props.datacctv.links} />
 
 
                 </div>
