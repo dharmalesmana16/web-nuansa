@@ -15,7 +15,8 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('nama', 100)->nullable();
             $table->text('deskripsi')->nullable();
-            $table->date('from_year')->nullable();
+            $table->binary('photo')->nullable();
+            $table->enum('showonhome', ['TRUE', 'FALSE'])->nullable(); $table->date('from_year')->nullable();
             $table->timestampsTz($precision = 0);
             $table->softDeletesTz($column = 'deleted_at', $precision = 0);
         });

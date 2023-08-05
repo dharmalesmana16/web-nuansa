@@ -29,17 +29,7 @@ export default function ProductPage(props) {
         < Layout >
 
             <div className="container">
-                <div className="card mb-3">
-                    <div className="card-body d-flex ">
 
-                        <form action="">
-                            <div className="d-flex">
-
-
-                            </div>
-                        </form>
-                    </div>
-                </div>
                 <div className="row gx-4 gx-lg-5">
                     {/* Start Code */}
                     {props.data_cat ? props.data_cat.data.map((res, i) => {
@@ -50,19 +40,24 @@ export default function ProductPage(props) {
                         //     deskripsi = res.deskripsi;
                         // }
                         return (
-                            <div className="col-md-3 mb-5 " key={i}>
-                                <div className="card bg-white shadow border-0 h-100">
+                            <div className="col-md-4  mb-5 " key={i}>
+                                <div className="card bg-primary shadow border-0 w-100 ">
 
-                                    <img src={`/storage/${res.photo}`} className="img-fluid w-100 " style={{
+                                    {/* <img src={`/storage/${res.photo}`} className="img-fluid w-100 " style={{
                                         objectFit: 'fill',
                                         height: "250px",
-                                    }} alt="..." />
+                                    }} alt="..." /> */}
+                                    <div className="text-center p-5">
+
+                                        <img width="75" height="75" src={`/storage/${res.photo}`}
+                                            className='img-fluid ' alt="bullet-camera" />
+                                    </div>
                                     <div className="card-body text-center">
                                         <p className=" fs-5">{res.nama}</p>
 
                                     </div>
-                                    <div className="card-footer bg-white border-0 align-self-center">
-                                        <BtnLink href={`/product/${res.slug}`} Name="See More" />
+                                    <div className="card-footer  border-0 align-self-center">
+                                        <BtnLink href={`/product/${res.slug}`} className='text-white ' Name="See More" />
 
                                     </div>
                                 </div>

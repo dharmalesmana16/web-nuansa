@@ -30,7 +30,7 @@ export default function Page(props) {
                         title: "Success",
                         timer: 3000
                     })
-                    window.location.replace('/dashboard/catalog');
+                    window.location.replace('/dashboard/clients');
                 });
             }
         })
@@ -49,12 +49,25 @@ export default function Page(props) {
             name: 'Dari Tanggal & Tahun',
             selector: row => row.from_year,
         },
+        {
+            name: 'Deskripsi',
+            selector: row => row.deskripsi,
+        },
+        {
+            name: 'Show on Home ?',
+            selector: row => row.showonhome,
+        },
+        {
+            name: 'Gambar',
+            selector: row => <img src={`/storage/${row.photo}`} className="w-50 rounded-circle" />,
+
+        },
 
         {
             name: 'Action',
             selector: row => <div className='d-flex '>
-                <a href={`/dashboard/clients/edit/${row.slug}`} className='btn btn-sm btn-primary p-2'>Edit</a>
-                <button className='btn btn-sm btn-danger' onClick={handleDelete} id={row.slug} type='button'>Delete</button>
+                <a href={`/dashboard/clients/edit/${row.id}`} className='btn btn-sm btn-primary p-2'>Edit</a>
+                <button className='btn btn-sm btn-danger' onClick={handleDelete} id={row.id} type='button'>Delete</button>
 
             </div>,
 

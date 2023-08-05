@@ -37,9 +37,21 @@ Route::get('/signup', [AuthController::class, 'signup'])->name("signup");
 Route::post('/signup', [AuthController::class, 'new']);
 Route::post('/signout', [AuthController::class, 'signout'])->middleware('auth');
 Route::get('/clients', [ClientsController::class, 'index']);
+Route::get('/client/show/{id}', [ClientsController::class, 'detail']);
 
 Route::post('/data/getcatalog', [DataController::class, 'getDataCatalog']);
+Route::get('/data/link/product', [DataController::class, 'getLinkProduct']);
 Route::controller(ProductsController::class)->prefix('dashboard/products')->middleware('auth')->group(function () {
+    Route::get('', 'dashboard');
+    Route::get('new', 'new');
+    Route::get('edit/{slug}', 'edit');
+    // Route::put('update/{slug}', 'update');
+    Route::post('update/{slug}', 'update');
+    Route::post('store', 'store');
+    Route::delete('{slug}', 'destroy');
+
+});
+Route::controller(ClientsController::class)->prefix('dashboard/clients')->middleware('auth')->group(function () {
     Route::get('', 'dashboard');
     Route::get('new', 'new');
     Route::get('edit/{slug}', 'edit');
@@ -54,6 +66,7 @@ Route::controller(CatalogController::class)->prefix('dashboard/catalog')->middle
     Route::get('', 'dashboard');
     Route::get('new', 'new');
     Route::get('edit/{slug}', 'edit');
+
     // Route::put('update/{slug}', 'update');
     Route::post('update/{slug}', 'update');
     Route::post('store', 'store');
@@ -65,6 +78,7 @@ Route::controller(ClientsController::class)->prefix('dashboard/clients')->middle
     Route::get('', 'dashboard');
     Route::get('new', 'new');
     Route::get('edit/{slug}', 'edit');
+
     // Route::put('update/{slug}', 'update');
     Route::post('update/{slug}', 'update');
     Route::post('store', 'store');

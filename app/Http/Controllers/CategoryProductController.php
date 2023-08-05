@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\categoryProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 
@@ -35,7 +36,23 @@ class CategoryProductController extends Controller
     public function update(Request $request, $id)
     {
         $cat = categoryProduct::find($id);
+        if ($request->photo) {
+
+            $exists = Storage::disk('public')->exists("{$cat->photo}");
+            if ($exists) {
+                Storage::disk('public')->delete("{$cat->photo}");
+            }
+
+            // photo name
+            $image_name = time() . "." . $request->photo->getClientOriginalExtension();
+            $cat->photo = $image_name;
+
+            // photo save in public folder
+            Storage::disk('public')->put($image_name, file_get_contents($request->photo));
+        }
         $cat->nama = $request->nama;
+        $cat->slug = Str::slug($request->nama);
+
         $res = $cat->save();
         if ($res) {
             return response()->json([

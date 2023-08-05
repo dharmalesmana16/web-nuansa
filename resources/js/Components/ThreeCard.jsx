@@ -5,13 +5,17 @@ import gambarIoT from '../../assets/image/iotProduct.jpg';
 import gambarCCTV from '../../assets/image/cctvProduct.jpg';
 import gambarVideotron from '../../assets/image/digitalLed2.jpg';
 import gambarOFE from '../../assets/image/Office Equipment.jpg';
+import { Link } from '@inertiajs/react';
+import './../../css/app.css'
 export default function ThreeCard(props) {
+
     const dataProduct = [
         { "nama": "Security Surveillance", "deskripsi": "Ini untuk mengawas", "gambar": gambarCCTV },
         { "nama": "Videotron", "deskripsi": "Ini untuk mengawas", "gambar": gambarVideotron },
         { "nama": "Internet of Things", "deskripsi": "Ini untuk mengawas", "gambar": gambarIoT },
         { "nama": "Office Equipment", "deskripsi": "Ini untuk mengawas", "gambar": gambarOFE }
     ]
+
     return (
         <div className='container'>
             <div className="row row-cols-1 row-cols-md-4 g-4">
@@ -34,7 +38,9 @@ export default function ThreeCard(props) {
                         </div>
                     )
                 }) : ""}
-
+            </div>
+            <div className="text-end py-4">
+                <Link className='text-decoration-none fs-5 fw-lighter links' href='/project'>See More Our Projects {'>'} </Link>
             </div>
         </div>
     )

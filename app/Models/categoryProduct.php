@@ -9,7 +9,7 @@ class categoryProduct extends Model
 {
     use HasFactory;
     protected $table = "category_products";
-    protected $fillable = array("nama", "slug");
+    protected $fillable = array("nama", "slug", "photo");
     public $timestamps = true;
     public function getData($id = false)
     {

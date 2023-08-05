@@ -15,4 +15,9 @@ class DataController extends Controller
             ->whereRaw("category_product_id = '$dataCategory' ")->get();
         return response()->json($query);
     }
+    public function getLinkProduct()
+    {
+        $query = DB::table('category_products')->select("*")->get();
+        return response()->json($query);
+    }
 }

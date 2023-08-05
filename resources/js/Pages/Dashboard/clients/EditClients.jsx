@@ -3,18 +3,20 @@ import React from 'react'
 import InputLabel from '@/Components/InputLabel';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
-
-export default function UpdateCategory(props) {
+import FileResizer from 'react-image-file-resizer';
+export default function EditClients(props) {
     const [nama, setNama] = useState(props.data.nama);
+    const [year, setYear] = useState(props.data.from_year);
     const [photo, setPhoto] = useState(null);
     const [previewImg, setPreview] = useState(null);
+
     function preview(e) {
         var fileInput = false;
         let dataImage = e.target.files[0]
         if (dataImage) {
             fileInput = true;
-            setPreview(URL.createObjectURL(dataImage));
-            setPhoto(dataImage);
+            setPreview(URL.createObjectURL(uri));
+            setPhoto(uri);
         }
         // if (fileInput) {
         //     try {
@@ -45,27 +47,31 @@ export default function UpdateCategory(props) {
         const data =
         {
             "nama": nama,
-            "photo": photo
+            "from_year": year,
         };
+        if (photo !== null) {
+            data["photo"] = photo
+        }
         try {
-            await axios.post(`/dashboard/products/category/update/${props.data.id}`, data, {
+            await axios.post(`/dashboard/clients/update/${props.data.id}`, data, {
                 headers: { 'Content-Type': "multipart/form-data" },
             }).then((response) => {
+                console.log(response);
                 Swal.fire({
                     icon: 'success',
-                    text: response.data.msg,
+                    text: response.message,
                     showConfirmButton: false,
                     timer: 2000,
                 })
             });
             setNama("");
             setTimeout(() => {
-                window.location.replace('/dashboard/products/category');
+                window.location.replace('/dashboard/clients');
             }, 2000);
         } catch (error) {
             Swal.fire({
                 icon: 'error',
-                text: error.response.data.msg,
+                text: error.response.data.message,
                 showConfirmButton: false,
                 timer: 2000,
             })
@@ -79,9 +85,12 @@ export default function UpdateCategory(props) {
                     <div className="card-body bg-white">
                         <form className="row g-3 " encType="multipart/form-data" onSubmit={handleCreate} >
                             <div className="col-md-12">
-                                <InputLabel htmlFor="nama" value="Nama Kategori Produk" />
-                                <input type="text" id="nama" name="nama" value={nama} className="form-control" onChange={(e) => setNama(e.target.value)} />
-
+                                <InputLabel htmlFor="nama" value="Nama Client" />
+                                <input type="text" id="nama" name="nama" className="form-control" value={nama} onChange={(e) => setNama(e.target.value)} />
+                            </div>
+                            <div className="col-md-12">
+                                <InputLabel htmlFor="from_year" value="Dari Tahun" />
+                                <input type="date" id="from_year" name="from_year" className="form-control" value={year} onChange={(e) => setYear(e.target.value)} />
                             </div>
                             <div className="col-md-6 text-center">
 
@@ -105,7 +114,7 @@ export default function UpdateCategory(props) {
                             </div>
                             <hr />
                             <div className="text-end">
-                                <button type="submit" className=" btn btn-primary px-3 font-weight-bolder btnSubmit">Update Category Product
+                                <button type="submit" className=" btn btn-primary px-3 font-weight-bolder btnSubmit">Create Product
                                 </button>
                             </div>
                         </form>

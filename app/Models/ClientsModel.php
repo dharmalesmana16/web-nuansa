@@ -9,7 +9,7 @@ class ClientsModel extends Model
 {
     use HasFactory;
     protected $table = "clients";
-    protected $fillable = array("nama", "deskripsi", "from_year", "slug");
+    protected $fillable = array("nama", "deskripsi", "from_year", "slug", "photo", "showonhome");
     public $timestamps = true;
     public function getData($id = false)
     {
@@ -19,5 +19,9 @@ class ClientsModel extends Model
         } else {
             return $this::where('id', $id)->first();
         }
+    }
+    public function showOnHome($showonhome = "")
+    {
+        return $this::where('showonhome', $showonhome)->get();
     }
 }

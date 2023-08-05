@@ -62,7 +62,7 @@ class ProductsController extends Controller
             "title" => "Page",
             "data" => $datas,
         ];
-        return Inertia::render('Product/show', $data);
+        return Inertia::render('Product/ShowProduct', $data);
     }
     public function detail($slug)
     {

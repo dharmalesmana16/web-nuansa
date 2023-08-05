@@ -3,6 +3,7 @@ import Logo from '../../assets/image/logonuansa.png';
 import NavLink from './NavLink';
 import logoInstagram from '../../assets/image/instagram.png'
 import { Link } from '@inertiajs/react';
+import './../../css/app.css'
 export default function Navbar(props) {
     return (
         <div>
@@ -30,10 +31,10 @@ export default function Navbar(props) {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav mx-auto mb-2 mb-lg-0 ">
                                 <li className="nav-item px-3">
-                                    <Link className="nav-link active" aria-current="page" href="/">Home</Link>
+                                    <Link className="nav-link active nav-link-grow-up" aria-current="page" href="/">Home</Link>
                                 </li>
                                 <li className="nav-item px-3">
-                                    <Link className="nav-link active" aria-current="page" href="/product">Products</Link>
+                                    <Link className="nav-link  nav-link-grow-up" aria-current="page" href="/product">Products</Link>
                                 </li>
                                 <li className="nav-item dropdown px-3">
                                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,13 +49,13 @@ export default function Navbar(props) {
                                     </ul>
                                 </li>
                                 <li className="nav-item px-3">
-                                    <a className="nav-link" href="/clients" >Clients</a>
+                                    <a className="nav-link nav-link-grow-up" href="/clients" >Clients</a>
                                 </li>
                                 <li className="nav-item px-3">
-                                    <a className="nav-link" href="/project" >Projects</a>
+                                    <a className="nav-link nav-link-grow-up" href="/project" >Projects</a>
                                 </li>
                                 <li className="nav-item px-3">
-                                    <a className="nav-link" href="/brocure" >Brochure</a>
+                                    <a className="nav-link nav-link-grow-up" href="/brocure" >Brochure</a>
                                 </li>
                             </ul>
                             <a className="px-3" href=''><img width="30" height="30" src={logoInstagram} alt="instagram-new--v1" /></a>

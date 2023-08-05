@@ -6,7 +6,7 @@ export default function TextHome(props) {
     return (
         <div>
             <section className="py-1 border-bottom container" id="features">
-                <div className="container my-2">
+                <div className="container my-1">
                     <div className="row gx-5">
                         {props.data ? props.data.map((res, i) => {
                             return (

@@ -25,17 +25,27 @@ export default function Homepage(props) {
 
                     <ThreeCard data={props.dataprojects} />
                 </div>
-                {/* <div className="container mt-5 mb-5">
-                    <div className="row">
-                        <div className="col-6">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione ad dolore voluptatem beatae eos maxime, mollitia quo illum dicta quibusdam, quis quaerat officia architecto atque fugiat possimus sit? Omnis, nulla.</p>
-                        </div>
-                        <div className="col-6">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione ad dolore voluptatem beatae eos maxime, mollitia quo illum dicta quibusdam, quis quaerat officia architecto atque fugiat possimus sit? Omnis, nulla.</p>
-
-                        </div>
+                <div className="container mt-5 mb-5">
+                    <div className="text-center">
+                        <h3 className='fw-bold '>Mitra Kerja</h3>
                     </div>
-                </div> */}
+                    <div className="row row-cols-2 row-cols-lg-4 g-2  text-center">
+                        {props.dataclients.map((res, o) => {
+                            return (
+
+                                <div className="col p-4 ">
+
+                                    <img src={`/storage/${res.photo}`} className=' img-fluid h-75 w-50' alt="user--v1" />
+                                    <p className='fw-light text-muted py-2'>{res.nama}</p>
+                                </div>
+                            )
+                        })
+
+
+                        }
+
+                    </div>
+                </div>
             </div >
         </Layout>
     )
