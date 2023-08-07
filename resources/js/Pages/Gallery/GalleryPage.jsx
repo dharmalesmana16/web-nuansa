@@ -1,43 +1,14 @@
-import BtnLink from '@/Components/BtnLink'
-import ConvertHTML from '@/Components/ConvertHTML'
-import Pagination from '@/Components/Pagination'
-import ThreeCard from '@/Components/ThreeCard'
-import Layout from '@/Layouts/Layout'
 import React from 'react'
-import FileResizer from 'react-image-file-resizer'
-export default function show(props) {
-    console.log(props.data.data.length);
-
-
-    const rupiah = (number) => {
-        return new Intl.NumberFormat("id-ID", {
-            style: "currency",
-            currency: "IDR"
-        }).format(number);
-    }
-    const resizeImage = (imageFile) => {
-        try {
-            Resizer.imageFileResizer(
-                imageFile,
-                150,
-                150,
-                "JPEG",
-                100,
-                0,
-                callback,
-            );
-        } catch (err) {
-            console.log(err);
-        }
-    }
+import Layout from '@/Layouts/Layout'
+export default function GalleryPage(props) {
+    console.log(props.data_gal);
     return (
-        < Layout >
-
+        <Layout>
             <div className="container">
 
                 <div className="row gx-4 gx-lg-5">
                     {/* Start Code */}
-                    {props.data.data.length > 0 ? props.data.data.map((res, i) => {
+                    {props.data_gal.data.length > 0 ? props.data_gal.data.map((res, i) => {
                         // let deskripsi = res.deskripsi;
                         // if (deskripsi.length > 50) {
                         //     deskripsi = res.deskripsi.substr(0, 50);
@@ -64,19 +35,18 @@ export default function show(props) {
                                 </div>
                             </div>
                         )
-                    }) : <p className='fs-5 text-center'>Produk Belum Tersedia, Hubungi kami jika ingin menanyakan produk ini</p>
+                    }) : <p className='fs-5 text-center'>Gallery Belum Tersedia</p>
                     }
                     <div className="d-flex justify-content-end">
-                        {props.data.data.length > 0 ? (
+                        {props.data_gal.data.length > 0 ? (
 
-                            <Pagination links={props.data.links} />
+                            <Pagination links={props.data_gal.links} />
                         ) : ""}
                     </div>
 
 
                 </div>
             </div>
-
-        </Layout >
+        </Layout>
     )
 }

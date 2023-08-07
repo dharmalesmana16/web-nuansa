@@ -4,7 +4,7 @@ export default function Jumbotron() {
     return (
         <div>
 
-            <div className=" my-5 container ">
+            <div className=" mb-5 container ">
                 <div className="position-relative p-5 text-center text-muted border border-dashed rounded-3 img-fluid" style={{ backgroundImage: `url(${Partner})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                     <svg className="bi mt-5 mb-3" width="48" height="48" ><use xlinkHref="#check2-circle" /></svg>
                     <h1 className=" fw-bolder display-5 text-white">Nuansa Inti Persada</h1>

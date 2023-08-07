@@ -8,9 +8,9 @@ export default function Layout({ props, children }) {
     return (
 
 
-        <div className='d-flex flex-column vh-100 '>
+        <div className='d-flex flex-column min-vh-100 '>
             <Navbar />
-            <div style={{ padding: '150px 0 0' }} >
+            <div className="py-5" >
                 {children}
             </div>
             <Footer />

@@ -69,7 +69,7 @@ class ProductsController extends Controller
         $data = [
             "title" => "page",
             "data" => DB::table('products')->join('category_products', 'products.category_id', '=', 'category_products.id')
-                ->select('products.*', 'products.photo as gambar', 'category_products.slug as slugProduct', 'products.deskripsi as description',
+                ->select('products.*','products.nama as names', 'products.photo as gambar', 'category_products.slug as slugProduct', 'products.deskripsi as description',
                     'products.harga as price', 'category_products.*', 'category_products.nama as name')->whereRaw("products.slug = '$slug'")->first(),
         ];
         return Inertia::render("Product/DetailProduct", $data);

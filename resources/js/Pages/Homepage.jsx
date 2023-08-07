@@ -14,18 +14,16 @@ export default function Homepage(props) {
             <div>
                 <Head
                     title={props.title}>
-
                 </Head>
+
                 <Carousel />
                 <TextHome data={props.DataService} />
                 <BoxHome />
                 <ProductComponentHome />
                 <Jumbotron />
-                <div className="mb-5">
 
-                    <ThreeCard data={props.dataprojects} />
-                </div>
-                <div className="container mt-5 mb-5">
+                <ThreeCard data={props.dataprojects} />
+                <div className="container mb-5">
                     <div className="text-center">
                         <h3 className='fw-bold '>Mitra Kerja</h3>
                     </div>

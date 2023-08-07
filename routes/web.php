@@ -5,6 +5,7 @@ use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductCCTVController;
 use App\Http\Controllers\ProductIOTController;
@@ -37,11 +38,22 @@ Route::get('/signup', [AuthController::class, 'signup'])->name("signup");
 Route::post('/signup', [AuthController::class, 'new']);
 Route::post('/signout', [AuthController::class, 'signout'])->middleware('auth');
 Route::get('/clients', [ClientsController::class, 'index']);
+Route::get('/gallery', [GalleryController::class, 'index']);
 Route::get('/client/show/{id}', [ClientsController::class, 'detail']);
 
 Route::post('/data/getcatalog', [DataController::class, 'getDataCatalog']);
 Route::get('/data/link/product', [DataController::class, 'getLinkProduct']);
 Route::controller(ProductsController::class)->prefix('dashboard/products')->middleware('auth')->group(function () {
+    Route::get('', 'dashboard');
+    Route::get('new', 'new');
+    Route::get('edit/{slug}', 'edit');
+    // Route::put('update/{slug}', 'update');
+    Route::post('update/{slug}', 'update');
+    Route::post('store', 'store');
+    Route::delete('{slug}', 'destroy');
+
+});
+Route::controller(GalleryController::class)->prefix('dashboard/products')->middleware('auth')->group(function () {
     Route::get('', 'dashboard');
     Route::get('new', 'new');
     Route::get('edit/{slug}', 'edit');

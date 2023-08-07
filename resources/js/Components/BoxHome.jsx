@@ -1,6 +1,8 @@
 import React from 'react'
 import GovLogo from '../../assets/image/gov.png'
-import PartnerLogo from '../../assets/image/Partner.png'
+import logoProduct from '../../assets/image/product-white.png'
+import logoService from '../../assets/image/service-white-2.png'
+import logoUsers from '../../assets/image/user-white.png'
 import CountUp from 'react-countup';
 // import CountUp from 'react-countup/build/CountUp'
 export default function BoxHome() {
@@ -13,30 +15,30 @@ export default function BoxHome() {
 
                         <div className="d-flex  ">
                             <div className="align-self-center">
-                                <img width="75" height="75" src="https://img.icons8.com/ios/50/user--v1.png" alt="user--v1" />
+                                <img width="75" height="75" src={logoUsers} alt="user--v1" />
                             </div>
-                            <div className="p-3 align-self-center">
-                                <h3 className='fw-bolder'><CountUp end={23} duration={5} decimal="." enableScrollSpy={true} /></h3>
-                                <div style={{ width: '8rem' }} className="text-wrap">Mitra kerja kami dengan pihak pemerintah maupun swasta</div>
+                            <div className="p-4 align-self-center">
+                                <h3 className='fw-bolder'><CountUp end={10000} duration={5} decimal="." enableScrollSpy={true} /> +</h3>
+                                <div style={{ width: '9rem' }} className="text-wrap">Client kami dengan pihak pemerintah maupun swasta</div>
                             </div>
                         </div>
 
                         <div className="d-flex ">
                             <div className="align-self-center">
-                                <img width="75" height="75" src="https://img.icons8.com/ios/50/user--v1.png" alt="user--v1" />
+                                <img width="75" height="75" src={logoProduct} alt="user--v1" />
                             </div>
-                            <div className="p-3 align-self-center">
-                                <h3 className='fw-bolder'><CountUp end={1000} duration={5} decimal="." enableScrollSpy={true} /></h3>
-                                <div style={{ width: '8rem' }} className="text-wrap">Client yang sudah kami layani, di kawasan Bali maupun Luar Bali</div>
+                            <div className="p-4 align-self-center">
+                                <h3 className='fw-bolder'><CountUp end={9} duration={5} decimal="." enableScrollSpy={true} /></h3>
+                                <div style={{ width: '9rem' }} className="text-wrap">Kategori Produk untuk kebutuhan infrastruktur IT anda</div>
                             </div>
                         </div>
                         <div className="d-flex ">
                             <div className="align-self-center">
-                                <img width="75" height="75" src="https://img.icons8.com/ios/50/user--v1.png" alt="user--v1" />
+                                <img width="75" height="75" src={logoService} alt="user--v1" />
                             </div>
-                            <div className="p-3 align-self-center">
-                                <h3 className='fw-bolder'><CountUp end={14} duration={5} decimal="." enableScrollSpy={true} /></h3>
-                                <div style={{ width: '8rem' }} className="text-wrap">Produk dan layanan kami yang tersedia sebagai solusi bagi perusahaan anda</div>
+                            <div className="p-4 align-self-center">
+                                <h3 className='fw-bolder'><CountUp end={6} duration={5} decimal="." enableScrollSpy={true} /></h3>
+                                <div style={{ width: '9rem' }} className="text-wrap">Layanan yang tersedia sebagai solusi IT untuk perusahaan anda</div>
                             </div>
                         </div>
                     </div>

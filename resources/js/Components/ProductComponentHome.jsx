@@ -19,7 +19,7 @@ export default function ProductComponentHome() {
             <div className="row row-cols-1 row-cols-md-4 g-4">
                 {dataProduct ? dataProduct.map((data, i) => {
                     return (
-                        <div className="col">
+                        <div className="col" key={i}>
                             <div className="card bg-white shadow border-0 h-100">
                                 <img src={data.gambar} className="img-fluid w-100 " style={{
                                     objectFit: 'fill',
@@ -39,7 +39,7 @@ export default function ProductComponentHome() {
 
             </div>
             <div className="text-end py-4">
-                <Link className='text-decoration-none fs-5 fw-lighter links' href='/product'>See More Our Products {'>'} </Link>
+                <Link className='text-decoration-none fs-5 fw-lighter secondLink secondLink-grow-up  ' href='/product'>See More Our Products {'>'} </Link>
             </div>
         </div>
     )

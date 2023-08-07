@@ -7,58 +7,111 @@ body,
 html {
     font-family: "Lato", sans-serif;
 }
-.links:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #0087ca;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
+.secondNavbar {
+    background-color: #023e8a;
 }
-.links:hover:after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+.firstNavbar {
+    background-color: #023e8a;
+    color: white;
 }
-.links {
+
+.secondLink {
+    /* font-weight: bold; */
+    font-size: 18px;
+    /* text-transform: uppercase; */
+    text-decoration: none;
+    color: black;
+    padding: 20px 0px;
+    /* margin: 0px 20px; */
     display: inline-block;
     position: relative;
-    color: #0087ca;
+    opacity: 0.9;
 }
-.nav-link {
-    font-weight: bold;
-    font-size: 14px;
-    text-transform: uppercase;
+.secondLink:hover {
+    opacity: 1;
+    color: #023e8a;
+}
+
+.secondLink::before {
+    transition: 300ms;
+    height: 5px;
+    content: "";
+    color: #023e8a;
+    position: absolute;
+    background-color: #023e8a;
+}
+
+.secondLink-grow-up::before {
+    height: 0%;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+}
+
+.secondLink-grow-up:hover::before {
+    height: 10px;
+}
+.links {
+    /* font-weight: bold; */
+    font-size: 18px;
+    /* text-transform: uppercase; */
     text-decoration: none;
-    color: 0e2954;
+    color: white;
     padding: 20px 0px;
-    margin: 0px 20px;
+    /* margin: 0px 20px; */
     display: inline-block;
     position: relative;
     opacity: 0.9;
 }
 
-.nav-link:hover {
+.links:hover {
     opacity: 1;
+    color: white;
+}
+.activeLink {
+    color: white;
+}
+.activeLink::before {
+    border-bottom: 10px solid white;
+    color: white;
+    height: 10px;
+    content: "";
 }
 
-.nav-link::before {
+.links::before {
     transition: 300ms;
     height: 5px;
     content: "";
+    color: white;
     position: absolute;
-    background-color: #0e2954;
+    background-color: white;
 }
 
-.nav-link-grow-up::before {
+.links-grow-up::before {
     height: 0%;
     width: 100%;
     bottom: 0px;
+    left: 0px;
 }
 
-.nav-link-grow-up:hover::before {
+.links-grow-up:hover::before {
     height: 10px;
+}
+
+.cardProductPage {
+    background-color: #023e8a;
+    color: white;
+    font-weight: bold;
+}
+.cardProductPage:hover {
+    transform: scale(1.1);
+    transition: 300ms;
+}
+
+.footer {
+    background-color: #023e8a;
+    color: white;
+}
+.fontFooter {
+    color: #e8e8e8;
 }

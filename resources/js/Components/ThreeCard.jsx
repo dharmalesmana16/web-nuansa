@@ -40,7 +40,7 @@ export default function ThreeCard(props) {
                 }) : ""}
             </div>
             <div className="text-end py-4">
-                <Link className='text-decoration-none fs-5 fw-lighter links' href='/project'>See More Our Projects {'>'} </Link>
+                <Link className='text-decoration-none fs-5 fw-lighter secondLink secondLink-grow-up' href='/project'>See More Our Projects {'>'} </Link>
             </div>
         </div>
     )
