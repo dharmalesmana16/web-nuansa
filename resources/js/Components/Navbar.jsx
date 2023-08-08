@@ -109,7 +109,7 @@ export default function Navbar(props) {
                                         <ul className="dropdown-menu " aria-labelledby="navbarDropdown">
 
                                             <li>
-                                                <a className="dropdown-item text-dark p-2" href="#"><BsCart4 />Keranjang</a>
+                                                <a className="dropdown-item text-dark p-2" href="#"><BsCart4 />Cart</a>
                                             </li>
                                             <li>
                                                 <Link href='/signout' method='POST' className='dropdown-item' >Sign Out</Link>
