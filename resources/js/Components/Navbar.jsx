@@ -90,7 +90,7 @@ export default function Navbar(props) {
                                             <div className="p-2">
                                                 <li className="nav-item px-3">
                                                     <a className={`nav-link links  ` + `${(pathName == "/project" ? "activeLink" : "")} `} href="/signin" >
-                                                        Masuk
+                                                        Sign in
                                                         <img src={logoUser} className="rounded-circle " height={30} alt="" srcset="" />
                                                     </a>
                                                 </li>
