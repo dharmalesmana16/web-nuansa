@@ -53,7 +53,7 @@ Route::controller(ProductsController::class)->prefix('dashboard/products')->midd
     Route::delete('{slug}', 'destroy');
 
 });
-Route::controller(GalleryController::class)->prefix('dashboard/products')->middleware('auth')->group(function () {
+Route::controller(GalleryController::class)->prefix('dashboard/gallery')->middleware('auth')->group(function () {
     Route::get('', 'dashboard');
     Route::get('new', 'new');
     Route::get('edit/{slug}', 'edit');
