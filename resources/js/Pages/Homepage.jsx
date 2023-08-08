@@ -25,7 +25,7 @@ export default function Homepage(props) {
                 <ThreeCard data={props.dataprojects} />
                 <div className="container mb-5">
                     <div className="text-center">
-                        <h3 className='fw-bold '>Mitra Kerja</h3>
+                        <h3 className='fw-bold '>Client Kami</h3>
                     </div>
                     <div className="row row-cols-2 row-cols-lg-4 g-2  text-center">
                         {props.dataclients.map((res, o) => {

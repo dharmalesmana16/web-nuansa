@@ -60,13 +60,13 @@ class AuthController extends Controller
             "title " => "Register page",
         ];
         $data = [
-
             "first_name" => $request->input('first_name'),
             "last_name" => $request->input('last_name'),
             "username" => $request->input('username'),
             "password" => Hash::make($request->input('password')),
             "email" => $request->input('email'),
             "handphone" => $request->input('handphone'),
+            'role' => 'user',
         ];
         $res = $this->users::create($data);
         if ($res) {
@@ -87,6 +87,6 @@ class AuthController extends Controller
     {
         auth()->logout();
 
-        return redirect('/signin');
+        return redirect('/');
     }
 }

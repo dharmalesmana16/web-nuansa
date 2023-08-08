@@ -2690,7 +2690,7 @@ h6,
 
 /* =========== Sidebar css =========== */
 .sidebar-nav-wrapper {
-    background: #fff;
+    background: red;
     width: 250px;
     padding: 20px 0px;
     height: 100vh;

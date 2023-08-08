@@ -1,12 +1,15 @@
 import Layout from '@/Layouts/Layout'
-import { Link } from '@inertiajs/react'
+import { Link, Head } from '@inertiajs/react'
 import React from 'react'
 export default function Page(props) {
     return (
         <Layout>
+            <Head
+                title={props.title}>
+            </Head>
             <div className="container mt-5 mb-5">
                 <div className="text-center">
-                    <h3 className='fw-bold '>Mitra Kerja & Client Kami</h3>
+                    <h3 className='fw-bold '>Client Kami</h3>
                 </div>
                 <div className="row row-cols-2 row-cols-lg-4 g-2  text-center">
                     {props.data.map((res, o) => {

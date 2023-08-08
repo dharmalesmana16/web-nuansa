@@ -27,7 +27,6 @@ export default function ProductComponentHome() {
                                 }} alt="..." />
                                 <div className="card-body  text-center">
                                     <h3 className=" fw-bolder">{data.nama}</h3>
-                                    <p className="card-text">{data.deskripsi}</p>
                                 </div>
                                 <div className="card-footer bg-white border-0 align-self-center">
                                     <BtnLink Name="See Detail" />

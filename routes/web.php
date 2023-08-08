@@ -43,7 +43,7 @@ Route::get('/client/show/{id}', [ClientsController::class, 'detail']);
 
 Route::post('/data/getcatalog', [DataController::class, 'getDataCatalog']);
 Route::get('/data/link/product', [DataController::class, 'getLinkProduct']);
-Route::controller(ProductsController::class)->prefix('dashboard/products')->middleware('auth')->group(function () {
+Route::controller(ProductsController::class)->prefix('dashboard/products')->middleware(['auth', 'admin'])->group(function () {
     Route::get('', 'dashboard');
     Route::get('new', 'new');
     Route::get('edit/{slug}', 'edit');
@@ -53,7 +53,7 @@ Route::controller(ProductsController::class)->prefix('dashboard/products')->midd
     Route::delete('{slug}', 'destroy');
 
 });
-Route::controller(GalleryController::class)->prefix('dashboard/gallery')->middleware('auth')->group(function () {
+Route::controller(GalleryController::class)->prefix('dashboard/gallery')->middleware(['auth', 'admin'])->group(function () {
     Route::get('', 'dashboard');
     Route::get('new', 'new');
     Route::get('edit/{slug}', 'edit');
@@ -63,7 +63,7 @@ Route::controller(GalleryController::class)->prefix('dashboard/gallery')->middle
     Route::delete('{slug}', 'destroy');
 
 });
-Route::controller(ClientsController::class)->prefix('dashboard/clients')->middleware('auth')->group(function () {
+Route::controller(ClientsController::class)->prefix('dashboard/clients')->middleware(['auth', 'admin'])->group(function () {
     Route::get('', 'dashboard');
     Route::get('new', 'new');
     Route::get('edit/{slug}', 'edit');
@@ -74,7 +74,7 @@ Route::controller(ClientsController::class)->prefix('dashboard/clients')->middle
 
 });
 
-Route::controller(CatalogController::class)->prefix('dashboard/catalog')->middleware('auth')->group(function () {
+Route::controller(CatalogController::class)->prefix('dashboard/catalog')->middleware(['auth', 'admin'])->group(function () {
     Route::get('', 'dashboard');
     Route::get('new', 'new');
     Route::get('edit/{slug}', 'edit');
@@ -86,7 +86,7 @@ Route::controller(CatalogController::class)->prefix('dashboard/catalog')->middle
 
 });
 
-Route::controller(ClientsController::class)->prefix('dashboard/clients')->middleware('auth')->group(function () {
+Route::controller(ClientsController::class)->prefix('dashboard/clients')->middleware(['auth', 'admin'])->group(function () {
     Route::get('', 'dashboard');
     Route::get('new', 'new');
     Route::get('edit/{slug}', 'edit');
@@ -97,7 +97,7 @@ Route::controller(ClientsController::class)->prefix('dashboard/clients')->middle
     Route::delete('{slug}', 'destroy');
 });
 
-Route::controller(CategoryProductController::class)->prefix('dashboard/products/category')->middleware('auth')->group(function () {
+Route::controller(CategoryProductController::class)->prefix('dashboard/products/category')->middleware(['auth', 'admin'])->group(function () {
     Route::get('', 'dashboard');
     Route::get('new', 'new');
     Route::post('store', 'store');
@@ -173,7 +173,7 @@ Route::controller(ProductVideotronController::class)->prefix('dashboard/product/
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard/DashboardHome');
-})->middleware('auth');
+})->middleware(['auth', 'admin']);
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

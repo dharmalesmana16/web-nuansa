@@ -3,7 +3,13 @@ import Logo from '../../assets/image/logonuansaputih.png';
 import logoLocation from '../../assets/image/location-white.png'
 import logoTelephone from '../../assets/image/telephone-white.png'
 import logoEmail from '../../assets/image/email-white.png'
-import { Link } from '@inertiajs/react';
+import logoUser from '../../assets/image/login-white.png'
+import { AiFillAlipayCircle } from "react-icons/ai";
+
+import { BsChevronDown } from "react-icons/bs";// import usePage from '@inertiajs/react';
+import { BsCart4 } from "react-icons/bs";// import usePage from '@inertiajs/react';
+import { BsPersonFill } from "react-icons/bs";// import usePage from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 export default function Navbar(props) {
     let pathName = window.location.pathname;
     // function handleClick(e) {
@@ -11,7 +17,12 @@ export default function Navbar(props) {
     //     let dataContent = document.querySelector('.firstContentNavbar');
     //     let tampung = document.querySelector('.contentFirstNavbar');
     //     t
-
+    let dataprops = usePage().props;
+    let role;
+    if (dataprops.auth.user != null) {
+        role = dataprops.auth.user.role;
+    }
+    // console.log(dataprops.auth.user.role)
     // }
     return (
         <div>
@@ -36,17 +47,17 @@ export default function Navbar(props) {
 
                 <nav className="navbar navbar-expand-lg navbar-light secondNavbar  " style={{ boxShadow: '0px 10px 5px -10px blue', }}>
                     <div className="container ">
-                        <img src={Logo} alt="" style={{ width: 175 }} />
+                        <img src={Logo} alt="" style={{ width: 170 }} />
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
                             <span className="navbar-toggler-icon"></span>
                         </button>
                         <div className="navbar-collapse collapse  me-auto" id="navbarSupportedContent">
-                            <ul className="navbar-nav ms-auto  mb-lg-0 ">
+                            <ul className="navbar-nav mx-auto  mb-lg-0 ">
                                 <li className="nav-item px-3">
                                     <Link className={`nav-link links links-grow-up ` + `${(pathName == "/" ? "activeLink" : "")} `} aria-current="page" href="/">Home</Link>
                                 </li>
                                 <li className="nav-item px-3">
-                                    <Link className={`nav-link links links-grow-up ` + `${(pathName == "/product" ? "activeLink" : "")} `} aria-current="page" href="/product">Products</Link>
+                                    <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/product") ? "activeLink" : "")} `} aria-current="page" href="/product">Products</Link>
                                 </li>
                                 <li className="nav-item dropdown px-3">
                                     <a className="nav-link dropdown-toggle links links-grow-up" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,19 +72,67 @@ export default function Navbar(props) {
                                     </ul>
                                 </li>
                                 <li className="nav-item px-3">
-                                    <a className={`nav-link links links-grow-up ` + `${(pathName == "/clients" ? "activeLink" : "")} `} href="/clients"  >Clients</a>
+                                    <a className={`nav-link links links-grow-up ` + `${(pathName.includes("/client") ? "activeLink" : "")} `} href="/clients"  >Clients</a>
                                 </li>
                                 <li className="nav-item px-3">
-                                    <a className={`nav-link links links-grow-up ` + `${(pathName == "/project" ? "activeLink" : "")} `} href="/project" >Projects</a>
+                                    <a className={`nav-link links links-grow-up ` + `${(pathName.includes("/project") ? "activeLink" : "")} `} href="/project" >Projects</a>
                                 </li>
                                 <li className="nav-item px-3">
-                                    <a className={`nav-link links links-grow-up ` + `${(pathName == "/brocure" ? "activeLink" : "")} `} href="/gallery" >Gallery</a>
+                                    <a className={`nav-link links links-grow-up ` + `${(pathName.includes("/gallery") ? "activeLink" : "")} `} href="/gallery" >Gallery</a>
                                 </li>
                             </ul>
-                            <div className="contentFirstNavbar">
 
-                            </div>
-                            {/* <a className="px-3" href=''><img width="30" height="30" src={logoInstagram} alt="instagram-new--v1" /></a> */}
+                            <ul className='navbar-nav'>
+
+                                <li className="nav-item dropdown px-3">
+                                    {dataprops.auth.user == null ? (
+                                        <div className="d-flex">
+                                            <div className="p-2">
+                                                <li className="nav-item px-3">
+                                                    <a className={`nav-link links  ` + `${(pathName == "/project" ? "activeLink" : "")} `} href="/signin" >
+                                                        Masuk
+                                                        <img src={logoUser} className="rounded-circle " height={30} alt="" srcset="" />
+                                                    </a>
+                                                </li>
+                                            </div>
+                                        </div>
+
+                                    ) : (
+                                        <a className="nav-link links " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            {dataprops.auth.user.username}
+                                            <BsPersonFill className='fs-1' />
+                                        </a>
+                                    )
+                                    }
+                                    {role == "user" ? (
+
+                                        <ul className="dropdown-menu " aria-labelledby="navbarDropdown">
+
+                                            <li>
+                                                <a className="dropdown-item text-dark p-2" href="#"><BsCart4 />Keranjang</a>
+                                            </li>
+                                            <li>
+                                                <Link href='/signout' method='POST' className='dropdown-item' >Sign Out</Link>
+                                            </li>
+
+                                        </ul>
+                                    ) : (
+
+                                        <ul className="dropdown-menu " aria-labelledby="navbarDropdown">
+
+                                            <li>
+                                                <Link href='/dashboard' method='get' className='dropdown-item' >Dashboard</Link>
+
+                                            </li>
+                                            <li>
+                                                <Link href='/signout' method='POST' className='dropdown-item' >Sign Out</Link>
+                                            </li>
+
+                                        </ul>
+                                    )}
+
+                                </li>
+                            </ul>
 
                         </div>
                     </div>

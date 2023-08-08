@@ -1,7 +1,7 @@
 import BtnLink from '@/Components/BtnLink'
 import Pagination from '@/Components/Pagination'
 import Layout from '@/Layouts/Layout'
-import { Link } from '@inertiajs/react';
+import { Link, Head } from '@inertiajs/react';
 import React from 'react'
 export default function ProductPage(props) {
     let data;
@@ -28,7 +28,9 @@ export default function ProductPage(props) {
     // }
     return (
         < Layout >
-
+            <Head
+                title={props.title}>
+            </Head>
             <div className="container">
 
                 <div className="row gx-4 gx-lg-5">

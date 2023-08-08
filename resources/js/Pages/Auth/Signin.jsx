@@ -2,7 +2,7 @@ import AuthLayout from '@/Layouts/AuthLayout'
 import React, { useState } from 'react'
 import Logo from '../../../assets/image/logonuansa.png'
 import axios from 'axios';
-
+import { Link } from '@inertiajs/react';
 export default function Signin() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -68,9 +68,12 @@ export default function Signin() {
 
 
             </form>
-            <div className="d-flex align-items-center justify-content-center pb-4">
+            <div className="d-flex align-items-center justify-content-start pb-4">
                 <p className="mb-0 me-2">Belum Mempunyai Akun ?</p>
                 <a href={route('signup')} className='btn btn-warning btn-sm fw-bolder text-dark text-2xl'>Register</a>
+            </div>
+            <div className="d-flex align-items-center justify-content-start pb-4">
+                <Link href={'/'} className='  text-2xl'>Back to Home</Link>
             </div>
 
         </AuthLayout>

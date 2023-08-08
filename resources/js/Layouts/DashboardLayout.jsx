@@ -3,6 +3,8 @@ import { Head, usePage, Link } from '@inertiajs/react';
 // import StyleDashboard from '../../css/dashboard.css';
 import '../../assets/css/dashboard.css';
 import LogoNuansa from '@/Components/LogoNuansa';
+import { BsHouseDoorFill } from "react-icons/bs";
+
 export default function DashboardLayout({ user, header, children }) {
     const { auth } = usePage().props;
     const name = auth.user.first_name + " " + auth.user.last_name;
@@ -42,7 +44,10 @@ export default function DashboardLayout({ user, header, children }) {
 
             <aside className="sidebar-nav-wrapper">
                 <div className="navbar-logo">
-                    <LogoNuansa />
+                    <a href="/">
+
+                        <LogoNuansa />
+                    </a>
                 </div>
                 <nav className="sidebar-nav">
                     <ul>
@@ -192,16 +197,11 @@ export default function DashboardLayout({ user, header, children }) {
                                             <i className="lni lni-chevron-left me-2"></i> Menu
                                         </button>
                                     </div>
-                                    <div className="header-search d-none d-md-flex">
-                                        <form action="#">
-                                            <input type="text" placeholder="Search..." />
-                                            <button><i className="lni lni-search-alt"></i></button>
-                                        </form>
-                                    </div>
                                 </div>
                             </div>
                             <div className="col-lg-7 col-md-7 col-6">
                                 <div className="header-right">
+                                    <a className="btn btn-sm border-3 " href='/'><BsHouseDoorFill /></a>
                                     <div className="profile-box ml-15">
                                         <button
                                             className="dropdown-toggle bg-transparent border-0"
@@ -218,18 +218,19 @@ export default function DashboardLayout({ user, header, children }) {
                                             </div>
                                             <i className="lni lni-chevron-down"></i>
                                         </button>
+
                                         <ul
                                             className="dropdown-menu dropdown-menu-end"
                                             aria-labelledby="profile"
                                         >
                                             <li>
                                                 <a href="#0">
-                                                    <i className="lni lni-user"></i> View Profile
+                                                    View Profile
                                                 </a>
                                             </li>
 
                                             <li>
-                                                <Link href='/signout' method='POST' as='button'><i className="lni lni-cog"></i>Sign Out</Link>
+                                                <Link href='/signout' method='POST' >Sign Out</Link>
                                             </li>
                                         </ul>
                                     </div>
