@@ -32,6 +32,9 @@ export default function CreateProduct(props) {
         let dataImage = e.target.files[0]
         if (dataImage) {
             fileInput = true;
+            // setPreview(URL.createObjectURL(dataImage));
+
+            setGambar(dataImage);
         }
         if (fileInput) {
             try {
@@ -44,7 +47,6 @@ export default function CreateProduct(props) {
                     0,
                     (uri) => {
                         setPreview(URL.createObjectURL(uri));
-                        setGambar(uri);
                     },
                     "file",
                     250,

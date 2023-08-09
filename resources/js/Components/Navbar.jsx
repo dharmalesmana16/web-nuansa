@@ -4,7 +4,10 @@ import logoLocation from '../../assets/image/location-white.png'
 import logoTelephone from '../../assets/image/telephone-white.png'
 import logoEmail from '../../assets/image/email-white.png'
 import logoUser from '../../assets/image/login-white.png'
+import logoTokped from '../../assets/image/tokped-2.png'
 import { AiFillAlipayCircle } from "react-icons/ai";
+import logoLinkedin from '../../assets/image/linkedin-white.png'
+import logoInstagram from '../../assets/image/isntagram-color.png'
 
 import { BsChevronDown } from "react-icons/bs";// import usePage from '@inertiajs/react';
 import { BsCart4 } from "react-icons/bs";// import usePage from '@inertiajs/react';
@@ -17,11 +20,11 @@ export default function Navbar(props) {
     //     let dataContent = document.querySelector('.firstContentNavbar');
     //     let tampung = document.querySelector('.contentFirstNavbar');
     //     t
-    let dataprops = usePage().props;
-    let role;
-    if (dataprops.auth.user != null) {
-        role = dataprops.auth.user.role;
-    }
+    // let dataprops = usePage().props;
+    // let role;
+    // if (dataprops.auth.user != null) {
+    //     role = dataprops.auth.user.role;
+    // }
     // console.log(dataprops.auth.user.role)
     // }
     return (
@@ -47,12 +50,12 @@ export default function Navbar(props) {
 
                 <nav className="navbar navbar-expand-lg navbar-light secondNavbar  " style={{ boxShadow: '0px 10px 5px -10px blue', }}>
                     <div className="container ">
-                        <img src={Logo} alt="" style={{ width: 170 }} />
+                        <img src={Logo} alt="" style={{ width: 125 }} />
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
                             <span className="navbar-toggler-icon"></span>
                         </button>
                         <div className="navbar-collapse collapse  me-auto" id="navbarSupportedContent">
-                            <ul className="navbar-nav mx-auto  mb-lg-0 ">
+                            <ul className="navbar-nav ms-auto  mb-lg-0 ">
                                 <li className="nav-item px-3">
                                     <Link className={`nav-link links links-grow-up ` + `${(pathName == "/" ? "activeLink" : "")} `} aria-current="page" href="/">Home</Link>
                                 </li>
@@ -80,9 +83,30 @@ export default function Navbar(props) {
                                 <li className="nav-item px-3">
                                     <a className={`nav-link links links-grow-up ` + `${(pathName.includes("/gallery") ? "activeLink" : "")} `} href="/gallery" >Gallery</a>
                                 </li>
+                                <div className="d-flex text-white ">
+                                    <div className="vr" >
+
+                                    </div>
+                                    <li className="nav-item px-1 ">
+
+                                        <a className=" nav-link icon iconNavbar" href='' target='_blank'>
+
+                                            <img src={logoTokped} height={30} alt="location--v1" style={{ objectFit: "fill" }} />
+                                        </a>
+                                    </li>
+                                    <li className="nav-item px-1">
+
+                                        <a className="nav-link icon iconNavbar">
+
+                                            <img src={logoInstagram} height={30} alt="location--v1" style={{ objectFit: "fill", borderRadius: "50%" }} />
+                                        </a>
+                                    </li>
+                                </div>
+
+
                             </ul>
 
-                            <ul className='navbar-nav'>
+                            {/* <ul className='navbar-nav'>
 
                                 <li className="nav-item dropdown px-3">
                                     {dataprops.auth.user == null ? (
@@ -132,7 +156,7 @@ export default function Navbar(props) {
                                     )}
 
                                 </li>
-                            </ul>
+                            </ul> */}
 
                         </div>
                     </div>

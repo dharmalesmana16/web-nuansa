@@ -8,6 +8,7 @@ export default function UpdateCategory(props) {
     const [nama, setNama] = useState(props.data.nama);
     const [photo, setPhoto] = useState(null);
     const [previewImg, setPreview] = useState(null);
+    const [show, setShow] = useState(null);
     function preview(e) {
         var fileInput = false;
         let dataImage = e.target.files[0]
@@ -45,8 +46,11 @@ export default function UpdateCategory(props) {
         const data =
         {
             "nama": nama,
-            "photo": photo
+            "showonhome": show
         };
+        if (photo !== null) {
+            data["photo"] = photo
+        }
         try {
             await axios.post(`/dashboard/products/category/update/${props.data.id}`, data, {
                 headers: { 'Content-Type': "multipart/form-data" },
@@ -78,10 +82,20 @@ export default function UpdateCategory(props) {
                 <div className="card ">
                     <div className="card-body bg-white">
                         <form className="row g-3 " encType="multipart/form-data" onSubmit={handleCreate} >
-                            <div className="col-md-12">
+                            <div className="col-md-7">
                                 <InputLabel htmlFor="nama" value="Nama Kategori Produk" />
                                 <input type="text" id="nama" name="nama" value={nama} className="form-control" onChange={(e) => setNama(e.target.value)} />
 
+                            </div>
+                            <div className="col-md-5">
+                                <InputLabel htmlFor="kode" value="Showed on Home ?" />
+                                <select id="inputState" name="katalog" className="form-select" onChange={(e) => setShow(e.target.value)} required>
+                                    <option value="-">-</option>
+                                    <option value="TRUE">IYA</option>
+                                    <option value="FALSE">TIDAK</option>
+
+
+                                </select>
                             </div>
                             <div className="col-md-6 text-center">
 

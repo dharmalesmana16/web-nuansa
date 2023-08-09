@@ -20,8 +20,8 @@ html {
     font-size: 18px;
     /* text-transform: uppercase; */
     text-decoration: none;
-    color: black;
-    padding: 20px 0px;
+    color: #023e8a;
+    padding: 8px 0px;
     /* margin: 0px 20px; */
     display: inline-block;
     position: relative;
@@ -49,19 +49,43 @@ html {
 }
 
 .secondLink-grow-up:hover::before {
-    height: 10px;
+    height: 3px;
 }
 .links {
     /* font-weight: bold; */
-    font-size: 18px;
-    /* text-transform: uppercase; */
+    font-size: 13px;
+    text-transform: uppercase;
     text-decoration: none;
     color: white;
-    padding: 20px 0px;
+    padding: 8px 0px;
     /* margin: 0px 20px; */
     display: inline-block;
     position: relative;
     opacity: 0.9;
+}
+.linkFooter {
+    /* font-weight: bold; */
+    font-size: 13px;
+    text-decoration: none;
+    color: white;
+    padding: 15px 0px;
+    /* margin: 0px 20px; */
+    display: inline-block;
+    position: relative;
+    opacity: 0.9;
+}
+.linkFooter:hover {
+    opacity: 1;
+    color: white;
+}
+.icon {
+    text-decoration: none;
+    color: white;
+    opacity: 0.9;
+}
+.icon:hover {
+    opacity: 1;
+    color: white;
 }
 
 .links:hover {
@@ -72,9 +96,9 @@ html {
     color: white;
 }
 .activeLink::before {
-    border-bottom: 10px solid white;
+    border-bottom: 8px solid white;
     color: white;
-    height: 10px;
+    /* height: 8px; */
     content: "";
 }
 
@@ -95,7 +119,7 @@ html {
 }
 
 .links-grow-up:hover::before {
-    height: 10px;
+    height: 8px;
 }
 
 .cardProductPage {

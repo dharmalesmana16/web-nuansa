@@ -6,12 +6,30 @@ import Swal from 'sweetalert2';
 
 export default function CreateCategory(props) {
     const [nama, setNama] = useState("");
+    const [photo, setPhoto] = useState(null);
+    const [previewImg, setPreview] = useState(null);
+    const [show, setShow] = useState(null);
+    function preview(e) {
+        var fileInput = false;
+        let dataImage = e.target.files[0]
+        if (dataImage) {
+            fileInput = true;
+            setPreview(URL.createObjectURL(dataImage));
+            setPhoto(dataImage);
+        }
+
+
+    }
     const handleCreate = async (e) => {
         e.preventDefault();
+
         const data =
         {
             "nama": nama,
+            "showonhome": show,
+            "photo": photo,
         };
+
         try {
             await axios.post('/dashboard/products/category/store', data, {
                 headers: { 'Content-Type': "multipart/form-data" },
@@ -47,6 +65,35 @@ export default function CreateCategory(props) {
                             <div className="col-md-12">
                                 <InputLabel htmlFor="nama" value="Nama Kategori Produk" />
                                 <input type="text" id="nama" name="nama" className="form-control" onChange={(e) => setNama(e.target.value)} />
+                            </div>
+                            <div className="col-md-5">
+                                <InputLabel htmlFor="kode" value="Showed on Home ?" />
+                                <select id="inputState" name="katalog" className="form-select" onChange={(e) => setShow(e.target.value)} required>
+                                    <option value="-">-</option>
+                                    <option value="TRUE">IYA</option>
+                                    <option value="FALSE">TIDAK</option>
+
+
+                                </select>
+                            </div>
+                            <div className="col-md-6 text-center">
+
+                                <img src={previewImg}
+                                    style={{
+                                        objectFit: 'fill', width: "250px",
+                                        height: "250px",
+                                        border: "1px solid black",
+                                    }} className="" alt="..." />
+                            </div>
+                            <div className="col-md-6">
+                                <input
+                                    type="file"
+                                    className="w-full px-4 py-2"
+                                    label="photo"
+                                    name="photo"
+                                    onChange={preview}
+
+                                />
                             </div>
                             <hr />
                             <div className="text-end">

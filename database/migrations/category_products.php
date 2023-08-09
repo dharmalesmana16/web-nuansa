@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('category_products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama', 100)->nullable();
+            $table->enum('showonhome', ['TRUE', 'FALSE']);
+            $table->binary('photo');
+
             $table->timestampsTz($precision = 0);
             $table->softDeletesTz($column = 'deleted_at', $precision = 0);
         });

@@ -55,8 +55,6 @@ export default function Page(props) {
         {
             name: 'Deskripsi',
             selector: row => <div dangerouslySetInnerHTML={{ __html: row.deskripsi }}></div>
-            ,
-            //
         },
         {
             name: 'Harga',
@@ -100,7 +98,7 @@ export default function Page(props) {
             <DataTable columns={columns}
                 data={props.data ? props.data : props.datas}
                 pagination
-
+                responsive={true}
             />
 
         </DashboardLayout>

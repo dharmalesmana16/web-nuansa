@@ -15,7 +15,7 @@ export default function ThreeCard(props) {
         { "nama": "Internet of Things", "deskripsi": "Ini untuk mengawas", "gambar": gambarIoT },
         { "nama": "Office Equipment", "deskripsi": "Ini untuk mengawas", "gambar": gambarOFE }
     ]
-
+    console.log(props.data.length);
     return (
         <div className='container'>
             <div className="row row-cols-1 row-cols-md-4 g-4">
@@ -39,9 +39,13 @@ export default function ThreeCard(props) {
                     )
                 }) : ""}
             </div>
-            <div className="text-end py-4">
+            {props.data.length == 0 ? (
+                ""
+
+            ) : (<div className="text-end py-4">
                 <Link className='text-decoration-none fs-5 fw-lighter secondLink secondLink-grow-up' href='/project'>See More Our Projects {'>'} </Link>
-            </div>
+            </div>)
+            }
         </div>
     )
 }

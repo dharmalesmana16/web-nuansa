@@ -9,7 +9,7 @@ class categoryProduct extends Model
 {
     use HasFactory;
     protected $table = "category_products";
-    protected $fillable = array("nama", "slug", "photo");
+    protected $fillable = array("nama", "slug", "photo", "showonhome");
     public $timestamps = true;
     public function getData($id = false)
     {
@@ -19,5 +19,9 @@ class categoryProduct extends Model
         } else {
             return $this::where('id', $id)->first();
         }
+    }
+    public function showOnHome($showonhome = "")
+    {
+        return $this::where('showonhome', $showonhome)->get();
     }
 }

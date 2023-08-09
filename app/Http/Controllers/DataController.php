@@ -18,6 +18,11 @@ class DataController extends Controller
     public function getLinkProduct()
     {
         $query = DB::table('category_products')->select("*")->get();
+        return $query;
+    }
+    public function getLinkService()
+    {
+        $query = DB::table('services')->select("*")->get();
         return response()->json($query);
     }
 }

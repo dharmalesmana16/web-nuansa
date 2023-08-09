@@ -7,9 +7,6 @@ use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProductCCTVController;
-use App\Http\Controllers\ProductIOTController;
-use App\Http\Controllers\ProductPABXController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProductVideotronController;
 use App\Http\Controllers\ProfileController;
@@ -43,6 +40,7 @@ Route::get('/client/show/{id}', [ClientsController::class, 'detail']);
 
 Route::post('/data/getcatalog', [DataController::class, 'getDataCatalog']);
 Route::get('/data/link/product', [DataController::class, 'getLinkProduct']);
+Route::get('/data/link/service', [DataController::class, 'getLinkService']);
 Route::controller(ProductsController::class)->prefix('dashboard/products')->middleware(['auth', 'admin'])->group(function () {
     Route::get('', 'dashboard');
     Route::get('new', 'new');
@@ -109,25 +107,25 @@ Route::controller(CategoryProductController::class)->prefix('dashboard/products/
 Route::get('/product/{id}', [ProductsController::class, 'show']);
 Route::get('/product/show/{id}', [ProductsController::class, 'detail']);
 
-Route::controller(ProductCCTVController::class)->prefix('product/cctv')->group(function () {
-    Route::get('', 'index');
-    Route::get('{slug}', 'show');
-});
+// Route::controller(ProductCCTVController::class)->prefix('product/cctv')->group(function () {
+//     Route::get('', 'index');
+//     Route::get('{slug}', 'show');
+// });
 
-Route::controller(ProductVideotronController::class)->prefix('product/videotron')->group(function () {
-    Route::get('', 'index');
-    Route::get('{slug}', 'show');
-});
+// Route::controller(ProductVideotronController::class)->prefix('product/videotron')->group(function () {
+//     Route::get('', 'index');
+//     Route::get('{slug}', 'show');
+// });
 
-Route::controller(ProductPABXController::class)->prefix('product/pabx')->group(function () {
-    Route::get('', 'index');
-    Route::get('{slug}', 'show');
-});
+// Route::controller(ProductPABXController::class)->prefix('product/pabx')->group(function () {
+//     Route::get('', 'index');
+//     Route::get('{slug}', 'show');
+// });
 
-Route::controller(ProductIOTController::class)->prefix('product/iot')->group(function () {
-    Route::get('', 'index');
-    Route::get('{slug}', 'show');
-});
+// Route::controller(ProductIOTController::class)->prefix('product/iot')->group(function () {
+//     Route::get('', 'index');
+//     Route::get('{slug}', 'show');
+// });
 
 Route::controller(ProjectsController::class)->prefix('dashboard/projects')->middleware('auth')->group(function () {
     Route::get('', 'dashboard');

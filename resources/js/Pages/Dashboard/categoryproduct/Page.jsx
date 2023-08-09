@@ -45,6 +45,10 @@ export default function Page(props) {
             name: 'Nama Kategori Produk',
             selector: row => row.nama,
         },
+        {
+            name: 'Show On Home',
+            selector: row => row.showonhome,
+        },
 
         {
             name: 'Action',
