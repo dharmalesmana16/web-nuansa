@@ -17,17 +17,16 @@ export default function ProductComponentHome(props) {
     return (
         <div className='container'>
             <div className="row row-cols-1 row-cols-md-4 g-4">
-                {props.data.length > 4 ? props.data.map((data, i) => {
+                {props.data.length <= 4 ? props.data.map((data, i) => {
                     return (
                         <div className="col" key={i}>
-                            <div className="card bg-dark shadow border-0 h-100">
-                                <div className="text-center p-5">
-
-                                    <img width="75" height="75" src={`/storage/${data.photo}`}
-                                        className='img-fluid ' alt="bullet-camera" />
-                                </div>
+                            <div className="card bg-white shadow border-0 h-100">
+                                <img src={dataProduct[i].gambar} className="img-fluid w-100" style={{
+                                    objectFit: 'fill',
+                                    height: "250px",
+                                }} alt="..." />
                                 <div className="card-body  text-center">
-                                    <h3 className=" fw-bolder">{data.nama}</h3>
+                                    <h5 className="fw-bold">{data.nama}</h5>
                                 </div>
                                 <div className="card-footer bg-white border-0 align-self-center">
                                     <BtnLink Name="See Detail" href={`/product/${data.slug}`} />
@@ -40,7 +39,7 @@ export default function ProductComponentHome(props) {
                         return (
                             <Link href={`/product/${rek.slug}`} key={k}>
 
-                                <div className="card cardProductPage shadow border-0 w-100 ">
+                                <div className="card cardProductPage shadow border-0 w-100 h-100 ">
 
                                     {/* <img src={`/storage/${res.photo}`} className="img-fluid w-100 " style={{
                                         objectFit: 'fill',
@@ -60,8 +59,7 @@ export default function ProductComponentHome(props) {
                             </Link>
                         )
                     })
-                )
-                }
+                )}
 
             </div>
             <div className="text-end py-4">
