@@ -21,7 +21,7 @@ export default function ProductComponentHome(props) {
                     return (
                         <div className="col" key={i}>
                             <div className="card bg-white shadow border-0 h-100">
-                                <img src={dataProduct[i].gambar} className="img-fluid w-100" style={{
+                                <img src={dataProduct[i]["gambar"]} className="img-fluid w-100" style={{
                                     objectFit: 'fill',
                                     height: "250px",
                                 }} alt="..." />
