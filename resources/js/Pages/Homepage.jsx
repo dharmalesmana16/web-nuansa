@@ -10,7 +10,7 @@ import Carousel from '@/Components/Carousel';
 // import "slick-carousel/slick/slick-theme.css";
 // import <AutoComplete></AutoComplete>
 // import Button from '@mui/system';
-import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
 // import { Button } from '@mui/material';
 import Gallery from '@/Components/Gallery';
 import ConvertHTML from '@/Components/ConvertHTML';
