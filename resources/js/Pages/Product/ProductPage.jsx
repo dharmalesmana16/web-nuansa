@@ -31,7 +31,7 @@ export default function ProductPage(props) {
             <Head
                 title={props.title}>
             </Head>
-            <div className="container">
+            <div className="container   ">
 
                 <div className="row gx-4 gx-lg-5">
                     {/* Start Code */}
@@ -44,9 +44,9 @@ export default function ProductPage(props) {
                         // }
                         return (
                             <div className="col-md-4  mb-5 " key={i}>
-                                <Link href={`/product/${res.slug}`}>
+                                <Link href={`/product/${res.slug}`} className='text-decoration-none'>
 
-                                    <div className="card cardProductPage shadow border-0 w-100 ">
+                                    <div className="card cardProductPage shadow border-0 w-100  ">
 
                                         {/* <img src={`/storage/${res.photo}`} className="img-fluid w-100 " style={{
                                         objectFit: 'fill',
@@ -57,7 +57,7 @@ export default function ProductPage(props) {
                                             <img width="75" height="75" src={`/storage/${res.photo}`}
                                                 className='img-fluid ' alt="bullet-camera" />
                                         </div>
-                                        <div className="card-body text-center">
+                                        <div className="card-body text-center text-decoration-none">
                                             <p className=" fs-5">{res.nama}</p>
 
                                         </div>

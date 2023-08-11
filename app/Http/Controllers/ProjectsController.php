@@ -21,7 +21,7 @@ class ProjectsController extends Controller
     {
         $data = [
             "title" => "Product | Nuansa Inti Persada",
-            "dataproject" => DB::table('projects')->paginate(6),
+            "dataproject" => DB::table('projects')->paginate(12),
         ];
         return Inertia::render('Project/Index', $data);
     }
@@ -108,7 +108,7 @@ class ProjectsController extends Controller
         }
         $project->nama = $request->input('nama');
         $project->description = $request->input('deskripsi');
-        $project->slug = Str::slug($request->input("nama"));
+        $project->slug = Str::random(4);
         $res = $project->save();
 
         if ($res) {

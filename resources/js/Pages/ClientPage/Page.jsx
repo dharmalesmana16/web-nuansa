@@ -4,10 +4,10 @@ import React from 'react'
 export default function Page(props) {
     return (
         <Layout>
-            <Head
+            {/* <Head
                 title={props.title}>
-            </Head>
-            <div className="container mt-5 mb-5">
+            </Head> */}
+            <div className="container mb-5">
                 <div className="text-center">
                     <h3 className='fw-bold '>Client Kami</h3>
                 </div>

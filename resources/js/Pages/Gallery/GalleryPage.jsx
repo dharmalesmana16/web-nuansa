@@ -1,7 +1,6 @@
 import React from 'react'
 import Layout from '@/Layouts/Layout'
 export default function GalleryPage(props) {
-    console.log(props.data_gal);
     return (
         <Layout>
             <div className="container">

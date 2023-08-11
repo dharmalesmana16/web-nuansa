@@ -19,7 +19,6 @@ export default function Create(props) {
         if (dataImage) {
             fileInput = true;
             setGambar(dataImage);
-
         }
         if (fileInput) {
             try {

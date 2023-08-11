@@ -10,9 +10,7 @@ import { useEffect, useState } from 'react';
 export default function Footer() {
     const [dataServiceFooter, setDataServiceFooter] = useState([])
     const [dataProductFooter, setDataProductFooter] = useState([])
-    // const [url, setUrl] = useState(
-    //     '/data/link/service',
-    // );
+
     useEffect(() => {
         const getLinkService = async () => {
             const dataService = await axios.get('/data/link/service');
@@ -24,7 +22,6 @@ export default function Footer() {
         }
         getLinkService();
         getLinkProduct();
-        console.log(dataProductFooter)
     }, [])
     const year = new Date();
     return (
@@ -34,8 +31,8 @@ export default function Footer() {
 
 
             <footer className="py-5 container mt-auto" >
-                <div className="row ">
-                    <div className="col-4 col-md-2 mb-3">
+                <div className="row row-cols-2">
+                    <div className="col  col-lg-2 mb-3">
                         <h5 className="fw-bolder ">Links</h5>
                         <ul className="nav flex-column">
                             <li className="nav-item mb-2"><a href="/" className="nav-link p-0 fontFooter">Home</a></li>
@@ -47,31 +44,31 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    <div className="col-4 col-md-2 mb-3">
+                    <div className="col  col-lg-2 mb-3">
                         <h5 className="fw-bolder ">Products</h5>
                         <ul className="nav flex-column">
                             {dataProductFooter.map((res, i) => {
                                 return (
 
-                                    <li className="nav-item mb-2 "><a href={`/product/${res.slug}`} className="nav-link p-0  fontFooter" >{res.nama}</a></li>
+                                    <li className="nav-item mb-2 " key={i}><a href={`/product/${res.slug}`} className="nav-link p-0  fontFooter" >{res.nama}</a></li>
                                 )
                             })}
                         </ul>
                     </div>
 
-                    <div className="col-4 col-md-2 mb-3">
+                    <div className="col  col-lg-3 mb-3">
                         <h5 className="fw-bolder ">Services</h5>
                         <ul className="nav flex-column">
                             {dataServiceFooter.map((res, i) => {
                                 // { let name = { res.nama } }
                                 return (
 
-                                    <li className="nav-item mb-2 "><a href={`/product/${res.slug}`} className="nav-link p-0  fontFooter text-capitalize" >{res.nama}</a></li>
+                                    <li className="nav-item mb-2 " key={i}><a href={`/product/${res.slug}`} className="nav-link p-0  fontFooter text-capitalize" >{res.nama}</a></li>
                                 )
                             })}
                         </ul>
                     </div>
-                    <div className="col-4 col-md-2 mb-3">
+                    <div className="col  col-lg-2 mb-3">
                         <h5 className="fw-bolder ">Our Online Shop</h5>
                         <ul className="nav flex-column">
                             <li className="nav-item mb-2"><a href="#" className="nav-link p-0 fontFooter">Tokopedia</a></li>
@@ -79,7 +76,7 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    <div className="col-md-3 mb-3">
+                    <div className="col col-lg-3 mb-3">
                         <div className="d-flex flex-column" id="navbarSupportedContent">
                             <h5 className="fw-bolder ">Contact Us</h5>
                             <div className="bd-highlight linkFooter">

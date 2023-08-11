@@ -31,6 +31,7 @@ class HomeController extends Controller
             "dataprojects" => $this->dataProject->getData(),
             "dataclients" => $this->client->showOnHome("TRUE"),
             "dataProduct" => $this->dataProduct->showOnHome("TRUE"),
+            "dataProduks" => $this->dataProduct->getData(),
         ];
         return Inertia::render('Homepage', $data);
     }

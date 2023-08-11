@@ -17,7 +17,7 @@
         @inertiaHead
     </head>
 
-    <body class="font-sans  antialiased " >
+    <body class="" >
         @inertia
     </body>
     {{-- <script src="./as"></script> --}}

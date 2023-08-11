@@ -15,6 +15,8 @@ export default function CreateProduct(props) {
     const [katalog, setKatalog] = useState("");
     const [kategori, setKategori] = useState("");
     const [gambar, setGambar] = useState(null);
+    const [secondGambar, setSecondGambar] = useState([]);
+    const [secondPreview, setSecondPreview] = useState([]);
     const [previewImg, setPreview] = useState(null);
     const [dataKatalog, setDataKatalog] = useState([]);
     async function getCatalog(e) {
@@ -26,6 +28,27 @@ export default function CreateProduct(props) {
         await axios.post('/data/getcatalog', data).then((response) => {
             setDataKatalog(response);
         });
+    }
+    function previewMultipleImage(e) {
+        // secondGambar = [];
+        let image = []
+        let imagePreview = []
+        // secondPreview = [];
+        // image.push(e.target.files)
+        // for (let i = 0; i < image[0].length; i++) {
+        //     imagePreview.push(URL.createObjectURL(image[0][i]))
+        //     console.log(image[0][i])
+        //     setSecondPreview(imagePreview);
+        // }
+        // console.log(secondPreview);\
+        const selectedFiles = [];
+        const targetFiles = e.target.files;
+        const targetFilesObject = [...targetFiles]
+        targetFilesObject.map((file) => {
+            selectedFiles.push(URL.createObjectURL(file))
+        })
+        setSecondGambar(selectedFiles);
+        console.log(secondGambar);
     }
     function preview(e) {
         var fileInput = false;
@@ -173,8 +196,9 @@ export default function CreateProduct(props) {
 
                                 <img src={previewImg}
                                     className="" alt="..." style={{
-                                        objectFit: 'fill', width: "250px",
-                                        height: "250px",
+                                        objectFit: 'fill',
+                                        // width: "300px",
+                                        // height: "300px",
                                         border: "1px solid black",
                                     }} />
                             </div>
@@ -183,15 +207,39 @@ export default function CreateProduct(props) {
 
                                 <input
                                     type="file"
-                                    className="w-full px-4 py-2"
+                                    className="w-full px-4 py-2 form-control"
                                     label="photo"
                                     name="photo"
                                     onChange={preview
                                     }
                                 />
                             </div>
+                            {/* <div className="col-md-10 multi-preview">
+                                {
+                                    secondGambar.map((url) => {
+                                        return (
+                                            <img src={url}
+                                                className="" alt="..." style={{
+                                                    objectFit: 'fill', width: "250px",
+                                                    height: "250px",
+                                                    border: "1px solid black",
+                                                }} />
+                                        )
+                                    })
+                                }
+                            </div> */}
+                            {/* <img src={previewImg}
+                                    className="" alt="..." style={{
+                                        objectFit: 'fill', width: "250px",
+                                        height: "250px",
+                                        border: "1px solid black",
+                                    }} /> */}
+                            {/* <div className="col-md-2">
 
+                                <input type="file" className='form-control' name='gambar[]' onChange={previewMultipleImage} multiple />
+                            </div> */}
                             <hr />
+
                             <div className="text-end">
                                 <button type="submit" className=" btn btn-primary px-3 font-weight-bolder btnSubmit">Create Product
                                 </button>

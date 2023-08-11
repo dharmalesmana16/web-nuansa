@@ -27,6 +27,11 @@
     "dependencies": {
         "@ckeditor/ckeditor5-build-classic": "^38.1.1",
         "@ckeditor/ckeditor5-react": "^6.1.0",
+        "@emotion/react": "^11.11.1",
+        "@emotion/styled": "^11.11.0",
+        "@mui/material": "^5.14.4",
+        "@mui/styled-engine-sc": "^5.12.0",
+        "@mui/system": "^5.14.4",
         "bootstrap-icons": "^1.10.5",
         "ckeditor5": "^38.1.1",
         "compressorjs": "^1.2.1",
@@ -46,6 +51,9 @@
         "react-icons": "^4.10.1",
         "react-image-file-resizer": "^0.4.8",
         "react-js-pagination": "^3.0.2",
-        "react-router-dom": "^6.4.5"
+        "react-router-dom": "^6.4.5",
+        "react-slick": "^0.29.0",
+        "slick-carousel": "^1.8.1",
+        "styled-components": "^5.3.11"
     }
 }

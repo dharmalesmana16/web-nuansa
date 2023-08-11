@@ -21,6 +21,9 @@ export default function Update(props) {
     const handleUpdate = async (e) => {
         e.preventDefault();
         const data = { "nama": nama, "description": description };
+        if (gambar !== null) {
+            data["photo"] = gambar
+        }
         try {
             await axios.put('/dashboard/projects/update/' + props.dataprojects.slug, data).then((response) => {
                 console.log(response);
@@ -59,7 +62,7 @@ export default function Update(props) {
                             <div className="col-md-6 text-center">
 
                                 {/* <img src={previewImg ? previewImg : gambarDummy} */}
-                                <img src={`uploads/${props.data.photo}`}
+                                <img src={`uploads/${props.dataprojects.photo}`}
                                     className="img-thumbnail border-1 rounded" alt="..." />
                             </div>
 

@@ -1,7 +1,7 @@
 import BtnLink from '@/Components/BtnLink'
 import ConvertHTML from '@/Components/ConvertHTML'
 import Pagination from '@/Components/Pagination'
-import ThreeCard from '@/Components/ThreeCard'
+import ThreeCard from '@/Components/CardNews'
 import Layout from '@/Layouts/Layout'
 import React from 'react'
 import FileResizer from 'react-image-file-resizer'
@@ -33,7 +33,7 @@ export default function show(props) {
     return (
         < Layout >
 
-            <div className="container">
+            <div className="container py-5">
 
                 <div className="row gx-4 gx-lg-5">
                     {/* Start Code */}

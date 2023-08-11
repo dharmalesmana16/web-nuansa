@@ -1,5 +1,6 @@
 import React from 'react'
 import Logo from '../../assets/image/logonuansaputih.png';
+import LogoNuansa from '../../assets/image/nuansa-white.png';
 import logoLocation from '../../assets/image/location-white.png'
 import logoTelephone from '../../assets/image/telephone-white.png'
 import logoEmail from '../../assets/image/email-white.png'
@@ -29,8 +30,7 @@ export default function Navbar(props) {
     // }
     return (
         <div>
-            <header className='sticky-top'>
-                {/* <nav className="navbar navbar-expand-lg  navbar-light navbarWeb firstNavbar firstContentNavbar" id="navbarWeb" >
+            {/* <nav className="navbar navbar-expand-lg  navbar-light navbarWeb firstNavbar firstContentNavbar" id="navbarWeb" >
                     <div className="container ">
                         <div className="navbar-collapse collapse  " id="navbarSupportedContent">
 
@@ -48,65 +48,65 @@ export default function Navbar(props) {
                     </div>
                 </nav> */}
 
-                <nav className="navbar navbar-expand-lg navbar-light secondNavbar  " style={{ boxShadow: '0px 10px 5px -10px blue', }}>
-                    <div className="container ">
-                        <img src={Logo} alt="" style={{ width: 125 }} />
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="navbar-collapse collapse  me-auto" id="navbarSupportedContent">
-                            <ul className="navbar-nav ms-auto  mb-lg-0 ">
-                                <li className="nav-item px-3">
-                                    <Link className={`nav-link links links-grow-up ` + `${(pathName == "/" ? "activeLink" : "")} `} aria-current="page" href="/">Home</Link>
-                                </li>
-                                <li className="nav-item px-3">
-                                    <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/product") ? "activeLink" : "")} `} aria-current="page" href="/product">Products</Link>
-                                </li>
-                                <li className="nav-item dropdown px-3">
-                                    <a className="nav-link dropdown-toggle links links-grow-up" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Services
-                                    </a>
+            <nav className="navbar navbar-expand-lg navbar-light secondNavbar navbar-default navbar-fixed-top " style={{ boxShadow: '0px 10px 5px -10px blue', }}>
+                <div className="container ">
+                    <img src={LogoNuansa} alt="" style={{ width: 125 }} />
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="navbar-collapse collapse  me-auto" id="navbarSupportedContent">
+                        <ul className="navbar-nav ms-auto  mb-lg-0 ">
+                            <li className="nav-item px-3">
+                                <Link className={`nav-link links links-grow-up ` + `${(pathName == "/" ? "activeLink" : "")} `} aria-current="page" href="/">Home</Link>
+                            </li>
+                            <li className="nav-item px-3">
+                                <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/product") ? "activeLink" : "")} `} aria-current="page" href="/product">Products</Link>
+                            </li>
+                            <li className="nav-item dropdown px-3">
+                                <a className="nav-link dropdown-toggle links links-grow-up" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Services
+                                </a>
 
-                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a className="dropdown-item" href="#">IT Manage Service</a></li>
-                                        <li><a className="dropdown-item" href="#">IT Solution for Business Development</a></li>
-                                        <li><a className="dropdown-item" href="#">IT Infrastructure & Service</a></li>
-                                        <li><a className="dropdown-item" href="#">System Integrator</a></li>
-                                    </ul>
-                                </li>
-                                <li className="nav-item px-3">
-                                    <a className={`nav-link links links-grow-up ` + `${(pathName.includes("/client") ? "activeLink" : "")} `} href="/clients"  >Clients</a>
-                                </li>
-                                <li className="nav-item px-3">
-                                    <a className={`nav-link links links-grow-up ` + `${(pathName.includes("/project") ? "activeLink" : "")} `} href="/project" >Projects</a>
-                                </li>
-                                <li className="nav-item px-3">
-                                    <a className={`nav-link links links-grow-up ` + `${(pathName.includes("/gallery") ? "activeLink" : "")} `} href="/gallery" >Gallery</a>
-                                </li>
-                                <div className="d-flex text-white ">
-                                    <div className="vr" >
+                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a className="dropdown-item" href="#">IT Manage Service</a></li>
+                                    <li><a className="dropdown-item" href="#">IT Solution for Business Development</a></li>
+                                    <li><a className="dropdown-item" href="#">IT Infrastructure & Service</a></li>
+                                    <li><a className="dropdown-item" href="#">System Integrator</a></li>
+                                </ul>
+                            </li>
+                            <li className="nav-item px-3">
+                                <a className={`nav-link links links-grow-up ` + `${(pathName.includes("/client") ? "activeLink" : "")} `} href="/clients"  >Clients</a>
+                            </li>
+                            <li className="nav-item px-3">
+                                <a className={`nav-link links links-grow-up ` + `${(pathName.includes("/project") ? "activeLink" : "")} `} href="/project" >Projects</a>
+                            </li>
+                            <li className="nav-item px-3">
+                                <a className={`nav-link links links-grow-up ` + `${(pathName.includes("/gallery") ? "activeLink" : "")} `} href="/gallery" >Gallery</a>
+                            </li>
+                            <div className="d-flex text-white ">
+                                <div className="vr" >
 
-                                    </div>
-                                    <li className="nav-item px-1 ">
-
-                                        <a className=" nav-link icon iconNavbar" href='' target='_blank'>
-
-                                            <img src={logoTokped} height={30} alt="location--v1" style={{ objectFit: "fill" }} />
-                                        </a>
-                                    </li>
-                                    <li className="nav-item px-1">
-
-                                        <a className="nav-link icon iconNavbar">
-
-                                            <img src={logoInstagram} height={30} alt="location--v1" style={{ objectFit: "fill", borderRadius: "50%" }} />
-                                        </a>
-                                    </li>
                                 </div>
+                                <li className="nav-item px-1 ">
+
+                                    <a className=" nav-link icon iconNavbar" href='' target='_blank'>
+
+                                        <img src={logoTokped} height={30} alt="location--v1" style={{ objectFit: "fill" }} />
+                                    </a>
+                                </li>
+                                <li className="nav-item px-1">
+
+                                    <a className="nav-link icon iconNavbar">
+
+                                        <img src={logoInstagram} height={30} alt="location--v1" style={{ objectFit: "fill", borderRadius: "50%" }} />
+                                    </a>
+                                </li>
+                            </div>
 
 
-                            </ul>
+                        </ul>
 
-                            {/* <ul className='navbar-nav'>
+                        {/* <ul className='navbar-nav'>
 
                                 <li className="nav-item dropdown px-3">
                                     {dataprops.auth.user == null ? (
@@ -158,11 +158,10 @@ export default function Navbar(props) {
                                 </li>
                             </ul> */}
 
-                        </div>
                     </div>
-                </nav >
+                </div>
+            </nav >
 
-            </header>
         </div >
     )
 }
