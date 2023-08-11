@@ -108,7 +108,7 @@ export default function Homepage(props) {
         infinite: true,
         // centerPadding: "20px",
         dots: true,
-        infinite: true,
+        // infinite: true,
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 2,
