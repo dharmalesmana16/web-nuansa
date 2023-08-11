@@ -1,6 +1,6 @@
 import * as React from 'react';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
+// import ImageList from '@mui/material/ImageList';
+// import ImageListItem from '@mui/material/ImageListItem';
 import { Link } from '@inertiajs/react';
 
 function srcset(image, size, rows = 1, cols = 1) {
