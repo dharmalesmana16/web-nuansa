@@ -113,7 +113,13 @@ class ClientsController extends Controller
     }
     public function destroy($id)
     {
-        $this->client->getData($id)->delete();
-
+        $res = $this->client->getData($id);
+        if ($res->photo) {
+            $exists = Storage::disk('public')->exists("{$res->photo}");
+            if ($exists) {
+                Storage::disk('public')->delete("{$res->photo}");
+            }
+        }
+        $res->delete();
     }
 }

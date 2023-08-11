@@ -46,7 +46,7 @@ class ProductsController extends Controller
         ];
         return Inertia::render('Dashboard/products/CreateCategory', $data);
     }
-    function new () {
+    public function new () {
         $data = [
             "title" => "Create New Product",
             "data_cat" => $this->categoryProduct->getData(),
@@ -69,7 +69,7 @@ class ProductsController extends Controller
         $data = [
             "title" => "page",
             "data" => DB::table('products')->join('category_products', 'products.category_id', '=', 'category_products.id')
-                ->select('products.*','products.nama as names', 'products.photo as gambar', 'category_products.slug as slugProduct', 'products.deskripsi as description',
+                ->select('products.*', 'products.nama as names', 'products.photo as gambar', 'category_products.slug as slugProduct', 'products.deskripsi as description',
                     'products.harga as price', 'category_products.*', 'category_products.nama as name')->whereRaw("products.slug = '$slug'")->first(),
         ];
         return Inertia::render("Product/DetailProduct", $data);
@@ -171,7 +171,13 @@ class ProductsController extends Controller
 
     public function destroy($slug)
     {
-        $this->product->getDataBySlug($slug)->delete();
-
+        $project = $this->product->getDataBySlug($slug);
+        if ($project->photo) {
+            $exists = Storage::disk('public')->exists("{$project->photo}");
+            if ($exists) {
+                Storage::disk('public')->delete("{$project->photo}");
+            }
+        }
+        $project->delete();
     }
 }

@@ -3,7 +3,7 @@ import Partner from '../../assets/image/jumbotron.jpg';
 export default function Jumbotron() {
     return (
         <div>
-            <div className="container mb-5">
+            <div className="container">
                 <div className="position-relative py-5 text-center text-muted border border-dashed rounded-3 img-fluid" style={{ backgroundImage: `url(${Partner})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', }}>
                     <div className="text-white" >
                         <svg className="bi mt-5 mb-3" width="48" height="48" ><use xlinkHref="#check2-circle" /></svg>

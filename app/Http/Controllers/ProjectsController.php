@@ -43,7 +43,7 @@ class ProjectsController extends Controller
         ];
         return Inertia::render("Project/DetailProject", $data);
     }
-    function new () {
+    public function new () {
         $data = [
             "title" => "Create New Project",
         ];
@@ -125,6 +125,12 @@ class ProjectsController extends Controller
     public function destroy($slug)
     {
         $res = $this->dataprojects->getData($slug)->delete();
+        if ($res->photo) {
+            $exists = Storage::disk('public')->exists("{$res->photo}");
+            if ($exists) {
+                Storage::disk('public')->delete("{$res->photo}");
+            }
+        }
         if ($res) {
             return response()->json([
                 "msg" => "success",
