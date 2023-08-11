@@ -5,13 +5,10 @@ import TextHome from '@/Components/TextHome';
 import BoxHome from '@/Components/BoxHome';
 import Jumbotron from '@/Components/Jumbotron';
 import Carousel from '@/Components/Carousel';
-// import Slider from "react-slick";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-// import <AutoComplete></AutoComplete>
-// import Button from '@mui/system';
-// import Typography from '@mui/material/Typography';
-// import { Button } from '@mui/material';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Typography from '@mui/material/Typography';
 import Gallery from '@/Components/Gallery';
 import ConvertHTML from '@/Components/ConvertHTML';
 export default function Homepage(props) {
