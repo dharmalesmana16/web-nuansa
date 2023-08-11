@@ -2,7 +2,7 @@ import ConvertHTML from '@/Components/ConvertHTML'
 import DetailNews from '@/Components/DetailNews'
 import Layout from '@/Layouts/Layout'
 import React from 'react'
-import { Typography } from '@mui/material'
+// import { Typography } from '@mui/material'
 export default function DetailProject(props) {
     return (
         <Layout>
