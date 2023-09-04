@@ -32,6 +32,7 @@ class HomeController extends Controller
             "Deskripsi" => "Ini Homes",
             "DataService" => $this->ServiceModel->getData(),
             "news" => $this->news->getData(),
+            "dataprojects" => $this->news->getData(),
             "dataclients" => $this->client->showOnHome("TRUE"),
             "dataProduct" => $this->dataProduct->showOnHome("TRUE"),
             "dataProduks" => $this->dataProduct->getData(),
