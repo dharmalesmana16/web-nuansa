@@ -1,6 +1,7 @@
 import React from 'react'
 import BtnLink from './BtnLink'
 import { Link } from '@inertiajs/react'
+import { Button } from '@mui/material'
 export default function TextHome(props) {
 
 
@@ -21,7 +22,10 @@ export default function TextHome(props) {
                     </div>
                 </div>
                 <div className="text-end py-4">
-                    <Link className='text-decoration-none fs-5 fw-lighter secondLink secondLink-grow-up  ' href='/service'>Selengkapnya  {'>'} </Link>
+                    <Button className='text-capitalize' href='/service' >
+                        Selengkapnya
+                        {/* <Link className='text-decoration-none fw-lighter secondLink secondLink-grow-up  ' href='/service'>Selengkapnya  {'>'} </Link> */}
+                    </Button>
                 </div>
             </section >
         </div >

@@ -12,7 +12,7 @@ export default function ServicePage(props) {
     return (
         <Layout>
             <TopJumbotron>
-                asd
+                Layanan Kami
             </TopJumbotron>
 
 

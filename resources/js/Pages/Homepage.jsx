@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, Head } from '@inertiajs/react';
 import Layout from '@/Layouts/Layout';
-import { Box } from '@mui/material';
+import { Box, Card, CardMedia, CardContent, Button, CardActions } from '@mui/material';
 import TextHome from '@/Components/TextHome';
 import BoxHome from '@/Components/BoxHome';
 import Jumbotron from '@/Components/Jumbotron';
@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography';
 import Gallery from '@/Components/Gallery';
 import ConvertHTML from '@/Components/ConvertHTML';
 import Cards from '@/Components/ProductCard';
+
 export default function Homepage(props) {
     var settings = {
         dots: true,
@@ -37,7 +38,7 @@ export default function Homepage(props) {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 3,
                     slidesToScroll: 1,
                     // initialSlide: 3,
                     dots: false
@@ -105,8 +106,8 @@ export default function Homepage(props) {
         dots: true,
         // infinite: true,
         speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 2,
+        slidesToShow: 2,
+        slidesToScroll: 1,
         // autoplay: true,
         autoplaySpeed: 2000,
         // rows: 2,
@@ -180,37 +181,45 @@ export default function Homepage(props) {
             </div>
             <div className="container py-5">
                 <Slider {...settingProjects}>
-                    {props.dataprojects.map((data) => {
-                        let judul = data.nama;
+                    {props.news.map((res, i) => {
+                        let judul = res.nama;
                         function countWords(str) {
                             const arr = str.split(' ');
                             return arr.filter(word => word !== '').length;
                         }
-                        if (countWords(judul) > 5) {
-
-                            judul = judul.substr(0, 30) + " ...";
+                        if (countWords(judul) > 8) {
+                            judul = judul.substr(0, 50) + " ...";
+                        }
+                        let newDeskripsi;
+                        if (res.description.length > 100) {
+                            newDeskripsi = res.description.substring(0, 99) + " ..."
+                        } else {
+                            newDeskripsi = res.description
                         }
                         return (
-                            <div className="py-2">
+                            <Card sx={{ maxWidth: 275, borderRadius: "20px" }} key={i}>
+                                <CardMedia
+                                    sx={{ objectFit: "fill", padding: "10px", borderRadius: "20px" }}
+                                    component="img"
+                                    height="200"
+                                    alt="green iguana"
+                                    image={`/storage/news/${res.photo}`}
+                                />
+                                <CardContent sx={{ minHeight: 175 }}>
+                                    <Typography gutterBottom variant="body1" component="div" fontWeight={"800"} className='text-uppercase' >
+                                        {judul}
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        <ConvertHTML name={newDeskripsi} />
+                                    </Typography>
+                                </CardContent>
+                                <CardActions>
 
-                                <div className="card bg-white shadow-sm border-0 h-100 " style={{ width: "17rem", borderRadius: "20px 20px 0px 0px" }} >
-                                    <img src={`/storage/${data.photo}`} className="card-img-top" style={{
-                                        objectFit: 'fill',
-                                        height: "16rem",
-                                        borderRadius: "20px 20px 0px 0px"
-                                    }} alt="..." />
-                                    <div className="card-body ">
-                                        <Typography variant="h6" className='fw-bold text-uppercase' gutterBottom>
-                                            {judul}
-                                        </Typography>
-                                    </div>
-                                    <div className="card-footer bg-white border-0 ">
-                                        {/* <secondLink href={"/"}>Dhar</secondLink> */}
-                                        <Link href='' className='secondLinks'>Selengkapnya {">"}</Link>
-                                    </div>
-                                </div>
-
-                            </div>
+                                    <Button href={`/news/${res.slug}`} className='text-capitalize'>
+                                        Selengkapnya
+                                    </Button>
+                                </CardActions>
+                            </Card>
                         )
                     }
                     )}
