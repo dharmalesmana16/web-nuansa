@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CarouselModel;
 use App\Models\categoryProduct;
 use App\Models\ClientsModel;
 use App\Models\projectModel;
@@ -14,10 +15,12 @@ class HomeController extends Controller
     protected $dataProject;
     protected $dataProduct;
     protected $client;
+    protected $carousel;
     public function __construct()
     {
         $this->ServiceModel = new serviceModel();
         $this->dataProject = new projectModel();
+        $this->carousel = new CarouselModel();
         $this->client = new ClientsModel();
         $this->dataProduct = new categoryProduct();
     }
@@ -32,6 +35,7 @@ class HomeController extends Controller
             "dataclients" => $this->client->showOnHome("TRUE"),
             "dataProduct" => $this->dataProduct->showOnHome("TRUE"),
             "dataProduks" => $this->dataProduct->getData(),
+            "carousel" => $this->carousel->getData(),
         ];
         return Inertia::render('Homepage', $data);
     }

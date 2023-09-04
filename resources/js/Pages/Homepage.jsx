@@ -1,16 +1,19 @@
 import React from 'react'
 import { Link, Head } from '@inertiajs/react';
 import Layout from '@/Layouts/Layout';
+import { Box } from '@mui/material';
 import TextHome from '@/Components/TextHome';
 import BoxHome from '@/Components/BoxHome';
 import Jumbotron from '@/Components/Jumbotron';
 import Carousel from '@/Components/Carousel';
 import Slider from "react-slick";
+import example from "../../assets/image/cctv.jpg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Typography from '@mui/material/Typography';
 import Gallery from '@/Components/Gallery';
 import ConvertHTML from '@/Components/ConvertHTML';
+import Cards from '@/Components/ProductCard';
 export default function Homepage(props) {
     var settings = {
         dots: true,
@@ -25,8 +28,8 @@ export default function Homepage(props) {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
                     infinite: true,
                     dots: true
                 }
@@ -35,16 +38,19 @@ export default function Homepage(props) {
                 breakpoint: 600,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2
+                    slidesToScroll: 1,
+                    // initialSlide: 3,
+                    dots: false
+
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
-                    centerMode: true,
+                    // centerMode: true,
                     slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    dots: false
                 }
             }
         ]
@@ -137,7 +143,9 @@ export default function Homepage(props) {
 
 
 
-            <Carousel />
+            <Carousel data={props.carousel} >
+
+            </Carousel>
             <TextHome data={props.DataService} />
             <BoxHome />
             <div className="container py-5">
@@ -149,7 +157,7 @@ export default function Homepage(props) {
                                 <div className="card cardProductPage shadow border-0  " style={{ width: "18rem" }}>
                                     <div className=" align-self-center p-5">
 
-                                        <img src={`/storage/${rek.photo}`} height="25" width="75"
+                                        <img src={`/storage/public/${rek.photo}`} height="25" width="75"
                                             className='img-fluid    '
                                             alt="bullet-camera" style={{
                                                 objectFit: 'fill',
@@ -170,7 +178,6 @@ export default function Homepage(props) {
 
                 </Slider>
             </div>
-            <Jumbotron />
             <div className="container py-5">
                 <Slider {...settingProjects}>
                     {props.dataprojects.map((data) => {
@@ -222,8 +229,23 @@ export default function Homepage(props) {
 
                                 <div className=" p-5" key={o}>
                                     <div className="d-flex justify-content-center">
-
-                                        <img src={`/storage/${res.photo}`} className=' img-fluid' style={{ objectFit: 'fill', height: "100px", width: "100px" }} alt="user--v1" />
+                                        <Box
+                                            component="img"
+                                            src={`/storage/public/${res.photo}`}
+                                            sx={{
+                                                border: "0px solid black",
+                                                borderRadius: "50%",
+                                                width: "100px",
+                                                height: "75px",
+                                                objectFit: "fill",
+                                                boxShadow: "1px 1px",
+                                                display: "inline-block",
+                                                // padding: "5px",
+                                                // backgroundSize: "contain"
+                                            }}
+                                        >
+                                        </Box>
+                                        {/* <img src={`/storage/public/${res.photo}`} className=' img-fluid' style={{ objectFit: 'fill', height: "100px", width: "100px" }} alt="user--v1" /> */}
                                     </div>
                                     {/* <p className='text-muted'>{res.nama}</p> */}
                                 </div>

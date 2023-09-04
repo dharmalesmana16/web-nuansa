@@ -37,7 +37,7 @@ export default function Detail(props) {
 
                 <div className="row gx-4 gx-lg-5">
                     <div className="col-md-5 text-center">
-                        <img className="card-img-top mb-5 mb-md-0 img-fluid" src={`/storage/${props.data.gambar}`} style={{
+                        <img className="card-img-top mb-5 mb-md-0 img-fluid" src={`/storage/public/${props.data.gambar}`} style={{
                             objectFit: 'fill', width: "500px",
                             height: "500px",
                             border: "1px solid black"

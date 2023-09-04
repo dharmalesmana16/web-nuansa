@@ -1,6 +1,7 @@
 import { Head } from '@inertiajs/react'
 import React from 'react'
 import '../../assets/css/loginTwo.css'
+import bgAuth from '../../assets/image/fo.jpg'
 // import '../../assets/js/mainLogin.js'
 // import '../../assets/js/jquery.min.js'
 export default function AuthLayout({ children }) {
@@ -32,10 +33,12 @@ export default function AuthLayout({ children }) {
 
                                         </div>
                                     </div>
-                                    <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
-                                        <div className="text-white px-3 py-4 p-md-5 mx-md-4">
-
-                                            <p className="small mb-0"></p>
+                                    <div className="col-lg-6 d-flex align-items-center " style={{ backgroundImage: `url(${bgAuth})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPositionX: "" }}>
+                                        <div className="text-white px-3 py-4 p-md-2 mx-md-4">
+                                            <h4 className='fw-bolder'>Dashboard Website Nuansa Inti Persada</h4>
+                                            <p className="small mb-0">
+                                                2023 CV. Nuansa Inti Persada
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

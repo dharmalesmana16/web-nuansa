@@ -123,7 +123,7 @@ export default function Update(props) {
                             </div>
                             <div className="col-md-4">
                                 <InputLabel htmlFor="category_product_id" value="Kategori Produk" />
-                                <select id="category_product_id" name="category_product_id" value={kategori} className="form-select" onChange={(e) => setKategori(e.target.value)} required>
+                                <select id="category_product_id" name="category_product_id" onChange={getCatalog} value={kategori} className="form-select" required>
                                     <option value="-">-</option>
                                     {props.data_cat.map((res, i) => {
                                         return (
@@ -170,7 +170,7 @@ export default function Update(props) {
                             </div>
                             <div className="col-md-6 text-center">
 
-                                <img src={previewImg ? previewImg : `/storage/${props.data.photo}`}
+                                <img src={previewImg ? previewImg : `/storage/public/${props.data.photo}`}
                                     style={{
                                         objectFit: 'fill', width: "250px",
                                         height: "250px",

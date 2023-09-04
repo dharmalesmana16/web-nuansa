@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Logo from '../../../assets/image/logonuansa.png'
 import axios from 'axios';
 import { Link } from '@inertiajs/react';
+import LogoNuansa from '@/Components/LogoNuansa';
 export default function Signin() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -38,7 +39,7 @@ export default function Signin() {
         <AuthLayout>
 
             <div className="text-center">
-                <img src={Logo} alt="" style={{ width: 175 }} />
+                <LogoNuansa width={200} height={75} />
             </div>
 
             <form method="POST" id="formLogin" className="formLogin" onSubmit={handleSubmit}>

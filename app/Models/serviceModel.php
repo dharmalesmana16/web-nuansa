@@ -10,7 +10,7 @@ class serviceModel extends Model
     use HasFactory;
     protected $table = "services";
     public $timestamps = true;
-    protected $fillable = array("nama", "slug", "description");
+    protected $fillable = array("nama", "slug", "description", "photo");
     public function getData($slug = false)
     {
         if ($slug === false) {

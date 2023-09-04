@@ -21,7 +21,7 @@ export default function TextHome(props) {
                     </div>
                 </div>
                 <div className="text-end py-4">
-                    <Link className='text-decoration-none fs-5 fw-lighter secondLink secondLink-grow-up  ' href='/service'>See Detail Our Services {'>'} </Link>
+                    <Link className='text-decoration-none fs-5 fw-lighter secondLink secondLink-grow-up  ' href='/service'>Selengkapnya  {'>'} </Link>
                 </div>
             </section >
         </div >

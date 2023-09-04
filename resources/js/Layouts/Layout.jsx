@@ -2,19 +2,19 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import { Head } from '@inertiajs/react';
 import Navbar from '@/Components/Navbar';
 import Footer from '@/Components/Footer';
-import './../../css/app.css'
+import '../../assets/css/app.css'
 export default function Layout({ props, children }) {
-    let pathName = window.location.pathname;
-    let padding = "py-5";
-    if (pathName == "/") {
-        padding = "";
-    }
+    // let pathName = window.location.pathname;
+    // let padding = "py-5";
+    // if (pathName == "/") {
+    //     padding = "";
+    // }
     return (
         <>
 
             <div className='d-flex flex-column min-vh-100  '>
                 <Navbar />
-                <div className={padding} >
+                <div>
                     {children}
                 </div>
                 <Footer />

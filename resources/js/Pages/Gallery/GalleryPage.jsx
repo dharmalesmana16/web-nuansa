@@ -1,8 +1,12 @@
 import React from 'react'
 import Layout from '@/Layouts/Layout'
+import TopJumbotron from '@/Components/TopJumbotron'
 export default function GalleryPage(props) {
     return (
         <Layout>
+            <TopJumbotron>
+                Galeri
+            </TopJumbotron>
             <div className="container">
 
                 <div className="row gx-4 gx-lg-5">

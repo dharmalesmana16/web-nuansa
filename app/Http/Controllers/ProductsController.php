@@ -25,7 +25,7 @@ class ProductsController extends Controller
     {
         $data = [
             "title" => "Product | Nuansa Inti Persada",
-            "data_cat" => DB::table('category_products')->paginate(9),
+            "data_cat" => DB::table('category_products')->paginate(12),
         ];
         return Inertia::render('Product/ProductPage', $data);
     }
@@ -33,11 +33,11 @@ class ProductsController extends Controller
     {
         $data = [
             "title" => "Product | Nuansa Inti Persada",
-            "data" => DB::table('products')->join('category_products', 'products.category_id',
+            "datas" => DB::table('products')->join('category_products', 'products.category_id',
                 '=', 'category_products.id')->select('products.nama', 'products.deskripsi', 'products.harga',
-                'products.photo', 'products.kode', 'products.jumlah', 'products.slug', 'category_products.nama as namaKategori')->get(),
+                'products.photo as mainphoto', 'products.kode', 'products.jumlah', 'products.slug', 'category_products.nama as namaKategori')->paginate(24),
         ];
-        return Inertia::render('Dashboard/products/Page', $data);
+        return Inertia::render('Dashboard/products/DashboardProductPage', $data);
     }
     public function newCategory()
     {
@@ -46,7 +46,7 @@ class ProductsController extends Controller
         ];
         return Inertia::render('Dashboard/products/CreateCategory', $data);
     }
-    public function new () {
+    function new () {
         $data = [
             "title" => "Create New Product",
             "data_cat" => $this->categoryProduct->getData(),
@@ -55,9 +55,11 @@ class ProductsController extends Controller
     }
     public function show($slug)
     {
-        $datas = DB::table('products')->join('category_products', 'products.category_id', '=', 'category_products.id')
+        $datas = DB::table('products')
+            ->join('category_products', 'products.category_id', '=', 'category_products.id')
+            ->join('catalog', 'products.catalog_id', '=', 'catalog.id')
             ->select('products.*', 'products.nama as namaproduct', 'products.photo as gambar',
-                'products.slug as slugProduct', 'category_products.*', 'category_products.nama as name')->whereRaw("category_products.slug = '$slug'")->paginate(9);
+                'products.slug as slugProduct', 'category_products.*', 'category_products.nama as name', "catalog.nama as namaKatalog")->whereRaw("category_products.slug = '$slug'")->paginate(9);
         $data = [
             "title" => "Page",
             "data" => $datas,
@@ -118,7 +120,7 @@ class ProductsController extends Controller
             "data" => DB::table('products')->where('slug', $slug)->first(),
             "data_cat" => $this->categoryProduct->getData(),
         ];
-        return Inertia::render("Dashboard/products/Update", $data);
+        return Inertia::render("Dashboard/products/UpdateProduct", $data);
     }
     public function update(Request $request, $id)
     {

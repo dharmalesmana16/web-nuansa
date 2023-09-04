@@ -1,0 +1,207 @@
+/* /* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+/* @import url("https://fonts.googleapis.com/css?family=Montserrat"); */
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Raleway&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+body,
+html {
+    font-family: "Inter", sans-serif;
+}
+.secondNavbar {
+    background-color: #023e8a;
+}
+.firstNavbar {
+    background-color: #023e8a;
+    color: white;
+}
+.paragraph2 {
+    color: #6c757d;
+    font-size: 12px;
+}
+.judul {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+.secondLinks {
+    text-decoration: none;
+    color: #1956a3;
+    font-size: 14px;
+    opacity: 0.9;
+}
+.secondLinks:hover {
+    color: #1956a3;
+    opacity: 1;
+    border: 0px solid;
+}
+
+.secondLink {
+    /* font-weight: bold; */
+    font-size: 18px;
+    /* text-transform: uppercase; */
+    text-decoration: none;
+    color: #023e8a;
+    padding: 8px 0px;
+    /* margin: 0px 20px; */
+    display: inline-block;
+    position: relative;
+    opacity: 0.9;
+}
+.secondLink:hover {
+    opacity: 1;
+    color: #023e8a;
+}
+
+.secondLink::before {
+    transition: 300ms;
+    height: 5px;
+    content: "";
+    color: #023e8a;
+    position: absolute;
+    background-color: #023e8a;
+}
+
+.secondLink-grow-up::before {
+    height: 0%;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+}
+
+.secondLink-grow-up:hover::before {
+    height: 3px;
+}
+.links {
+    /* font-weight: bold; */
+    font-size: 13px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    padding: 8px 0px;
+    /* margin: 0px 20px; */
+    display: inline-block;
+    position: relative;
+    opacity: 0.9;
+}
+.linkFooter {
+    /* font-weight: bold; */
+    font-size: 13px;
+    text-decoration: none;
+    color: white;
+    padding: 15px 0px;
+    /* margin: 0px 20px; */
+    display: inline-block;
+    position: relative;
+    opacity: 0.9;
+}
+.linkFooter:hover {
+    opacity: 1;
+    color: white;
+}
+.icon {
+    text-decoration: none;
+    color: white;
+    opacity: 0.9;
+}
+.icon:hover {
+    opacity: 1;
+    color: white;
+}
+
+.links:hover {
+    opacity: 1;
+    color: white;
+}
+.activeLink {
+    color: white;
+}
+.activeLink::before {
+    border-bottom: 8px solid white;
+    color: white;
+    /* height: 8px; */
+    content: "";
+}
+
+.links::before {
+    transition: 300ms;
+    height: 5px;
+    content: "";
+    color: white;
+    position: absolute;
+    background-color: white;
+}
+
+.links-grow-up::before {
+    height: 0%;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+}
+
+.links-grow-up:hover::before {
+    height: 8px;
+}
+
+.cardProductPage {
+    background-color: #023e8a;
+    color: white;
+    font-weight: bold;
+}
+.cardShowProduct {
+    font-weight: bold;
+}
+.cardShowProduct:hover {
+    transform: scale(1.03);
+    transition: 300ms;
+}
+.cardProductPage:hover {
+    transform: scale(1.03);
+    transition: 300ms;
+}
+
+.footer {
+    background-color: #023e8a;
+    color: white;
+}
+.fontFooter {
+    color: #e8e8e8;
+}
+.status {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #e5e5e5;
+    background: #219653;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    top: auto;
+}
+.dropdown-item {
+    color: white;
+}
+.menuDropdown {
+    background-color: #023e8a;
+}
+.image-carousel {
+    /* margin-top: 5rem; */
+    /* max-width: 800px; */
+    width: 100%;
+    /* margin: 0 auto; */
+    border: 1px solid rgb(146, 129, 242);
+    box-shadow: #2b15453d 1px 10px 10px 5px;
+}
+/* .image-carousel {
+    width: 100%;
+} */
+
+.image-gallery-slide .image-gallery-image {
+    /* width: 40%; */
+
+    /* height: auto; */
+    width: 100% !important;
+    /* height: 100% !important; */
+    object-fit: fill !important ;
+}

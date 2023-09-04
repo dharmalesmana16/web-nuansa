@@ -1,16 +1,17 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\ProductVideotronController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ServicesController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,8 +28,8 @@ use Inertia\Inertia;
  */
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/product', [ProductsController::class, 'index']);
-Route::get('/project', [ProjectsController::class, 'index']);
-Route::get('/project/{slug}', [ProjectsController::class, 'show']);
+Route::get('/news', [NewsController::class, 'index']);
+Route::get('/news/{slug}', [NewsController::class, 'show']);
 Route::get('/signin', [AuthController::class, 'signin'])->name("signin");
 Route::post('/signin', [AuthController::class, 'check'])->name("signin");
 Route::get('/signup', [AuthController::class, 'signup'])->name("signup");
@@ -36,6 +37,9 @@ Route::post('/signup', [AuthController::class, 'new']);
 Route::post('/signout', [AuthController::class, 'signout'])->middleware('auth');
 Route::get('/clients', [ClientsController::class, 'index']);
 Route::get('/gallery', [GalleryController::class, 'index']);
+Route::get('/service', [ServicesController::class, 'index']);
+Route::get('/service/{slug}', [ServicesController::class, 'show']);
+Route::get('/contactus', [ContactController::class, 'index']);
 Route::get('/client/show/{id}', [ClientsController::class, 'detail']);
 
 Route::post('/data/getcatalog', [DataController::class, 'getDataCatalog']);
@@ -107,33 +111,12 @@ Route::controller(CategoryProductController::class)->prefix('dashboard/products/
 Route::get('/product/{id}', [ProductsController::class, 'show']);
 Route::get('/product/show/{id}', [ProductsController::class, 'detail']);
 
-// Route::controller(ProductCCTVController::class)->prefix('product/cctv')->group(function () {
-//     Route::get('', 'index');
-//     Route::get('{slug}', 'show');
-// });
-
-// Route::controller(ProductVideotronController::class)->prefix('product/videotron')->group(function () {
-//     Route::get('', 'index');
-//     Route::get('{slug}', 'show');
-// });
-
-// Route::controller(ProductPABXController::class)->prefix('product/pabx')->group(function () {
-//     Route::get('', 'index');
-//     Route::get('{slug}', 'show');
-// });
-
-// Route::controller(ProductIOTController::class)->prefix('product/iot')->group(function () {
-//     Route::get('', 'index');
-//     Route::get('{slug}', 'show');
-// });
-
-Route::controller(ProjectsController::class)->prefix('dashboard/projects')->middleware('auth')->group(function () {
+Route::controller(NewsController::class)->prefix('dashboard/news')->middleware('auth')->group(function () {
     Route::get('', 'dashboard');
     Route::get('show/{meta}', 'show');
     Route::get('new', 'new');
     Route::get('edit/{slug}', 'edit');
-    Route::put('update/{slug}', 'update');
-    Route::patch('update/{slug}', 'update');
+    Route::post('update/{slug}', 'update');
     Route::post('store', 'store');
     Route::delete('{meta}', 'destroy');
 });
@@ -142,32 +125,20 @@ Route::controller(ServicesController::class)->prefix('dashboard/services')->midd
     Route::get('show/{meta}', 'show');
     Route::get('new', 'new');
     Route::get('edit/{slug}', 'edit');
+    Route::post('update/{slug}', 'update');
+    Route::post('store', 'store');
+    Route::delete('{id}', 'destroy');
+});
+Route::controller(CarouselController::class)->prefix('dashboard/carousel')->middleware('auth')->group(function () {
+    Route::get('', 'dashboard');
+    Route::get('show/{meta}', 'show');
+    Route::get('new', 'new');
+    Route::get('edit/{slug}', 'edit');
     Route::put('update/{slug}', 'update');
     Route::patch('update/{slug}', 'update');
     Route::post('store', 'store');
     Route::delete('{meta}', 'destroy');
 });
-Route::controller(ProductVideotronController::class)->prefix('dashboard/product/videotron')->middleware('auth')->group(function () {
-    Route::get('', 'dashboard');
-    Route::get('show/{meta}', 'show');
-    Route::get('new', 'new');
-    Route::get('edit/{slug}', 'edit');
-    Route::put('update/{meta}', 'update');
-    Route::post('store', 'store');
-    Route::delete('{meta}', 'delete');
-});
-
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard/Index');
-// })->middleware(['auth']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard/DashboardHome');

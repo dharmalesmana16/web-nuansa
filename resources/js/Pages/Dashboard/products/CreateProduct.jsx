@@ -6,6 +6,8 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Swal from 'sweetalert2';
 import FileResizer from 'react-image-file-resizer';
+import dummy from './../../../../assets/image/dummy200.png'
+import { data } from 'autoprefixer';
 export default function CreateProduct(props) {
     const [nama, setNama] = useState("");
     const [harga, setHarga] = useState("");
@@ -15,10 +17,15 @@ export default function CreateProduct(props) {
     const [katalog, setKatalog] = useState("");
     const [kategori, setKategori] = useState("");
     const [gambar, setGambar] = useState(null);
-    const [secondGambar, setSecondGambar] = useState([]);
-    const [secondPreview, setSecondPreview] = useState([]);
+
     const [previewImg, setPreview] = useState(null);
     const [dataKatalog, setDataKatalog] = useState([]);
+    const [gallery, setGallery] = useState([]);
+    const [firstGallery, setFirstGallery] = useState(null);
+    const [secondGallery, setSecondGallery] = useState(null);
+    // const [gallery, setGallery] = useState([]);
+
+
     async function getCatalog(e) {
         e.preventDefault();
         const category = e.target.value;
@@ -29,18 +36,67 @@ export default function CreateProduct(props) {
             setDataKatalog(response);
         });
     }
+    function removeFile(index) {
+        // e.preventDefault();
+        setGallery((current) =>
+            current.filter((_, i) => i !== index)
+        );
+        // setPreview(previewImg.filter((e) => e !== previewImg))
+    }
+    function previewFirstImage(e) {
+        e.preventDefault()
+        let dataGallery = [];
+        var fileInput = false;
+        let dataImage = e.target.files[0]
+        if (dataImage) {
+            fileInput = true;
+            setGallery(URL.createObjectURL(dataImage));
+
+            // setFirstImage(dataImage);
+        }
+    }
+    function galleryProduct(e) {
+        let selectedFile = e.target.files[0];
+        // console.log(selectedFile);
+        let selectedFileArray = [];
+        selectedFileArray.push(selectedFile);
+        // selectedFileArray.push(URL.createObjectURL(selectedFile));
+        console.log(selectedFileArray);
+        setGallery(selectedFileArray);
+        // setGallery()
+        // const imageArray = selectedFileArray.map((file) => {
+        //     return file;
+        // })
+        // setGallery(imageArray);
+        // console.log(gallery);
+    }
+    // function removeFileGallery(e) {
+    //     gallery.remo
+    // }
+    function firstGalleryProduct(e) {
+        e.preventDefault()
+        var fileInput = false;
+        let dataImage = e.target.files[0]
+        if (dataImage) {
+            fileInput = true;
+            setFirstGallery(dataImage);
+        }
+    }
+    function secondGalleryProduct(e) {
+        e.preventDefault()
+        var fileInput = false;
+        let dataImage = e.target.files[0]
+        if (dataImage) {
+            fileInput = true;
+            setFirstGallery(dataImage);
+        }
+    }
+
     function previewMultipleImage(e) {
         // secondGambar = [];
         let image = []
         let imagePreview = []
-        // secondPreview = [];
-        // image.push(e.target.files)
-        // for (let i = 0; i < image[0].length; i++) {
-        //     imagePreview.push(URL.createObjectURL(image[0][i]))
-        //     console.log(image[0][i])
-        //     setSecondPreview(imagePreview);
-        // }
-        // console.log(secondPreview);\
+
         const selectedFiles = [];
         const targetFiles = e.target.files;
         const targetFilesObject = [...targetFiles]
@@ -203,7 +259,7 @@ export default function CreateProduct(props) {
                                     }} />
                             </div>
 
-                            <div className="col-md-6">
+                            <div className={previewImg == null ? "col-md-6" : "col-md-4"}>
 
                                 <input
                                     type="file"
@@ -214,30 +270,61 @@ export default function CreateProduct(props) {
                                     }
                                 />
                             </div>
-                            {/* <div className="col-md-10 multi-preview">
-                                {
-                                    secondGambar.map((url) => {
-                                        return (
-                                            <img src={url}
-                                                className="" alt="..." style={{
-                                                    objectFit: 'fill', width: "250px",
-                                                    height: "250px",
-                                                    border: "1px solid black",
-                                                }} />
-                                        )
-                                    })
-                                }
-                            </div> */}
-                            {/* <img src={previewImg}
-                                    className="" alt="..." style={{
-                                        objectFit: 'fill', width: "250px",
-                                        height: "250px",
-                                        border: "1px solid black",
-                                    }} /> */}
-                            {/* <div className="col-md-2">
 
-                                <input type="file" className='form-control' name='gambar[]' onChange={previewMultipleImage} multiple />
-                            </div> */}
+                            {previewImg != null ?
+
+                                (
+                                    <>
+                                        <div className="col-md-2">
+
+                                            <button className='btn btn-sm btn-danger' onClick={removeFile}>Remove File</button>
+                                        </div>
+                                    </>
+                                ) : ""}
+                            <div className="col-md-12">
+
+                                <label htmlFor="firstImage">
+                                    <div className="firstImage" style={{ border: "1px solid black", width: "900px", height: "200px", borderStyle: "dashed", cursor: "pointer" }}>
+
+                                        <img src={gallery[0] ? gallery[0] : ""} style={{ objectFit: 'fill', padding: "2px", width: "200px", height: "200px" }} alt="" srcset="" />
+                                        {gallery[0] != null ? (
+                                            <div className="text-end">
+
+                                                <a className='text-danger ' onClick={removeFile}>Remove File</a>
+                                            </div>
+                                        ) : ""}
+                                    </div>
+                                </label>
+                                <input type="file" name='previewImg1' id='firstImage' style={{ display: "none", visibility: "none" }} onChange={galleryProduct} />
+                                <label htmlFor="secondImage">
+                                    <div className="secondImage" style={{ border: "1px solid black", width: "200px", height: "200px", borderStyle: "dashed", cursor: "pointer" }}>
+
+                                        <img src={gallery[1] ? gallery[1] : ""} style={{ objectFit: 'fill', padding: "2px", width: "200px", height: "200px" }} alt="" srcset="" />
+                                        {gallery[1] != null ? (
+                                            <div className="text-end">
+
+                                                <a className='text-danger ' onClick={removeFile}>Remove File</a>
+                                            </div>
+                                        ) : ""}
+                                    </div>
+                                </label>
+                                <input type="file" name='previewImg1' id='secondImage' style={{ display: "none", visibility: "none" }} onChange={galleryProduct} />
+                                {/*
+                                <label htmlFor="thirdImage">
+                                    <div className="thirdImage" style={{ border: "1px solid black", width: "200px", height: "200px", borderStyle: "dashed", cursor: "pointer" }}>
+
+                                        <img src={firstPreviewImg ? firstPreviewImg : ""} style={{ objectFit: 'fill', padding: "2px", width: "200px", height: "200px" }} alt="" srcset="" />
+                                        {firstPreviewImg != null ? (
+                                            <div className="text-end">
+
+                                                <a className='text-danger ' onClick={removeFile}>Remove File</a>
+                                            </div>
+                                        ) : ""}
+                                    </div>
+                                </label>
+                                <input type="file" name='previewImg1' id='thirdImage' style={{ display: "none", visibility: "none" }} onChange={previewFirstImage} /> */}
+                            </div>
+
                             <hr />
 
                             <div className="text-end">

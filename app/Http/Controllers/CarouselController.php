@@ -2,52 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\projectModel;
+use App\Models\CarouselModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 
-class ProjectsController extends Controller
+class CarouselController extends Controller
 {
-    protected $dataprojects;
+    protected $carousel;
     public function __construct()
     {
-        $this->dataprojects = new projectModel();
-    }
-
-    public function index()
-    {
-        $data = [
-            "title" => "Product | Nuansa Inti Persada",
-            "dataproject" => DB::table('projects')->paginate(12),
-        ];
-        return Inertia::render('Project/Index', $data);
+        $this->carousel = new CarouselModel;
     }
 
     public function dashboard()
     {
         $data = [
-            "title" => "Product | Nuansa Inti Persada",
-            "dataprojects" => $this->dataprojects->getData(),
+            "title" => "Splash Screen",
+            "data" => DB::table('carousel')->paginate(12),
         ];
-        return Inertia::render('Dashboard/projects/Page', $data);
+        return Inertia::render('Dashboard/Carousel/DashboardCarouselPage', $data);
     }
-    public function show($slug)
-    {
-        $dataProject = $this->dataprojects->getData($slug);
+
+    function new () {
         $data = [
-            "title" => $dataProject["id"],
-            "data" => $dataProject,
+            "title" => "Create News",
         ];
-        return Inertia::render("Project/DetailProject", $data);
-    }
-    public function new () {
-        $data = [
-            "title" => "Create New Project",
-        ];
-        return Inertia::render("Dashboard/projects/Create", $data);
+        return Inertia::render("Dashboard/Carousel/CreateCarousel", $data);
     }
     public function store(Request $request)
     {
@@ -60,16 +43,17 @@ class ProjectsController extends Controller
         ], $messages);
         if ($request->has('photo')) {
             $imageName = time() . "." . $request->photo->getClientOriginalExtension();
-            Storage::disk('public')->put($imageName, file_get_contents($request->photo));
+            Storage::disk('carousel')->put($imageName, file_get_contents($request->photo));
         }
         $data = [
             "nama" => $request->input("nama"),
             "description" => $request->input("description"),
             "photo" => $imageName,
-            "slug" => Str::slug($request->input("nama")),
+            "slug" => Str::slug($imageName),
 
         ];
-        $res = $this->dataprojects->create($data);
+
+        $res = $this->carousel->create($data);
         if ($res) {
             return response()->json([
                 "msg" => "Success",
@@ -84,32 +68,32 @@ class ProjectsController extends Controller
     {
         $data = [
             "title" => "Create New Project",
-            "dataprojects" => $this->dataprojects->getData($slug),
+            "data" => $this->carousel->getData($slug),
         ];
-        return Inertia::render("Dashboard/projects/Update", $data);
+        return Inertia::render("Dashboard/Carousel/UpdateCarousel", $data);
     }
     public function update(Request $request, $id)
     {
-        $project = $this->dataprojects::find($id);
+        $news = $this->carousel::find($id);
 
         if ($request->photo) {
 
-            $exists = Storage::disk('public')->exists("{$project->photo}");
+            $exists = Storage::disk('carousel')->exists("{$news->photo}");
             if ($exists) {
-                Storage::disk('public')->delete("{$project->photo}");
+                Storage::disk('carousel')->delete("{$news->photo}");
             }
 
             // photo name
             $image_name = time() . "." . $request->photo->getClientOriginalExtension();
-            $project->photo = $image_name;
+            $news->photo = $image_name;
 
             // photo save in public folder
-            Storage::disk('public')->put($image_name, file_get_contents($request->photo));
+            Storage::disk('carousel')->put($image_name, file_get_contents($request->photo));
         }
-        $project->nama = $request->input('nama');
-        $project->description = $request->input('deskripsi');
-        $project->slug = Str::random(4);
-        $res = $project->save();
+        $news->nama = $request->input('nama');
+        $news->description = $request->input('description');
+        $news->slug = Str::random(4);
+        $res = $news->save();
 
         if ($res) {
             return response()->json([
@@ -124,14 +108,15 @@ class ProjectsController extends Controller
     }
     public function destroy($slug)
     {
-        $res = $this->dataprojects->getData($slug)->delete();
+        $res = $this->carousel->getData($slug);
         if ($res->photo) {
-            $exists = Storage::disk('public')->exists("{$res->photo}");
+            $exists = Storage::disk('carousel')->exists("{$res->photo}");
             if ($exists) {
-                Storage::disk('public')->delete("{$res->photo}");
+                Storage::disk('carousel')->delete("{$res->photo}");
             }
         }
-        if ($res) {
+        $response = $res->delete();
+        if ($response) {
             return response()->json([
                 "msg" => "success",
             ]);

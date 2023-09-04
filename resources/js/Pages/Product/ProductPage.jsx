@@ -3,6 +3,7 @@ import Pagination from '@/Components/Pagination'
 import Layout from '@/Layouts/Layout'
 import { Link, Head } from '@inertiajs/react';
 import React from 'react'
+import TopJumbotron from '@/Components/TopJumbotron';
 export default function ProductPage(props) {
     let data;
     const rupiah = (number) => {
@@ -31,17 +32,15 @@ export default function ProductPage(props) {
             <Head
                 title={props.title}>
             </Head>
-            <div className="container   ">
+            <TopJumbotron>
+                Product
+            </TopJumbotron>
+            <div className="container  pt-5">
 
                 <div className="row gx-4 gx-lg-5">
                     {/* Start Code */}
                     {props.data_cat ? props.data_cat.data.map((res, i) => {
-                        // let deskripsi = res.deskripsi;
-                        // if (deskripsi.length > 50) {
-                        //     deskripsi = res.deskripsi.substr(0, 50);
-                        // } else {
-                        //     deskripsi = res.deskripsi;
-                        // }
+
                         return (
                             <div className="col-md-4  mb-5 " key={i}>
                                 <Link href={`/product/${res.slug}`} className='text-decoration-none'>
@@ -54,7 +53,7 @@ export default function ProductPage(props) {
                                     }} alt="..." /> */}
                                         <div className="text-center p-5">
 
-                                            <img width="75" height="75" src={`/storage/${res.photo}`}
+                                            <img width="75" height="75" src={`/storage/public/${res.photo}`}
                                                 className='img-fluid ' alt="bullet-camera" />
                                         </div>
                                         <div className="card-body text-center text-decoration-none">

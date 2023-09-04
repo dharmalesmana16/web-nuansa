@@ -1,6 +1,5 @@
 import React from 'react'
 import Logo from '../../assets/image/logonuansaputih.png';
-import LogoNuansa from '../../assets/image/nuansa-white.png';
 import logoLocation from '../../assets/image/location-white.png'
 import logoTelephone from '../../assets/image/telephone-white.png'
 import logoEmail from '../../assets/image/email-white.png'
@@ -14,7 +13,11 @@ import { BsChevronDown } from "react-icons/bs";// import usePage from '@inertiaj
 import { BsCart4 } from "react-icons/bs";// import usePage from '@inertiajs/react';
 import { BsPersonFill } from "react-icons/bs";// import usePage from '@inertiajs/react';
 import { Link, usePage } from '@inertiajs/react';
+import LogoNuansa from './LogoNuansa';
 export default function Navbar(props) {
+
+
+
     let pathName = window.location.pathname;
     // function handleClick(e) {
     //     e.preventDefault();
@@ -48,9 +51,9 @@ export default function Navbar(props) {
                     </div>
                 </nav> */}
 
-            <nav className="navbar navbar-expand-lg navbar-light secondNavbar navbar-default navbar-fixed-top " style={{ boxShadow: '0px 10px 5px -10px blue', }}>
+            <nav className="navbar navbar-expand-lg navbar-light secondNavbar navbar-default navbar-fixed-top fixed-top " style={{ boxShadow: '0px 10px 5px -10px blue', }}>
                 <div className="container ">
-                    <img src={LogoNuansa} alt="" style={{ width: 125 }} />
+                    <LogoNuansa width={175} color={false} />
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -62,26 +65,37 @@ export default function Navbar(props) {
                             <li className="nav-item px-3">
                                 <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/product") ? "activeLink" : "")} `} aria-current="page" href="/product">Products</Link>
                             </li>
-                            <li className="nav-item dropdown px-3">
+                            <li className="nav-item dropdown px-3 position-static">
                                 <a className="nav-link dropdown-toggle links links-grow-up" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Services
                                 </a>
+                                <ul className="dropdown-menu menuDropdown  mt-2" aria-labelledby="navbarDropdown" style={{ width: "100%" }} >
+                                    <div className="container ">
+                                        <div className="d-md-flex d-lg-flex flex-lg-row flex-md-row ">
+                                            <div class="d-md-flex d-lg-flex flex-lg-column flex-sm-column flex-md-column mb-3">
 
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a className="dropdown-item" href="#">IT Manage Service</a></li>
-                                    <li><a className="dropdown-item" href="#">IT Solution for Business Development</a></li>
-                                    <li><a className="dropdown-item" href="#">IT Infrastructure & Service</a></li>
-                                    <li><a className="dropdown-item" href="#">System Integrator</a></li>
+                                                <li><p className="dropdown-item fw-bold mb-auto " >Layanan Kami</p></li>
+                                                <li><a className="dropdown-item " href="#">IT Manage Service</a></li>
+                                                <li><a className="dropdown-item" href="#">IT Solution for Business Development</a></li>
+                                                <li><a className="dropdown-item" href="#">IT Infrastructure & Service</a></li>
+                                                <li><a className="dropdown-item" href="#">System Integrator</a></li>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </ul>
                             </li>
                             <li className="nav-item px-3">
-                                <a className={`nav-link links links-grow-up ` + `${(pathName.includes("/client") ? "activeLink" : "")} `} href="/clients"  >Clients</a>
+                                <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/client") ? "activeLink" : "")} `} href="/clients"  >Clients</Link>
                             </li>
                             <li className="nav-item px-3">
-                                <a className={`nav-link links links-grow-up ` + `${(pathName.includes("/project") ? "activeLink" : "")} `} href="/project" >Projects</a>
+                                <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/news") ? "activeLink" : "")} `} href="/news" >News</Link>
                             </li>
                             <li className="nav-item px-3">
-                                <a className={`nav-link links links-grow-up ` + `${(pathName.includes("/gallery") ? "activeLink" : "")} `} href="/gallery" >Gallery</a>
+                                <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/gallery") ? "activeLink" : "")} `} href="/gallery" >Gallery</Link>
+                            </li>
+                            <li className="nav-item px-3">
+                                <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/contactus") ? "activeLink" : "")} `} href="/contactus" >Contact Us</Link>
                             </li>
                             <div className="d-flex text-white ">
                                 <div className="vr" >
@@ -89,7 +103,7 @@ export default function Navbar(props) {
                                 </div>
                                 <li className="nav-item px-1 ">
 
-                                    <a className=" nav-link icon iconNavbar" href='' target='_blank'>
+                                    <a className=" nav-link icon iconNavbar" href='https://www.tokopedia.com/nuansaintipersada' target='_blank'>
 
                                         <img src={logoTokped} height={30} alt="location--v1" style={{ objectFit: "fill" }} />
                                     </a>

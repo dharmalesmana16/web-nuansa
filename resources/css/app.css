@@ -172,3 +172,9 @@ html {
     right: 0;
     top: auto;
 }
+.dropdown-item {
+    color: white;
+}
+.menuDropdown {
+    background-color: #023e8a;
+}
