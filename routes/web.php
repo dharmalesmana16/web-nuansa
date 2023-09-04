@@ -134,8 +134,7 @@ Route::controller(CarouselController::class)->prefix('dashboard/carousel')->midd
     Route::get('show/{meta}', 'show');
     Route::get('new', 'new');
     Route::get('edit/{slug}', 'edit');
-    Route::put('update/{slug}', 'update');
-    Route::patch('update/{slug}', 'update');
+    Route::post('update/{slug}', 'update');
     Route::post('store', 'store');
     Route::delete('{meta}', 'destroy');
 });
