@@ -123,4 +123,8 @@ class ClientsController extends Controller
         }
         $res->delete();
     }
+    public function meta()
+    {
+        echo "hallo";
+    }
 }
