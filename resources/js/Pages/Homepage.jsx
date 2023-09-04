@@ -106,7 +106,7 @@ export default function Homepage(props) {
         dots: true,
         // infinite: true,
         speed: 500,
-        slidesToShow: 2,
+        slidesToShow: 3,
         slidesToScroll: 1,
         // autoplay: true,
         autoplaySpeed: 2000,
@@ -203,7 +203,7 @@ export default function Homepage(props) {
                                     component="img"
                                     height="200"
                                     alt="green iguana"
-                                    image={`/storage/news/${res.photo}`}
+                                    src={`/storage/news/${res.photo}`}
                                 />
                                 <CardContent sx={{ minHeight: 175 }}>
                                     <Typography gutterBottom variant="body1" component="div" fontWeight={"800"} className='text-uppercase' >
