@@ -11,6 +11,7 @@ import Pagination from '@/Components/Pagination';
 import { Link } from '@inertiajs/react';
 import Swal from 'sweetalert2';
 import { Button } from '@mui/material';
+import ButtonUpdateDelete from '@/Components/ButtonUpdateDelete';
 
 export default function DashboardCarouselPage(props) {
     console.log(props);
@@ -76,16 +77,16 @@ export default function DashboardCarouselPage(props) {
                                 <TableCell >
 
                                     <div className='d-flex '>
-                                        <div className="px-2">
+                                        {/* <div className="px-2">
 
                                             <Link href={`/dashboard/carousel/edit/${row.slug}`} className='btn btn-sm btn-primary '>Edit</Link>
                                         </div>
                                         <div className="px-2">
 
                                             <Link href={`/dashboard/carousel/${row.slug}`} className='btn btn-sm btn-danger' onClick={handleDelete} id={row.slug}>Delete</Link>
-                                        </div>
-
-                                    </div>,
+                                        </div> */}
+                                        <ButtonUpdateDelete linkDelete={handleDelete} idData={row.slug} linkUpdate={`/dashboard/carousel/edit/${row.slug}`} />
+                                    </div>
                                 </TableCell>
                             </TableRow>
                         ))}
