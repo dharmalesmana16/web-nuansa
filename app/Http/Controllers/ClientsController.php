@@ -29,13 +29,14 @@ class ClientsController extends Controller
             "title" => "Clients Page | Nuansa Inti Persada",
             "data" => $this->client->getData(),
         ];
-        return Inertia::render('Dashboard/Clients/DashboardClientsPage', $data);
+        return Inertia::render('Dashboard/clients/DashboardClientsPage', $data);
     }
-    public function new () {
+    public function new ()
+    {
         $data = [
             "title" => "Clients Page | Nuansa Inti Persada",
         ];
-        return Inertia::render('Dashboard/Clients/CreateClients', $data);
+        return Inertia::render('Dashboard/clients/CreateClients', $data);
     }
     public function detail($id)
     {
@@ -50,7 +51,7 @@ class ClientsController extends Controller
             "title" => "Update Clients",
             "data" => $this->client->getData($id),
         ];
-        return Inertia::render("Dashboard/Clients/UpdateClients", $data);
+        return Inertia::render("Dashboard/clients/UpdateClients", $data);
     }
     public function store(Request $request)
     {

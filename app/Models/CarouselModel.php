@@ -11,7 +11,7 @@ class CarouselModel extends Model
     protected $table = "carousel";
     public $timestamps = true;
 
-    protected $fillable = array("nama", "description", "photo", "slug");
+    protected $fillable = array("id", "nama", "description", "photo", "slug");
     public function getData($slug = false)
     {
         if ($slug === false) {
