@@ -26,7 +26,8 @@ class CarouselController extends Controller
         return Inertia::render('Dashboard/Carousel/DashboardCarouselPage', $data);
     }
 
-    function new () {
+    public function new ()
+    {
         $data = [
             "title" => "Create News",
         ];
@@ -49,7 +50,7 @@ class CarouselController extends Controller
             "nama" => $request->input("nama"),
             "description" => $request->input("description"),
             "photo" => $imageName,
-            "slug" => Str::slug($imageName),
+            "slug" => Str::slug($request->input("nama")),
 
         ];
 

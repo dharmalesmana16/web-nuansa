@@ -28,7 +28,7 @@ export default function CreateNews() {
 
     const handleCreate = async (e) => {
         e.preventDefault();
-        const data = { "nama": nama, "description": description, "photo": gambar, };
+        const data = { "nama": nama, "description": description, "photo": gambar };
         try {
             await axios.post('/dashboard/carousel/store', data, {
                 headers: { 'Content-Type': "multipart/form-data" },
