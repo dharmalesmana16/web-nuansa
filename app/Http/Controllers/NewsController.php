@@ -60,6 +60,10 @@ class NewsController extends Controller
         $this->validate($request, [
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ], $messages);
+        if ($request->has('imageDescription')) {
+            $imageDesc = time() . "." . $request->photo->getClientOriginalExtension();
+            Storage::disk('news')->put($imageDesc, file_get_contents($request->imageDescription));
+        }
         if ($request->has('photo')) {
             $imageName = time() . "." . $request->photo->getClientOriginalExtension();
             Storage::disk('news')->put($imageName, file_get_contents($request->photo));

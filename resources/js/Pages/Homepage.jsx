@@ -66,7 +66,7 @@ export default function Homepage(props) {
         speed: 500,
         slidesToShow: 3,
         // slidesToScroll: 1,
-        // autoplay: true,
+        autoplay: true,
         swipeToSlide: true,
         autoplaySpeed: 1000,
         rows: 2,
@@ -106,9 +106,9 @@ export default function Homepage(props) {
         dots: true,
         // infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 4,
         slidesToScroll: 1,
-        // autoplay: true,
+        autoplay: true,
         autoplaySpeed: 2000,
         // rows: 2,
         // slidesPerRow: 2,
@@ -147,9 +147,18 @@ export default function Homepage(props) {
             <Carousel data={props.carousel} >
 
             </Carousel>
-            <TextHome data={props.DataService} />
+            <div className="container">
+
+                <Typography variant='h4' fontWeight={"800"}>
+                    Layanan Kami
+                </Typography>
+                <TextHome data={props.DataService} />
+            </div>
             <BoxHome />
             <div className="container py-5">
+                <Typography variant='h4' fontWeight={"800"}>
+                    Product Kami
+                </Typography>
                 <Slider {...settings}>
                     {props.dataProduks.map((rek) => (
                         <div className="py-2 px-5">
@@ -180,6 +189,9 @@ export default function Homepage(props) {
                 </Slider>
             </div>
             <div className="container py-5">
+                <Typography variant='h4' fontWeight={"800"}>
+                    Berita Terkini
+                </Typography>
                 <Slider {...settingProjects}>
                     {props.news.map((res, i) => {
                         let judul = res.nama;
@@ -227,9 +239,9 @@ export default function Homepage(props) {
                 </Slider>
             </div>
             <div className="container mb-5">
-                <div className="text-center">
-                    <h3 className='fw-bold '>Client Kami</h3>
-                </div>
+                <Typography variant='h4' fontWeight={"800"}>
+                    Client Kami
+                </Typography>
                 <div className="">
                     <Slider {...settingClient}>
 

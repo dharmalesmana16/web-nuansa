@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import ConvertHTML from './ConvertHTML';
 import { Button, CardActionArea, CardActions, Link, Typography, Box, Container, Grid } from '@mui/material';
-export default function Cards({ key, judul, deskripsi, meta, photo, link, className, children }) {
+export default function Cards({ key, judul, deskripsi, meta, photo, link, className, children, catalog, linkDownload }) {
     let newDeskripsi;
     if (deskripsi.length > 100) {
         newDeskripsi = deskripsi.substring(0, 99) + " ..."
@@ -14,11 +14,11 @@ export default function Cards({ key, judul, deskripsi, meta, photo, link, classN
 
     return (
         <>
-            <Link href={link} className="text-decoration-none">
+            <Link href={link} className="text-decoration-none ">
 
-                <Card sx={{ width: "100%" }} key={key} className={className} style={{ borderRadius: "15px" }}>
+                <Card key={key} className={className} style={{ borderRadius: "15px" }}>
                     <CardMedia
-                        sx={{ objectFit: "fill", padding: "10px", borderRadius: "15px" }}
+                        sx={{ padding: "10px", borderRadius: "20px" }}
                         component="img"
                         height="225"
                         alt="green iguana"
@@ -34,12 +34,16 @@ export default function Cards({ key, judul, deskripsi, meta, photo, link, classN
                             <ConvertHTML name={newDeskripsi} />
                         </Typography>
                     </CardContent>
-                    <CardActions>
+                    <CardActions className='d-flex justify-content-center'>
                         {children}
+                        {catalog == "Paket" ? (
+                            <Button variant='outlined' color='primary' href={linkDownload} className='text-capitalize text-center' >
+                                Download
+                            </Button>
+
+                        ) : ""}
                     </CardActions>
-                    {/* <Button href={`/news/${res.slug}`}>
-                    Selengkapnya
-                </Button> */}
+
                 </Card>
             </Link>
         </>

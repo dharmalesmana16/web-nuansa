@@ -1,7 +1,7 @@
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import React from 'react'
 import InputLabel from '@/Components/InputLabel';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Swal from 'sweetalert2';
@@ -17,6 +17,7 @@ export default function Update(props) {
     const [gambar, setGambar] = useState(null);
     const [previewImg, setPreview] = useState(null);
     const [dataKatalog, setDataKatalog] = useState([]);
+    console.log(props.data.nama)
     async function getCatalog(e) {
         e.preventDefault();
         const category = e.target.value;
@@ -27,35 +28,22 @@ export default function Update(props) {
             setDataKatalog(response);
         });
     }
+    useEffect(async () => {
+        let data = { "category_product_id": kategori };
+        await axios.post('/data/getCatalogByCategory', data).then((response) => {
+            setDataKatalog(response);
+        });
+    }, [])
     function preview(e) {
         var fileInput = false;
         let dataImage = e.target.files[0]
         if (dataImage) {
             fileInput = true;
             setGambar(dataImage);
-        }
-        if (fileInput) {
-            try {
-                FileResizer.imageFileResizer(
-                    dataImage,
-                    250,
-                    250,
-                    "JPEG",
-                    100,
-                    0,
-                    (uri) => {
-                        setPreview(URL.createObjectURL(uri));
+            setPreview(URL.createObjectURL(dataImage));
 
-                    },
-                    "file",
-                    250,
-                    250
-                );
-
-            } catch (err) {
-                console.log(err);
-            }
         }
+
     }
     const handleNumber = (e) => {
         const regex = /^[0-9\b]+$/;

@@ -33,7 +33,7 @@ export default function Detail(props) {
     return (
         <Layout>
 
-            <div className="container py-5">
+            <div className="container py-5" style={{ marginTop: "75px" }}>
 
                 <div className="row gx-4 gx-lg-5">
                     <div className="col-md-5 text-center">

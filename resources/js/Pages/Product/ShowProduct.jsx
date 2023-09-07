@@ -21,9 +21,9 @@ export default function show(props) {
     return (
         < Layout >
 
-            <div className="container py-5">
+            <div className="container " style={{ marginTop: "75px" }}>
 
-                <Grid container spacing={{ md: 2 }} columns={{ md: 12 }}  >
+                <Grid container spacing={{ md: 2, xs: 2 }} columns={{ xs: 4, md: 12 }}  >
                     {/* Start Code */}
                     {props.data.data.length > 0 ? props.data.data.map((res, i) => {
                         // let deskripsi = res.deskripsi;
@@ -33,7 +33,7 @@ export default function show(props) {
                         //     deskripsi = res.deskripsi;
                         // }
                         return (
-                            <Grid item md={3} >
+                            <Grid item md={3} xs={4} >
 
 
                                 {/* <div className="card bg-white shadow border-0 h-100" >
@@ -55,10 +55,14 @@ export default function show(props) {
                                             ) : ""}
                                     </div>
                                 </div> */}
-                                <ProductCard photo={`/storage/public/${res.gambar}`} judul={res.namaproduct} deskripsi={rupiah(res.harga)} link={`/product/show/${res.slugProduct}`} className={"cardShowProduct"} />
+                                <ProductCard photo={`/storage/public/${res.gambar}`} judul={res.namaproduct} deskripsi={rupiah(res.harga)} link={`/product/show/${res.slugProduct}`} className={"cardShowProduct"} catalog={res.namaKatalog} linkDownload={`/download/product/${res.gambar}`} />
                             </Grid>
                         )
-                    }) : <p className='fs-5 text-center'>Produk Belum Tersedia, Hubungi kami jika ingin menanyakan produk ini</p>
+                    }) :
+                        <div className='d-flex justify-content-center'>
+
+                            <p className='fs-5 text-center' style={{ marginTop: "75px" }}>Produk Belum Tersedia, Hubungi kami jika ingin menanyakan produk ini</p>
+                        </div>
                     }
 
 

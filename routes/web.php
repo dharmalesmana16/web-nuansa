@@ -40,9 +40,12 @@ Route::get('/gallery', [GalleryController::class, 'index']);
 Route::get('/service', [ServicesController::class, 'index']);
 Route::get('/service/{slug}', [ServicesController::class, 'show']);
 Route::get('/contactus', [ContactController::class, 'index']);
+Route::get('/download/product/{slug}', [ProductsController::class, 'download']);
 Route::get('/client/show/{id}', [ClientsController::class, 'detail']);
 
 Route::post('/data/getcatalog', [DataController::class, 'getDataCatalog']);
+Route::get('/data/getService', [DataController::class, 'getService']);
+Route::post('/data/getCatalogByCategory', [DataController::class, 'getCatalogByCategory']);
 Route::get('/data/link/product', [DataController::class, 'getLinkProduct']);
 Route::get('/data/link/service', [DataController::class, 'getLinkService']);
 Route::controller(ProductsController::class)->prefix('dashboard/products')->middleware(['auth', 'admin'])->group(function () {

@@ -7,6 +7,7 @@ import DataTable from 'react-data-table-component';
 import Swal from 'sweetalert2';
 import ProductCard from '@/Components/ProductCard';
 import { Grid, Box, Button } from '@mui/material';
+import ButtonUpdateDelete from '@/Components/ButtonUpdateDelete';
 export default function Page(props) {
     // const [products, setProducts] = useState([]);
     // console.log(props.datavideotron);
@@ -56,22 +57,23 @@ export default function Page(props) {
                 <a href="/dashboard/products/new" className='btn btn-md btn-success'>Add New Data</a>
             </div>
             <Box sx={{ width: '100%' }}>
-                <Grid container spacing={{ xs: 2, md: 1 }} columns={{ xs: 4, sm: 8, md: 12 }} columnSpacing={{ md: 2 }}>
+                <Grid container spacing={{ xs: 1, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }} >
 
                     {props.datas.data.map((res, i) => {
                         return (
 
-                            <Grid item xs={4} sm={4} md={2} key={i}>
-                                <ProductCard photo={`/storage/public/${res.mainphoto}`} judul={res.nama} deskripsi={rupiah(res.harga)} link={`/product/show/${res.slug}`} className={"cardShowProduct"}>
-                                    <div className='d-flex'>
-                                        <div className="px-2">
+                            <Grid item xs={4} sm={8} md={3} key={i}>
+                                <ProductCard photo={`/storage/public/${res.mainphoto}`} judul={res.nama} deskripsi={rupiah(res.harga)} className={"cardShowProduct"}>
+                                    <div className='d-flex '>
+                                        <ButtonUpdateDelete linkUpdate={`/dashboard/products/edit/${res.slug}`} linkDelete={handleDelete} idData={res.slug} />
+                                        {/* <div className="px-2">
 
                                             <Link href={`/dashboard/products/edit/${res.slug}`} className='btn btn-sm btn-primary text-white'>Edit</Link>
                                         </div>
                                         <div className="">
 
                                             <Link href={`/dashboard/products/${res.slug}`} className='btn btn-sm btn-danger text-white' onClick={handleDelete} id={res.slug}>Delete</Link>
-                                        </div>
+                                        </div> */}
 
                                     </div>
                                 </ProductCard>

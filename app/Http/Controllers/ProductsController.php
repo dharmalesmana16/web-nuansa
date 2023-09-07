@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\categoryProduct;
 use App\Models\products;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -46,7 +47,8 @@ class ProductsController extends Controller
         ];
         return Inertia::render('Dashboard/products/CreateCategory', $data);
     }
-    function new () {
+    public function new ()
+    {
         $data = [
             "title" => "Create New Product",
             "data_cat" => $this->categoryProduct->getData(),
@@ -117,7 +119,8 @@ class ProductsController extends Controller
     {
         $data = [
             "title" => "Update Product",
-            "data" => DB::table('products')->where('slug', $slug)->first(),
+            "data" => DB::table('products')->
+                where('slug', $slug)->first(),
             "data_cat" => $this->categoryProduct->getData(),
         ];
         return Inertia::render("Dashboard/products/UpdateProduct", $data);
@@ -181,5 +184,20 @@ class ProductsController extends Controller
             }
         }
         $project->delete();
+    }
+    public function download(Request $request, $file_name)
+    {
+        // $req = $this->magazine->getData($slug);
+        // $myFile = public_path("storage/magazine/files");
+
+        // $headers = ['Content-Type: application/pdf'];
+        // $newName = 'itsolutionstuff-pdf-file-' . time() . '.pdf';
+
+        // return response()->download($myFile, $newName, $headers);
+        // return Storage::download($myFile, $req->file, $headers);
+        $file = Storage::disk('public')->get($file_name);
+
+        return (new Response($file, 200))
+            ->header('Content-Type', 'image/*');
     }
 }

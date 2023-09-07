@@ -15,9 +15,21 @@ class DataController extends Controller
             ->whereRaw("category_product_id = '$dataCategory' ")->get();
         return response()->json($query);
     }
+    public function getCatalogByCategory(Request $request)
+    {
+        $dataCategory = $request->input("category_product_id");
+        $query = DB::table('catalog')->select("*")
+            ->whereRaw("category_product_id = '$dataCategory' ")->get();
+        return response()->json($query);
+    }
     public function getLinkProduct()
     {
         $query = DB::table('category_products')->select("*")->get();
+        return $query;
+    }
+    public function getService()
+    {
+        $query = DB::table('services')->select("*")->get();
         return $query;
     }
     public function getLinkService()

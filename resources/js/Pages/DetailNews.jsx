@@ -21,17 +21,18 @@ export default function DetailNews(props) {
                 <div className="mb-5 ">
 
                     <Box
+
                         sx={{
 
                             width: "75%",
-                            height: "100%",
+                            height: "25%",
                             borderRadius: "20px",
                         }}
                         className="mx-auto"
 
                     >
 
-                        <img src={`/storage/news/${props.data.photo}`} alt="" className='img-fluid' style={{ width: "100%", height: "100%", objectFit: "fill", borderRadius: "20px" }} />
+                        <img src={`/storage/news/${props.data.photo}`} alt="" className='img-fluid' style={{ width: "100%", height: "500px", objectFit: "fill", borderRadius: "20px" }} />
                     </Box>
                 </div>
 

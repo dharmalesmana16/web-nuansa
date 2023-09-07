@@ -86,10 +86,10 @@ export default function DashboardNewsPage(props) {
                                                 },
                                             }}
                                         >
-                                            <img src={`/storage/news/${data.photo}`} alt="" srcset="" style={{ width: "200px", height: "200px" }} />
+                                            <img src={`/storage/news/${data.photo}`} alt="" srcSet="" style={{ width: "200px", height: "200px" }} />
                                         </Box>
                                     </Grid>
-                                    <Grid item xs={4} sm={4} md={4} key={i}>
+                                    <Grid item xs={4} sm={4} md={4} >
 
                                         <Typography variant='h5' className='fw-bold'>
                                             {data.nama}

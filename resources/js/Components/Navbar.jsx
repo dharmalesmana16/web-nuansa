@@ -14,10 +14,18 @@ import { BsCart4 } from "react-icons/bs";// import usePage from '@inertiajs/reac
 import { BsPersonFill } from "react-icons/bs";// import usePage from '@inertiajs/react';
 import { Link, usePage } from '@inertiajs/react';
 import LogoNuansa from './LogoNuansa';
+import { useEffect } from 'react';
+import { useState } from 'react';
 export default function Navbar(props) {
+    const [service, setService] = useState([])
+    useEffect(() => {
+        // let data = { "category_product_id": kategori };
 
-
-
+        axios.get('/data/getService').then((response) => {
+            setService(response.data);
+        });
+    }, [])
+    // console.log(service.data);
     let pathName = window.location.pathname;
     // function handleClick(e) {
     //     e.preventDefault();
@@ -73,12 +81,14 @@ export default function Navbar(props) {
                                     <div className="container ">
                                         <div className="d-md-flex d-lg-flex flex-lg-row flex-md-row ">
                                             <div class="d-md-flex d-lg-flex flex-lg-column flex-sm-column flex-md-column mb-3">
-
                                                 <li><p className="dropdown-item fw-bold mb-auto " >Layanan Kami</p></li>
-                                                <li><a className="dropdown-item " href="#">IT Manage Service</a></li>
-                                                <li><a className="dropdown-item" href="#">IT Solution for Business Development</a></li>
-                                                <li><a className="dropdown-item" href="#">IT Infrastructure & Service</a></li>
-                                                <li><a className="dropdown-item" href="#">System Integrator</a></li>
+                                                {service.map((res, i) => {
+                                                    let newName = res.nama.toUpperCase()
+                                                    return (
+                                                        <li key={i}><Link className="dropdown-item " href={`/service/${res.slug}`}>{newName}</Link></li>
+
+                                                    )
+                                                })}
                                             </div>
 
                                         </div>

@@ -9,7 +9,7 @@ export default function Carousel({ data, children }) {
     const carouselStyle = {
         width: "100%",
         height: "auto",
-        maxHeight: "80vh",
+        // maxHeight: "80vh",
         objectFit: "fit",
         overflow: "hidden",
         objectPosition: "center",
@@ -29,7 +29,7 @@ export default function Carousel({ data, children }) {
     let image = [];
     return (
         <>
-            <Box sx={{ minHeight: "100%" }}>
+            <Box sx={{ minHeight: "100%", pt: 8 }}>
 
 
                 <ReactImageGallery items={data ? data.map((res, i) => {
