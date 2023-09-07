@@ -61,7 +61,7 @@ class ProductsController extends Controller
             ->join('category_products', 'products.category_id', '=', 'category_products.id')
             ->join('catalog', 'products.catalog_id', '=', 'catalog.id')
             ->select('products.*', 'products.nama as namaproduct', 'products.photo as gambar',
-                'products.slug as slugProduct', 'category_products.*', 'category_products.nama as name', "catalog.nama as namaKatalog")->whereRaw("category_products.slug = '$slug'")->paginate(9);
+                'products.slug as slugProduct', 'category_products.*', 'category_products.nama as name', "catalog.nama as namaKatalog")->whereRaw("category_products.slug = '$slug'")->paginate(12);
         $data = [
             "title" => "Page",
             "data" => $datas,
@@ -198,6 +198,6 @@ class ProductsController extends Controller
         $file = Storage::disk('public')->get($file_name);
 
         return (new Response($file, 200))
-            ->header('Content-Type', 'image/*');
+            ->header('Content-Type', '*');
     }
 }
