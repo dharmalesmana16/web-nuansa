@@ -8,8 +8,8 @@ export default function TopJumbotron({ children }) {
     //     bgPatt.style.backgroundPositionY = +window.pageYOffset + "px";
     // })
     return (
-        <div className="p-5 mt-5 " id="bgJumbotron" style={{ backgroundImage: `url(${imgExample})`, backgroundSize: 'cover', height: "10rem", backgroundPositionY: "35rem" }}>
-            <div className="container px-4 px-lg-5 " >
+        <div className="py-5 " id="bgJumbotron" style={{ backgroundImage: `url(${imgExample})`, backgroundSize: 'cover', height: "10rem", backgroundPositionY: "35rem" }}>
+            <div className="container" >
                 <div className=" text-white">
                     <Typography variant='h5' className=' text-white text-uppercase' fontWeight={"800"}>
                         {children}

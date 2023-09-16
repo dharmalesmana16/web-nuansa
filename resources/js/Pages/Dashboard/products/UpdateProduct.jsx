@@ -17,7 +17,7 @@ export default function Update(props) {
     const [gambar, setGambar] = useState(null);
     const [previewImg, setPreview] = useState(null);
     const [dataKatalog, setDataKatalog] = useState([]);
-    console.log(props.data.nama)
+    console.log(props.data.catalog_id)
     async function getCatalog(e) {
         e.preventDefault();
         const category = e.target.value;

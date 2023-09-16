@@ -141,11 +141,7 @@ export default function Homepage(props) {
     };
     return (
         <Layout>
-
-
-
             <Carousel data={props.carousel} >
-
             </Carousel>
             <div className="container">
 
@@ -171,16 +167,13 @@ export default function Homepage(props) {
                                             className='img-fluid    '
                                             alt="bullet-camera" style={{
                                                 objectFit: 'fill',
-                                                // height: "200px",
                                                 borderRadius: "20px 20px 0px 0px"
                                             }} />
                                     </div>
 
                                     <div className="card-body text-center ">
                                         <p className="text-decoration-none">{rek.nama}</p>
-
                                     </div>
-
                                 </div>
                             </Link>
                         </div>
@@ -226,7 +219,6 @@ export default function Homepage(props) {
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
-
                                     <Button href={`/news/${res.slug}`} className='text-capitalize'>
                                         Selengkapnya
                                     </Button>
@@ -235,7 +227,6 @@ export default function Homepage(props) {
                         )
                     }
                     )}
-
                 </Slider>
             </div>
             <div className="container mb-5">
@@ -244,10 +235,8 @@ export default function Homepage(props) {
                 </Typography>
                 <div className="">
                     <Slider {...settingClient}>
-
                         {props.dataclients.map((res, o) => {
                             return (
-
                                 <div className=" p-5" key={o}>
                                     <div className="d-flex justify-content-center">
                                         <Box

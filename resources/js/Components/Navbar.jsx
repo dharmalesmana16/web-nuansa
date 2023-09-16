@@ -16,6 +16,7 @@ import { Link, usePage } from '@inertiajs/react';
 import LogoNuansa from './LogoNuansa';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { Typography } from '@mui/material';
 export default function Navbar(props) {
     const [service, setService] = useState([])
     useEffect(() => {
@@ -39,6 +40,7 @@ export default function Navbar(props) {
     // }
     // console.log(dataprops.auth.user.role)
     // }
+
     return (
         <div>
             {/* <nav className="navbar navbar-expand-lg  navbar-light navbarWeb firstNavbar firstContentNavbar" id="navbarWeb" >
@@ -59,7 +61,7 @@ export default function Navbar(props) {
                     </div>
                 </nav> */}
 
-            <nav className="navbar navbar-expand-lg navbar-light secondNavbar navbar-default navbar-fixed-top fixed-top " style={{ boxShadow: '0px 10px 5px -10px blue', }}>
+            <nav className="navbar navbar-expand-lg navbar-light secondNavbar navbar-default navbar-fixed-top fixed-top " id="navbarComponent" style={{ boxShadow: '0px 10px 5px -10px blue', }}>
                 <div className="container ">
                     <LogoNuansa width={175} color={false} />
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
@@ -68,25 +70,42 @@ export default function Navbar(props) {
                     <div className="navbar-collapse collapse  me-auto" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto  mb-lg-0 ">
                             <li className="nav-item px-3">
-                                <Link className={`nav-link links links-grow-up ` + `${(pathName == "/" ? "activeLink" : "")} `} aria-current="page" href="/">Home</Link>
+                                <Link className={`nav-link links links-grow-up ` + `${(pathName == "/" ? "activeLink" : "")} `} aria-current="page" href="/">
+                                    <Typography variant='overline' fontWeight={"800"}>
+                                        Home
+                                    </Typography>
+                                </Link>
                             </li>
                             <li className="nav-item px-3">
-                                <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/product") ? "activeLink" : "")} `} aria-current="page" href="/product">Products</Link>
+                                <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/product") ? "activeLink" : "")} `} aria-current="page" href="/product">
+                                    <Typography variant='overline' fontWeight={"800"}>
+                                        Products
+                                    </Typography>
+                                </Link>
                             </li>
                             <li className="nav-item dropdown px-3 position-static">
-                                <a className="nav-link dropdown-toggle links links-grow-up" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Services
-                                </a>
+                                <Link className="nav-link dropdown-toggle links links-grow-up" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <Typography variant='overline' fontWeight={"800"}>
+                                        Services
+                                    </Typography>
+                                </Link>
                                 <ul className="dropdown-menu menuDropdown  mt-2" aria-labelledby="navbarDropdown" style={{ width: "100%" }} >
                                     <div className="container ">
                                         <div className="d-md-flex d-lg-flex flex-lg-row flex-md-row ">
-                                            <div class="d-md-flex d-lg-flex flex-lg-column flex-sm-column flex-md-column mb-3">
-                                                <li><p className="dropdown-item fw-bold mb-auto " >Layanan Kami</p></li>
+                                            <div className="d-md-flex d-lg-flex flex-lg-column flex-sm-column flex-md-column mb-3">
+                                                <li>
+                                                    <Typography variant='overline' className='dropdown-item' fontWeight={"800"}>
+                                                        Services
+                                                    </Typography>
+                                                </li>
                                                 {service.map((res, i) => {
                                                     let newName = res.nama.toUpperCase()
                                                     return (
-                                                        <li key={i}><Link className="dropdown-item " href={`/service/${res.slug}`}>{newName}</Link></li>
-
+                                                        <li key={i}><Link className="dropdown-item " href={`/service/${res.slug}`}>
+                                                            <Typography variant='caption' >
+                                                                {newName}
+                                                            </Typography>
+                                                        </Link></li>
                                                     )
                                                 })}
                                             </div>
@@ -96,16 +115,32 @@ export default function Navbar(props) {
                                 </ul>
                             </li>
                             <li className="nav-item px-3">
-                                <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/client") ? "activeLink" : "")} `} href="/clients"  >Clients</Link>
+                                <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/client") ? "activeLink" : "")} `} href="/clients"  >
+                                    <Typography variant='overline' className='dropdown-item' fontWeight={"800"}>
+                                        Clients
+                                    </Typography>
+                                </Link>
                             </li>
                             <li className="nav-item px-3">
-                                <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/news") ? "activeLink" : "")} `} href="/news" >News</Link>
+                                <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/news") ? "activeLink" : "")} `} href="/news" >
+                                    <Typography variant='overline' className='dropdown-item' fontWeight={"800"}>
+                                        News
+                                    </Typography>
+                                </Link>
                             </li>
                             <li className="nav-item px-3">
-                                <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/gallery") ? "activeLink" : "")} `} href="/gallery" >Gallery</Link>
+                                <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/gallery") ? "activeLink" : "")} `} href="/gallery" >
+                                    <Typography variant='overline' className='dropdown-item' fontWeight={"800"}>
+                                        Gallery
+                                    </Typography>
+                                </Link>
                             </li>
                             <li className="nav-item px-3">
-                                <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/contactus") ? "activeLink" : "")} `} href="/contactus" >Contact Us</Link>
+                                <Link className={`nav-link links links-grow-up ` + `${(pathName.includes("/contactus") ? "activeLink" : "")} `} href="/contactus" >
+                                    <Typography variant='overline' className='dropdown-item' fontWeight={"800"}>
+                                        Kontak Kami
+                                    </Typography>
+                                </Link>
                             </li>
                             <div className="d-flex text-white ">
                                 <div className="vr" >

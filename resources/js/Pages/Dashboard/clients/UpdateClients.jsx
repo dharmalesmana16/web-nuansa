@@ -18,28 +18,6 @@ export default function EditClients(props) {
             setPreview(URL.createObjectURL(uri));
             setPhoto(uri);
         }
-        // if (fileInput) {
-        //     try {
-        //         FileResizer.imageFileResizer(
-        //             dataImage,
-        //             250,
-        //             250,
-        //             "JPEG",
-        //             100,
-        //             0,
-        //             (uri) => {
-        //                 setPreview(URL.createObjectURL(uri));
-        //                 setPhoto(uri);
-        //             },
-        //             "file",
-        //             250,
-        //             250
-        //         );
-
-        //     } catch (err) {
-        //         console.log(err);
-        //     }
-        // }
 
     }
     const handleCreate = async (e) => {
@@ -65,6 +43,9 @@ export default function EditClients(props) {
                 })
             });
             setNama("");
+            setPhoto("");
+            setPreview("");
+            setYear("");
             setTimeout(() => {
                 window.location.replace('/dashboard/clients');
             }, 2000);

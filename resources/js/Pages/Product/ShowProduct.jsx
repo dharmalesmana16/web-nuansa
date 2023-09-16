@@ -8,7 +8,7 @@ import FileResizer from 'react-image-file-resizer'
 import ProductCard from '@/Components/ProductCard'
 import { Grid } from '@mui/material'
 export default function show(props) {
-    // console.log(props.data.data);
+    console.log(props.datas);
 
 
     const rupiah = (number) => {

@@ -28,10 +28,8 @@ export default function Page(props) {
                                         borderRadius: "50%",
                                         width: "100px",
                                         height: "75px",
-                                        objectFit: "fill",
+                                        objectFit: "fit",
                                         boxShadow: "1px 1px",
-                                        display: "inline-block",
-                                        // backgroundSize: "contain"
                                     }}
                                 >
                                 </Box>

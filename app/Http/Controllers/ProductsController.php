@@ -37,6 +37,7 @@ class ProductsController extends Controller
             "datas" => DB::table('products')->join('category_products', 'products.category_id',
                 '=', 'category_products.id')->select('products.nama', 'products.deskripsi', 'products.harga',
                 'products.photo as mainphoto', 'products.kode', 'products.jumlah', 'products.slug', 'category_products.nama as namaKategori')->paginate(24),
+
         ];
         return Inertia::render('Dashboard/products/DashboardProductPage', $data);
     }
@@ -65,6 +66,7 @@ class ProductsController extends Controller
         $data = [
             "title" => "Page",
             "data" => $datas,
+            "datas" => DB::table('products')->select("*"),
         ];
         return Inertia::render('Product/ShowProduct', $data);
     }

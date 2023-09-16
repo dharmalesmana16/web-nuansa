@@ -6,7 +6,7 @@ import logoLocation from '../../assets/image/location-rounded.png'
 import logoTelephone from '../../assets/image/call.png'
 import logoEmail from '../../assets/image/mail.png'
 import { useEffect, useState } from 'react';
-
+import { Typography } from '@mui/material'
 export default function Footer() {
     const [dataServiceFooter, setDataServiceFooter] = useState([])
     const [dataProductFooter, setDataProductFooter] = useState([])
@@ -33,7 +33,9 @@ export default function Footer() {
             <footer className="py-5 container mt-auto" >
                 <div className="row row-cols-2">
                     <div className="col  col-lg-2 mb-3">
-                        <h5 className="fw-bolder ">Links</h5>
+                        <Typography variant='overline' fontWeight={"800"}>
+                            Links
+                        </Typography>
                         <ul className="nav flex-column">
                             <li className="nav-item mb-2"><a href="/" className="nav-link p-0 fontFooter">Home</a></li>
                             <li className="nav-item mb-2"><a href="/product" className="nav-link p-0 fontFooter">Products</a></li>
@@ -45,7 +47,9 @@ export default function Footer() {
                     </div>
 
                     <div className="col  col-lg-2 mb-3">
-                        <h5 className="fw-bolder ">Products</h5>
+                        <Typography variant='overline' fontWeight={"800"}>
+                            Products
+                        </Typography>
                         <ul className="nav flex-column">
                             {dataProductFooter.map((res, i) => {
                                 return (
@@ -57,7 +61,9 @@ export default function Footer() {
                     </div>
 
                     <div className="col  col-lg-3 mb-3">
-                        <h5 className="fw-bolder ">Services</h5>
+                        <Typography variant='overline' fontWeight={"800"}>
+                            Services
+                        </Typography>
                         <ul className="nav flex-column">
                             {dataServiceFooter.map((res, i) => {
                                 // { let name = { res.nama } }
@@ -69,26 +75,30 @@ export default function Footer() {
                         </ul>
                     </div>
                     <div className="col  col-lg-2 mb-3">
-                        <h5 className="fw-bolder ">Our Online Shop</h5>
+                        <Typography variant='overline' fontWeight={"800"}>
+                            Online Shops
+                        </Typography>
                         <ul className="nav flex-column">
-                            <li className="nav-item mb-2"><a href="#" className="nav-link p-0 fontFooter">Tokopedia</a></li>
+                            <li className="nav-item mb-2"><a href="https://www.tokopedia.com/nuansaintipersada" target='_blank' className="nav-link p-0 fontFooter">Tokopedia</a></li>
                             <li className="nav-item mb-2"><a href="#" className="nav-link p-0 fontFooter">Facebook - Marketplace</a></li>
                         </ul>
                     </div>
 
                     <div className="col col-lg-3 mb-3">
                         <div className="d-flex flex-column" id="navbarSupportedContent">
-                            <h5 className="fw-bolder ">Contact Us</h5>
-                            <div className="bd-highlight linkFooter">
+                            <Typography variant='overline' fontWeight={"800"}>
+                                Contact Us
+                            </Typography>
+                            <div className="bd-highlight pb-2 ">
                                 <img width="20" height="20" src={logoLocation} alt="location--v1" />
 
                                 <a href="https://www.google.com/maps/place/Nuansa+Inti+Persada.+CV/@-8.662169,115.1949264,17z/data=!3m1!4b1!4m6!3m5!1s0x2dd240b1048b42e3:0x9f3f3a69c0937ea8!8m2!3d-8.662169!4d115.1975013!16s%2Fg%2F1pzv73zps?entry=ttu" className="px-2 py-2 text-decoration-none " style={{ color: "#E8E8E8" }} target='_blank'>Jl Gunung Bromo no 6, Denpasar, Bali</a>
                             </div>
-                            <div className=" bd-highlight linkFooter">
+                            <div className=" bd-highlight py-2">
                                 <img width="20" height="20" src={logoTelephone} alt="whatsapp--v1" />
-                                <a href="https://wa.me/6282145554374/?text=Hallo+Nuansa,+saya+tertarik+dengan+produk+dan+layanan+anda" target='_blank' className='px-2 text-decoration-none  py-2 ' style={{ color: "#E8E8E8" }}>+6282145554374</a>
+                                <a href="https://wa.me/6281239483800/?text=Hallo+Nuansa,+saya+tertarik+dengan+produk+dan+layanan+anda" target='_blank' className='px-2 text-decoration-none  py-2 ' style={{ color: "#E8E8E8" }}>+6281239483800</a>
                             </div>
-                            <div className=" bd-highlight linkFooter">
+                            <div className=" bd-highlight py-2">
                                 <img width="20" height="20" src={logoEmail} alt="whatsapp--v1" />
                                 <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=info@nuansaintipersada.co.id&su=Email From Website&body=Body%20Text" className='px-2 text-decoration-none  py-2 ' style={{ color: "#E8E8E8" }}>info@nuansaintipersada.co.id</a></div>
                         </div>
@@ -103,7 +113,7 @@ export default function Footer() {
                         <a className="icon px-3" target='_blank' href=''><img width="30" height="30" src={logoWhatsapp} alt="whatsapp--v1" /></a>
                     </ul>
                 </div>
-            </footer>
+            </footer >
         </div >
     )
 }

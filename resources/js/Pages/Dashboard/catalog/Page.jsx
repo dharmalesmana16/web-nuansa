@@ -62,8 +62,6 @@ export default function Page(props) {
 
 
     ];
-
-
     return (
         <DashboardLayout user={props.user}>
             <div className="text-end py-2">

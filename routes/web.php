@@ -40,7 +40,7 @@ Route::get('/gallery', [GalleryController::class, 'index']);
 Route::get('/service', [ServicesController::class, 'index']);
 Route::get('/service/{slug}', [ServicesController::class, 'show']);
 Route::get('/contactus', [ContactController::class, 'index']);
-Route::get('/download/product/{slug}', [ProductsController::class, 'download']);
+Route::get('/download/product/{file}', [ProductsController::class, 'download']);
 Route::get('/client/show/{id}', [ClientsController::class, 'detail']);
 
 Route::post('/data/getcatalog', [DataController::class, 'getDataCatalog']);

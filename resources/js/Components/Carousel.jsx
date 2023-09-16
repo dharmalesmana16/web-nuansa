@@ -29,7 +29,7 @@ export default function Carousel({ data, children }) {
     let image = [];
     return (
         <>
-            <Box sx={{ minHeight: "100%", pt: 8 }}>
+            <Box sx={{ minHeight: "100%" }}>
 
 
                 <ReactImageGallery items={data ? data.map((res, i) => {
