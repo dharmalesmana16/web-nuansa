@@ -26,13 +26,14 @@ export default function DetailNews(props) {
 
                 <Box sx={{
                     width: "100%",
-                    height: "50%",
+                    // height: "50%",
+                    maxHeight: "50%",
                     // padding: "50px",
                     borderRadius: "20px",
                 }}
                     className="mx-auto"
                 >
-                    <img src={`/storage/news/${props.data.photo}`} alt="" className='img-fluid' style={{ width: "100%", height: "100%", objectFit: "fill", borderRadius: "20px" }} />
+                    <img src={`/storage/news/${props.data.photo}`} alt="" className='img-fluid' style={{ objectFit: "fill", borderRadius: "20px" }} />
                 </Box>
 
                 <Typography variant='body1' className='mt-3'>
