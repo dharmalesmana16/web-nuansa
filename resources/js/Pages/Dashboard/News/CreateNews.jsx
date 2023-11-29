@@ -1,30 +1,21 @@
+import ButtonCreate from '@/Components/ButtonCreate'
 import DashboardLayout from '@/Layouts/DashboardLayout'
-import { Card, TextField } from '@mui/material'
-import React from 'react'
-import { useState } from 'react';
-import InputLabel from '@/Components/InputLabel';
-// import { CKEditor } from '@ckeditor/ckeditor5-react';
-import 'froala-editor/css/froala_style.min.css';
-import 'froala-editor/css/froala_editor.pkgd.min.css';
-
+import { Card, CardContent, FormControl, TextField, Grid, Typography, Container, Box, Paper } from '@mui/material'
+import React, { useState } from 'react'
+import Swal from 'sweetalert2'
 import { CKEditor } from '@ckeditor/ckeditor5-react';
-import "froala-editor/css/third_party/embedly.min.css";
-import "froala-editor/js/froala_editor.pkgd.min.js";
-import "froala-editor/js/plugins.pkgd.min.js";
-import "froala-editor/js/third_party/embedly.min.js";
-import Swal from 'sweetalert2';
-import FroalaEditor from 'react-froala-wysiwyg';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-// import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter';
-// import { SimpleUploadAdapter } from '@ckeditor/ckeditor5-upload';
-import { usePage } from '@inertiajs/react';
-import FroalaEditorImg from 'react-froala-wysiwyg/FroalaEditorImg';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import { usePage } from '@inertiajs/react'
 export default function CreateNews() {
     const [nama, setNama] = useState("");
     const [description, setDescription] = useState("");
     const [gambar, setGambar] = useState(null);
     const [userID, setuserID] = useState("");
     const [previewImg, setPreview] = useState(null);
+    const [loading, setLoading] = useState(false);
+
     let datas = usePage().props;
     console.log(datas.auth.user.id);
     // setuserID(datas.auth.user.id);
@@ -45,10 +36,13 @@ export default function CreateNews() {
     const handleCreate = async (e) => {
         e.preventDefault();
         const data = { "nama": nama, "description": description, "photo": gambar, "user_id": datas.auth.user.id };
+        setLoading(true);
+
         try {
             await axios.post('/dashboard/news/store', data, {
                 headers: { 'Content-Type': "multipart/form-data" },
             }).then((response) => {
+                setLoading(false);
                 Swal.fire({
                     icon: 'success',
                     text: response.data.msg,
@@ -73,120 +67,102 @@ export default function CreateNews() {
     }
     return (
         <DashboardLayout>
-            <div className='container'>
-                <div className="card bg-white">
-                    <div className="card-body p-5">
+            <Container maxWidth="md">
 
-                        <form className="row g-3" encType="multipart/form-data" onSubmit={handleCreate} >
+
+                <Card>
+                    <CardContent >
+                        <div className="d-flex mb-3">
+                            <Typography fontWeight={"700"} sx={{ ml: 1 }}>
+                                Tambah Berita
+                            </Typography>
+                        </div>
+                        <form onSubmit={handleCreate}>
+                            <div className="mb-3">
+
+                                <label htmlFor="secondImage">
+                                    {/* <div className="container-fluid"> */}
+                                    {/* {previewImg !== null ? => } */}
+                                    {previewImg == null ? (
+                                        <Box className="secondImage container-fluid" sx={{ border: "1px solid black", width: "820px", p: 15, borderStyle: "dashed", cursor: "pointer" }}>
+                                            <Typography variant='h4' color={"text.secondary"} className='d-flex justify-content-center'>
+                                                + Gambar
+                                            </Typography>
+                                        </Box>
+
+                                    ) : (
+                                        <Box className="secondImage container-fluid" src={previewImg} component={"img"} sx={{ objectFit: "fill", width: "820px", height: "400px", borderRadius: "20px" }} >
+
+                                        </Box>
+                                    )}
+                                    {/* <Box className="secondImage container-fluid" sx={{ border: "1px solid black", width: "820px", p: 0, borderStyle: "dashed", cursor: "pointer" }}>
+                                    {previewImg == null ? (
+
+                                        <Typography variant='h4' color={"text.secondary"} className='d-flex justify-content-center'>
+                                            + Gambar
+                                        </Typography>
+                                    ) : (
+                                        <img src={previewImg} style={{ objectFit: "fill", width: "820px" }} alt="" srcset="" />
+                                    )}
+                                </Box> */}
+                                    {/* </div> */}
+                                    {/* <Container maxWidth="lg">
+                                <Box sx={{ border: "1px solid black", borderStyle: "dashed", p: 5 }}>
+
+                                </Box>
+                            </Container> */}
+                                </label>
+                                <input type="file" name='previewImg1' id='secondImage' style={{ display: "none", visibility: "none" }} onChange={preview
+                                } />
+                            </div>
 
                             <div className="mb-3 row">
-                                <label htmlFor="inputPassword" className="col-sm-2 col-form-label">Nama Berita</label>
-                                <div className="col-sm-10">
-                                    <input type="text" className="form-control" id="inputPassword" onChange={(e) => setNama(e.target.value)} />
+                                <label className="col-md-3 col-sm-4 col-form-label">
+                                    <Typography variant='body2' fontWeight={"500"} >
+                                        Judul Berita
+                                    </Typography>
+                                </label>
+                                <div className="col-md-9 col-sm-8">
+                                    <div class="input-group input-group-sm ">
+                                        <input type="text" className="form-control" id="inputPassword" placeholder='Masukkan Judul Berita' onChange={(e) => setNama(e.target.value)} />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="row mb-3">
-                                <label for="staticEmail" className="col-sm-2 col-form-label">Gambar Berita</label>
-
-                                <div className="col-sm-7">
-
-                                    <input
-                                        type="file"
-                                        className="w-full px-4 py-2 form-control"
-                                        label="photo"
-                                        name="photo"
-                                        onChange={preview
-                                        }
-                                    />
-                                </div>
-                                <div className="col-sm-3">
-
-                                    <img src={previewImg}
-                                        className="" alt="..." style={{
-                                            objectFit: 'fill', width: "250px",
-                                            height: "250px",
-                                            border: "1px solid black",
-                                        }} />
-                                </div>
-
                             </div>
                             <div className="mb-3 row">
-                                <label for="staticEmail" className="col-sm-2 col-form-label">Deskripsi</label>
-                                <div className="col-sm-10">
-                                    <CKEditor
-                                        editor={ClassicEditor}
-                                        config={{
-                                            plugins: [SimpleUploadAdapter],
+                                <label className="col-md-3 col-sm-4 col-form-label">
+                                    <Typography variant='body2' fontWeight={"500"} >
+                                        Deskripsi Berita
+                                    </Typography>
+                                </label>
+                                <div className="col-md-9 col-sm-8">
+                                    <div class="input-group input-group-sm ">
+                                        <CKEditor
+                                            editor={ClassicEditor}
+                                            // data="<p>Hello from CKEditor 5!</p>"
+                                            // onReady={(editor) => {
+                                            //     console.log("CKEditor5 React Component is ready to use!", editor);
+                                            // }}
 
-                                        }}
-                                        onChange={(event, editor) => {
-                                            setDescription(editor.getData())
-                                        }}
-
-                                    />
-                                    {/* <FroalaEditor
-                                        tag='textarea'
-                                        model={description}
-                                        config={{
-                                            imageUploadParam: 'imageDescription',
-                                            imageUploadMethod: "post",
-                                            placeholderText: 'Edit Your Content Here!',
-                                            charCounterCount: false,
-                                            imageUpload: true,
-                                            imageDefaultAlign: 'center',
-                                            imageDefaultDisplay: 'inline-block',
-                                            // Set max image size to 5MB.
-                                            imageMaxSize: 5 * 1024 * 1024,
-                                            // Allow to upload PNG and JPG.
-                                            imageAllowedTypes: ['jpeg', 'jpg', 'png'],
-                                            heightMin: 1000,
-                                            heightMax: 1000,
-                                            // events: {
-                                            //     'froalaEditor.image.beforeUpload': function (e, editor, images) {
-                                            //         // Before image is uploaded
-                                            //         const datas = new FormData();
-                                            //         datas.append('imageDescription', images[0]);
-
-                                            //         axios.post('/dashboard/news/store', datas, {
-                                            //             headers: {
-                                            //                 'accept': 'application/json',
-                                            //                 'Content-Type': `multipart/form-data`,
-                                            //             }
-                                            //         }).then(res => {
-                                            //             editor.image.insert(res.data.data.link, null, null, editor.image.get());
-                                            //         }).catch(err => {
-                                            //             console.log(err);
-                                            //         });
-                                            //         return false;
-                                            //     }
-                                            // }
-                                        }}
-                                        onModelChange={handleModelChange}
-
-                                    />
-                                    <FroalaEditorImg
-
-
-                                    /> */}
+                                            onChange={(event, editor) => {
+                                                setDescription(editor.getData())
+                                            }}
+                                        />                                    </div>
                                 </div>
                             </div>
 
+                            <ButtonCreate />
 
-
-
-
-
-
-
-                            <hr />
-                            <div className="text-end">
-                                <button type="submit" className=" btn btn-primary px-3 font-weight-bolder btnSubmit">Create New Project
-                                </button>
-                            </div>
                         </form>
-                    </div>
-                </div>
-            </div>
-        </DashboardLayout>
+                        <Backdrop
+                            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                            open={loading == true ? true : ""}
+
+                        >
+                            <CircularProgress color="inherit" />
+                        </Backdrop>
+                    </CardContent>
+                </Card>
+            </Container>
+        </DashboardLayout >
     )
 }
