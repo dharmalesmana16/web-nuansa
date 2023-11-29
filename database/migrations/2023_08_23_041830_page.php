@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('page', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama', 100)->nullable();
+            $table->string('nama', 255)->nullable();
+            $table->string('link', 255)->nullable();
             $table->text('description')->nullable();
             $table->binary('photo');
             $table->string('slug', 100)->nullable(false);

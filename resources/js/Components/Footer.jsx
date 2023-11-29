@@ -6,7 +6,10 @@ import logoLocation from '../../assets/image/location-rounded.png'
 import logoTelephone from '../../assets/image/call.png'
 import logoEmail from '../../assets/image/mail.png'
 import { useEffect, useState } from 'react';
-import { Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
+import logoTokped from '../../assets/image/tokped-2.png'
+import LogoNuansa from './LogoNuansa'
+
 export default function Footer() {
     const [dataServiceFooter, setDataServiceFooter] = useState([])
     const [dataProductFooter, setDataProductFooter] = useState([])
@@ -27,26 +30,19 @@ export default function Footer() {
     return (
         // <div className="container-fluid " >
 
-        <div className="container-fluid footer mt-auto">
-
-
-            <footer className="py-5 container mt-auto" >
+        <div className=" footer">
+            <footer className="p-5 container " >
                 <div className="row row-cols-2">
-                    <div className="col  col-lg-2 mb-3">
-                        <Typography variant='overline' fontWeight={"800"}>
-                            Links
-                        </Typography>
-                        <ul className="nav flex-column">
-                            <li className="nav-item mb-2"><a href="/" className="nav-link p-0 fontFooter">Home</a></li>
-                            <li className="nav-item mb-2"><a href="/product" className="nav-link p-0 fontFooter">Products</a></li>
-                            <li className="nav-item mb-2"><a href="/service" className="nav-link p-0 fontFooter">Services</a></li>
-                            <li className="nav-item mb-2"><a href="/clients" className="nav-link p-0 fontFooter">Clients</a></li>
-                            <li className="nav-item mb-2"><a href="/project" className="nav-link p-0 fontFooter">Projects</a></li>
-                            <li className="nav-item mb-2"><a href="/brochure" className="nav-link p-0 fontFooter">Brochure</a></li>
-                        </ul>
+                    <div className="col  col-lg-3  align-items-center align-self-center">
+                        <div className="align-items-center align-self-center">
+
+                            <LogoNuansa color={false} width={175} />
+                        </div>
+
+
                     </div>
 
-                    <div className="col  col-lg-2 mb-3">
+                    <div className="col  col-lg-3 mb-3">
                         <Typography variant='overline' fontWeight={"800"}>
                             Products
                         </Typography>
@@ -74,15 +70,7 @@ export default function Footer() {
                             })}
                         </ul>
                     </div>
-                    <div className="col  col-lg-2 mb-3">
-                        <Typography variant='overline' fontWeight={"800"}>
-                            Online Shops
-                        </Typography>
-                        <ul className="nav flex-column">
-                            <li className="nav-item mb-2"><a href="https://www.tokopedia.com/nuansaintipersada" target='_blank' className="nav-link p-0 fontFooter">Tokopedia</a></li>
-                            <li className="nav-item mb-2"><a href="#" className="nav-link p-0 fontFooter">Facebook - Marketplace</a></li>
-                        </ul>
-                    </div>
+
 
                     <div className="col col-lg-3 mb-3">
                         <div className="d-flex flex-column" id="navbarSupportedContent">
@@ -106,11 +94,12 @@ export default function Footer() {
                 </div>
 
                 <div className="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-                    <p>&copy; {year.getFullYear()} CV. Nuansa Inti Persada, All rights reserved.</p>
+                    <p>&copy; {year.getFullYear()} CV. Nuansa Inti Persada</p>
                     <ul className="list-unstyled d-flex">
-                        <a className="icon px-3" target='_blank' href='https://www.instagram.com/nuansaled/'><img width="30" height="30" src={logoInstagram} alt="instagram-new--v1" /></a>
+                        <a className="icon px-3" target='_blank' href='https://www.instagram.com/nuansaintipersada_/'><img width="30" height="30" src={logoInstagram} alt="instagram-new--v1" /></a>
                         <a className="icon px-3 " target='_blank' href='https://www.linkedin.com/company/nuansa-inti-persada'><img width="30" height="30" src={logoLinkedin} alt="linkedin" /></a>
-                        <a className="icon px-3" target='_blank' href=''><img width="30" height="30" src={logoWhatsapp} alt="whatsapp--v1" /></a>
+                        <a className="icon px-3" target='_blank' href='https://www.tokopedia.com/nuansaintipersada'><img width="30" height="30" src={logoTokped} alt="whatsapp--v1" /></a>
+
                     </ul>
                 </div>
             </footer >
