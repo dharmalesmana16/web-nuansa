@@ -335,13 +335,13 @@ export default function Homepage(props) {
                                                         image={`/storage/news/${res.photo}`}
 
                                                     />
-                                                    <CardContent sx={{ backgroundColor: "transparent", minHeight: "175px" }}>
-                                                        <Typography variant="h6" fontWeight={"700"} >
+                                                    <CardContent sx={{ backgroundColor: "transparent", minHeight: "250px" }}>
+                                                        <Typography variant="body1" fontWeight={"800"} >
                                                             {res.nama}
                                                         </Typography>
-                                                        <Typography variant="caption" color="text.secondary" gutterBottom>
+                                                        {/* <Typography variant="caption" color="text.secondary" gutterBottom>
                                                             {res.tanggal}
-                                                        </Typography>
+                                                        </Typography> */}
                                                         <Typography variant="body2" color="text.secondary">
                                                             <ConvertHTML name={newDeskripsi} />
                                                         </Typography>
