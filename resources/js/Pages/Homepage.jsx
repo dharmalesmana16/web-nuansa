@@ -337,7 +337,7 @@ export default function Homepage(props) {
                                                     />
                                                     <CardContent sx={{ backgroundColor: "transparent", minHeight: "175px" }}>
                                                         <Typography variant="h6" fontWeight={"700"} >
-                                                            {res.title}
+                                                            {res.nama}
                                                         </Typography>
                                                         <Typography variant="caption" color="text.secondary" gutterBottom>
                                                             {res.tanggal}

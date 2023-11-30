@@ -18,18 +18,16 @@ export default function DetailService(props) {
                 {/* <div className="" style={{ border: "1px solid black" }}> */}
                 <div className="mb-5 ">
 
-                    <Box
-                        sx={{
-
-                            width: "75%",
-                            height: "100%",
-                            borderRadius: "20px",
-                        }}
+                    <Box sx={{
+                        width: "100%",
+                        // height: "50%",
+                        maxHeight: "50%",
+                        // padding: "50px",
+                        borderRadius: "20px",
+                    }}
                         className="mx-auto"
-
                     >
-
-                        <img src={`/storage/service/${props.data.photo}`} alt="" className='img-fluid' style={{ width: "100%", height: "100%", objectFit: "fill", borderRadius: "20px" }} />
+                        <img src={`/storage/service/${props.data.photo}`} alt="" className='img-fluid' style={{ objectFit: "fill", borderRadius: "20px" }} />
                     </Box>
                 </div>
 
