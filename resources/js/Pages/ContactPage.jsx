@@ -6,9 +6,8 @@ import styled from '@mui/system/styled';
 
 export default function ContactPage() {
     let data = [
-        { "nama": "Email", "value": "info@nuansaintipersada.co.id" },
         { "nama": "Hubungi Kami", "value": "+6281239483800" },
-        { "nama": "Toko Online Kami", "value": "Tokopedia" },
+        { "nama": "Toko Online", "value": "Tokopedia" },
     ]
     const Item = styled('div')(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',

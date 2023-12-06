@@ -50,9 +50,7 @@ export default function Navbar(props) {
                             <LogoNuansa width={150} />
                         </div>
                         <div className="">
-                            <Typography variant='subtitle1'>
-                                <IoMailOpen color='#023e8a' /> info@nuansaintipersada.co.id
-                            </Typography>
+
                             <Typography variant='subtitle1'>
                                 <BsTelephoneFill color='#023e8a' /> +6281239483800
                             </Typography>

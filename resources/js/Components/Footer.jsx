@@ -86,22 +86,19 @@ export default function Footer() {
                                 <img width="20" height="20" src={logoTelephone} alt="whatsapp--v1" />
                                 <a href="https://wa.me/6281239483800/?text=Hallo+Nuansa,+saya+tertarik+dengan+produk+dan+layanan+anda" target='_blank' className='px-2 text-decoration-none  py-2 ' style={{ color: "#E8E8E8" }}>+6281239483800</a>
                             </div>
-                            <div className=" bd-highlight py-2">
-                                <img width="20" height="20" src={logoEmail} alt="whatsapp--v1" />
-                                <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=info@nuansaintipersada.co.id&su=Email From Website&body=Body%20Text" className='px-2 text-decoration-none  py-2 ' style={{ color: "#E8E8E8" }}>info@nuansaintipersada.co.id</a></div>
+
                         </div>
                     </div>
-                </div>
 
-                <div className="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-                    <p>&copy; {year.getFullYear()} CV. Nuansa Inti Persada</p>
-                    <ul className="list-unstyled d-flex">
-                        <a className="icon px-3" target='_blank' href='https://www.instagram.com/nuansaintipersada_/'><img width="30" height="30" src={logoInstagram} alt="instagram-new--v1" /></a>
-                        <a className="icon px-3 " target='_blank' href='https://www.linkedin.com/company/nuansa-inti-persada'><img width="30" height="30" src={logoLinkedin} alt="linkedin" /></a>
-                        <a className="icon px-3" target='_blank' href='https://www.tokopedia.com/nuansaintipersada'><img width="30" height="30" src={logoTokped} alt="whatsapp--v1" /></a>
+                    <div className="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                        <p>&copy; {year.getFullYear()} CV. Nuansa Inti Persada</p>
+                        <ul className="list-unstyled d-flex">
+                            <a className="icon px-3" target='_blank' href='https://www.instagram.com/nuansaintipersada_/'><img width="30" height="30" src={logoInstagram} alt="instagram-new--v1" /></a>
+                            <a className="icon px-3 " target='_blank' href='https://www.linkedin.com/company/nuansa-inti-persada'><img width="30" height="30" src={logoLinkedin} alt="linkedin" /></a>
+                            <a className="icon px-3" target='_blank' href='https://www.tokopedia.com/nuansaintipersada'><img width="30" height="30" src={logoTokped} alt="whatsapp--v1" /></a>
 
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
             </footer >
         </div >
     )
