@@ -89,16 +89,17 @@ export default function Footer() {
 
                         </div>
                     </div>
+                </div>
 
-                    <div className="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-                        <p>&copy; {year.getFullYear()} CV. Nuansa Inti Persada</p>
-                        <ul className="list-unstyled d-flex">
-                            <a className="icon px-3" target='_blank' href='https://www.instagram.com/nuansaintipersada_/'><img width="30" height="30" src={logoInstagram} alt="instagram-new--v1" /></a>
-                            <a className="icon px-3 " target='_blank' href='https://www.linkedin.com/company/nuansa-inti-persada'><img width="30" height="30" src={logoLinkedin} alt="linkedin" /></a>
-                            <a className="icon px-3" target='_blank' href='https://www.tokopedia.com/nuansaintipersada'><img width="30" height="30" src={logoTokped} alt="whatsapp--v1" /></a>
+                <div className="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                    <p>&copy; {year.getFullYear()} CV. Nuansa Inti Persada</p>
+                    <ul className="list-unstyled d-flex">
+                        <a className="icon px-3" target='_blank' href='https://www.instagram.com/nuansaintipersada_/'><img width="30" height="30" src={logoInstagram} alt="instagram-new--v1" /></a>
+                        <a className="icon px-3 " target='_blank' href='https://www.linkedin.com/company/nuansa-inti-persada'><img width="30" height="30" src={logoLinkedin} alt="linkedin" /></a>
+                        <a className="icon px-3" target='_blank' href='https://www.tokopedia.com/nuansaintipersada'><img width="30" height="30" src={logoTokped} alt="whatsapp--v1" /></a>
 
-                        </ul>
-                    </div>
+                    </ul>
+                </div>
             </footer >
         </div >
     )
